@@ -48,18 +48,19 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="349dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_width="286dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="98dp"
         android:text="Nome do sistema"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnCalc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
 </android.support.constraint.ConstraintLayout>
