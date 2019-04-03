@@ -9,58 +9,61 @@
 
     <ImageButton
         android:id="@+id/btnReport"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginLeft="236dp"
-        android:layout_marginTop="364dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginRight="79dp"
         android:contentDescription="reportIcon"
         android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/diagram" />
+        android:src="@drawable/diagram"
+        app:layout_constraintBottom_toBottomOf="@+id/btnConfig"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnConfig"
+        app:layout_constraintTop_toTopOf="@+id/btnConfig" />
 
     <ImageButton
         android:id="@+id/btnConfig"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="364dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="205dp"
         android:contentDescription="configIcon"
         android:scaleType="centerInside"
+        android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnReport"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCalc" />
 
     <ImageButton
         android:id="@+id/btnCalc"
         android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginLeft="132dp"
-        android:layout_marginTop="168dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="23dp"
         android:contentDescription="calcIcon"
         android:scaleType="centerInside"
+        android:src="@drawable/calculator"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfig"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/calculator" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="286dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="98dp"
-        android:text="Nome do sistema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:layout_marginBottom="123dp"
+        android:text="Calculina"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnCalc"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

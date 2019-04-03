@@ -1,6 +1,7 @@
 package calcinsulina.FMU.projetointegrado;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView btnCalc;
+    ImageView btnCalc, btnConfig, btnReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
 
         btnCalc = findViewById(R.id.btnCalc);
+        btnConfig = findViewById(R.id.btnConfig);
 
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, CalculoActivity.class);
                 startActivity(intent);
 
+            }
+        });
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
+                startActivity(intent);
             }
         });
 
