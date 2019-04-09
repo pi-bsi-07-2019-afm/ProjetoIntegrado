@@ -10,10 +10,11 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConfigActivity" />
-        <activity android:name=".CalculoActivity" />
+        <activity android:name=".View.TelaCadastro"></activity>
+        <activity android:name=".View.TelaConfig" />
+        <activity android:name=".View.TelaCalculadora" />
         <activity
-            android:name=".MainActivity"
+            android:name=".View.TelaPrincipal"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

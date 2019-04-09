@@ -1,4 +1,4 @@
-package calcinsulina.FMU.projetointegrado;
+package calcinsulina.FMU.projetointegrado.View;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CalculoActivity extends AppCompatActivity {
+import calcinsulina.FMU.projetointegrado.R;
+
+public class TelaCalculadora extends AppCompatActivity {
 
     Button btnCalcular;
     EditText edPeso, edIdade, edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato;
@@ -17,7 +19,7 @@ public class CalculoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculo);
+        setContentView(R.layout.tela_calculo);
         //Remove a barra de título
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

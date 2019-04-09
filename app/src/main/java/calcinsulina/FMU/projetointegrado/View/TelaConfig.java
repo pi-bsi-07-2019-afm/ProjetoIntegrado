@@ -1,15 +1,17 @@
-package calcinsulina.FMU.projetointegrado;
+package calcinsulina.FMU.projetointegrado.View;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ConfigActivity extends AppCompatActivity {
+import calcinsulina.FMU.projetointegrado.R;
+
+public class TelaConfig extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_config);
+        setContentView(R.layout.tela_config);
         //Remove a barra de título
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

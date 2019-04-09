@@ -1,22 +1,32 @@
-package calcinsulina.FMU.projetointegrado;
+package calcinsulina.FMU.projetointegrado.View;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+import calcinsulina.FMU.projetointegrado.R;
 
+public class TelaPrincipal extends AppCompatActivity {
+
+    MainActivity act;
     ImageView btnCalc, btnConfig, btnReport;
+
+    public TelaPrincipal(MainActivity act) {
+        this.act = act;
+    }
+
+    public void CarregarTela(){
+        act.setContentView(R.layout.tela_principal);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tela_principal);
         //Remove a barra de título
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -28,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, CalculoActivity.class);
+                Intent intent = new Intent(TelaPrincipal.this, TelaCalculadora.class);
                 startActivity(intent);
 
             }
@@ -36,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
+                Intent intent = new Intent(TelaPrincipal.this, TelaConfig.class);
                 startActivity(intent);
             }
         });
