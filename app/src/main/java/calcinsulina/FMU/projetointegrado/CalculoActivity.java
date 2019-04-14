@@ -13,5 +13,8 @@ public class CalculoActivity extends AppCompatActivity {
         //Remove a barra de título
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        //Warning(15,19) Method invocation 'hide' may produce 'java.lang.NullPointerException'
+
+        System.out.println("Teste - Allan");
     }
 }
