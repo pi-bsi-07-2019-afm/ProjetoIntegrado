@@ -14,7 +14,7 @@ public class TelaPrincipal extends AppCompatActivity {
     MainActivity act;
     ImageView btnCalc, btnConfig, btnReport;
 
-    public TelaPrincipal(MainActivity act) {
+    public TelaPrincipal() {
         this.act = act;
     }
 
@@ -33,6 +33,7 @@ public class TelaPrincipal extends AppCompatActivity {
 
         btnCalc = findViewById(R.id.btnCalc);
         btnConfig = findViewById(R.id.btnConfig);
+        btnReport = findViewById(R.id.btnReport);
 
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,14 @@ public class TelaPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TelaPrincipal.this, TelaConfig.class);
+                startActivity(intent);
+            }
+        });
+
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaPrincipal.this, TelaCadastro.class);
                 startActivity(intent);
             }
         });
