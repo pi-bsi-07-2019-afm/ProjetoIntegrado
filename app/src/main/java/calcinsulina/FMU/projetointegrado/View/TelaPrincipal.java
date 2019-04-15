@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import calcinsulina.FMU.projetointegrado.R;
+import calcinsulina.FMU.projetointegrado.TelaConfig;
 
 public class TelaPrincipal extends AppCompatActivity {
 

@@ -1,5 +1,6 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,8 @@ public class TelaCalculadora extends AppCompatActivity {
                 int InsulinaAComer = Integer.parseInt(Carboidrato) / 15;
 
                 int Resultado = InsulinaAComer + CorrecaoInsul;
-
+                Intent intent = new Intent(TelaCalculadora.this, TelaCarregando.class);
+                startActivity(intent);
                 txtResultado = findViewById(R.id.txtResultado);
                 txtResultado.setText(Resultado + "Unidades");
             }
