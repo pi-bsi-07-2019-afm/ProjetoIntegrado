@@ -10,7 +10,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TelaConfig"></activity>
+        <activity android:name=".View.TelaConfig" />
         <activity android:name=".View.TelaCarregando" />
         <activity android:name=".View.TelaCadastro" />
         <activity android:name=".View.TelaConfig" />

@@ -15,7 +15,6 @@ public class TelaCalculadora extends AppCompatActivity {
 
     Button btnCalcular;
     EditText edPeso, edIdade, edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato;
-    TextView txtResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +51,7 @@ public class TelaCalculadora extends AppCompatActivity {
                 int Resultado = InsulinaAComer + CorrecaoInsul;
                 Intent intent = new Intent(TelaCalculadora.this, TelaCarregando.class);
                 startActivity(intent);
-                txtResultado = findViewById(R.id.txtResultado);
-                txtResultado.setText(Resultado + "Unidades");
+
             }
         });
     }

@@ -9,18 +9,31 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="392dp"
-        android:layout_height="528dp"
+        android:layout_width="382dp"
+        android:layout_height="431dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="196dp"
-        android:text="Carregando"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FF0000"
+        android:text="AD"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="325dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/loadingiceflowstudios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.097" />
 
 </android.support.constraint.ConstraintLayout>

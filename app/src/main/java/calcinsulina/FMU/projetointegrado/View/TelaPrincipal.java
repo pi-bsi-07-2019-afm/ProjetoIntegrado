@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import calcinsulina.FMU.projetointegrado.R;
-import calcinsulina.FMU.projetointegrado.TelaConfig;
 
 public class TelaPrincipal extends AppCompatActivity {
 
@@ -48,7 +47,7 @@ public class TelaPrincipal extends AppCompatActivity {
         btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipal.this, TelaConfig.class);
+                Intent intent = new Intent(TelaPrincipal.this, TelaCadastro.class);
                 startActivity(intent);
             }
         });

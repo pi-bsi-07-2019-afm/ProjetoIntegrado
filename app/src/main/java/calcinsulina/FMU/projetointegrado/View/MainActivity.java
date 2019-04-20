@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
     //private ArrayList<Usuario> aUsuario = new ArrayList<>();
     //TelaPrincipal tela_principal;
-    //TelaCalculadora tela_calculadora;
+    //TelaCalculadoraNew tela_calculadora;
     //TelaConfig tela_config;
 
     @Override
