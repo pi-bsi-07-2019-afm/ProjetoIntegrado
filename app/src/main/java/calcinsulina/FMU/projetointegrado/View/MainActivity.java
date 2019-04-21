@@ -9,20 +9,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     //private ArrayList<Usuario> aUsuario = new ArrayList<>();
-    //TelaPrincipal tela_principal;
-    //TelaCalculadoraNew tela_calculadora;
-    //TelaConfig tela_config;
+    TelaPrincipal tela_principal;
+    TelaCalculadora tela_calculadora;
+    TelaConfig tela_config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
-    public void ExibirMensagem(String msg){
-        AlertDialog.Builder d = new AlertDialog.Builder(MainActivity.this);
-        d.setTitle("Aviso");
-        d.setMessage(msg);
-        d.setNeutralButton("OK",null);
-        d.show();
-    }
 }
