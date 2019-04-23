@@ -58,7 +58,7 @@ public class TelaCalculadora extends AppCompatActivity {
                 } else {
                     // Parte do cálculo
 
-                    int Glicemia = Integer.parseInt(GlicemiaAlvo) - Integer.parseInt(GlicemiaObtida);
+                    int Glicemia = Integer.parseInt(GlicemiaObtida) - Integer.parseInt(GlicemiaAlvo);
                     int CorrecaoInsul = Glicemia / Integer.parseInt(FatorSensibilidade);
                     int InsulinaAComer = Integer.parseInt(Carboidrato) / Integer.parseInt(Bolus);
 
