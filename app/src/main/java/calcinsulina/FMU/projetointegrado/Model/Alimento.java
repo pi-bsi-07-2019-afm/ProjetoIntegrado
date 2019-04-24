@@ -10,6 +10,9 @@ public class Alimento {
     private double calorias;
     private double quantCarbPorG;
 
+    public Alimento(){
+    }
+
     public Alimento(String nome, int tipoMedida, double gOuMl, double quantCarb, double calorias, double quantCarbPorG) {
         this.nome = nome;
         this.tipoMedida = tipoMedida;

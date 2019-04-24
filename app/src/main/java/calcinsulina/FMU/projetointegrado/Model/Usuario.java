@@ -7,12 +7,15 @@ public class Usuario {
     private int id;
     private String nome;
     private double peso;
-    private Date dataNascimento;
+    private String dataNascimento;
     private double fatorSensibilidade;
     private String email;
-    private Date dataRegistro;
+    private String dataRegistro;
 
-    public Usuario(String nome, double peso, Date dataNascimento, double fatorSensibilidade, String email) {
+    public Usuario(){
+    }
+
+    public Usuario(String nome, double peso, String dataNascimento, double fatorSensibilidade, String email) {
         this.nome = nome;
         this.peso = peso;
         this.dataNascimento = dataNascimento;
@@ -46,11 +49,11 @@ public class Usuario {
         this.peso = peso;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -70,11 +73,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public Date getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(java.sql.Date dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
