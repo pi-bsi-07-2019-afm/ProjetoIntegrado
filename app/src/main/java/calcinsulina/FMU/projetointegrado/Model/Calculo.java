@@ -6,12 +6,16 @@ public class Calculo {
     private int id;
     private double quantCarbPorUnidInsulina;
     private double glicemiaAlvo;
-    private int[] conjuntoAlimentos;
+    private String conjuntoAlimentos;
     private double totalCarb;
     private int totalInsulina;
-    private Date dataRegistro;
+    private String dataRegistro;
 
-    public Calculo(double quantCarbPorUnidInsulina, double glicemiaAlvo, int[] conjuntoAlimentos, double totalCarb, int totalInsulina) {
+    public Calculo(){
+
+    }
+
+    public Calculo(double quantCarbPorUnidInsulina, double glicemiaAlvo, String conjuntoAlimentos, double totalCarb, int totalInsulina) {
         this.quantCarbPorUnidInsulina = quantCarbPorUnidInsulina;
         this.glicemiaAlvo = glicemiaAlvo;
         this.conjuntoAlimentos = conjuntoAlimentos;
@@ -45,11 +49,11 @@ public class Calculo {
         this.glicemiaAlvo = glicemiaAlvo;
     }
 
-    public int[] getConjuntoAlimentos() {
+    public String getConjuntoAlimentos() {
         return conjuntoAlimentos;
     }
 
-    public void setConjuntoAlimentos(int[] conjuntoAlimentos) {
+    public void setConjuntoAlimentos(String conjuntoAlimentos) {
         this.conjuntoAlimentos = conjuntoAlimentos;
     }
 
@@ -69,11 +73,11 @@ public class Calculo {
         this.totalInsulina = totalInsulina;
     }
 
-    public Date getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Date dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 }
