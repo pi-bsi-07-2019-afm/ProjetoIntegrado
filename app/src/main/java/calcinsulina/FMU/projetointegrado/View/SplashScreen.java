@@ -10,6 +10,8 @@ import calcinsulina.FMU.projetointegrado.R;
 
 public class SplashScreen extends AppCompatActivity {
 
+    MainActivity ma;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Remove a barra de título
@@ -22,10 +24,7 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
-
-                Intent intent = new Intent(SplashScreen.this, TelaPrincipal.class);
-                startActivity(intent);
-
+                ma.tela_cadastro.CarregarTela();
                 finish();
             }
         }, 5000);

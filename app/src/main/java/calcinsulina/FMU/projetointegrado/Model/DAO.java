@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceFragment;
-
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Date;

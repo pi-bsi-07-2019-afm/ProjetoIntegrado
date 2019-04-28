@@ -7,6 +7,12 @@ import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaConfig extends AppCompatActivity {
 
+    MainActivity ma;
+
+    public TelaConfig(MainActivity ma){
+        this.ma = ma;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

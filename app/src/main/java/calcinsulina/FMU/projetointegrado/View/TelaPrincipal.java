@@ -11,16 +11,15 @@ import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaPrincipal extends AppCompatActivity {
 
-    MainActivity act;
+    MainActivity ma;
     ImageView btnCalc, btnConfig, btnReport;
 
-    public TelaPrincipal() {
-        this.act = act;
+    public TelaPrincipal(MainActivity ma) {
+        this.ma = ma;
     }
 
     public void CarregarTela(){
-        act.setContentView(R.layout.tela_principal);
-
+        ma.setContentView(R.layout.tela_principal);
     }
 
     @Override

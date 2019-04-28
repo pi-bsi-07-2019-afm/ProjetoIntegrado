@@ -14,11 +14,16 @@ import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaCalculadora extends AppCompatActivity {
 
+    MainActivity ma;
     Button btnCalcular;
 //    EditText edPeso, edIdade;
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
     //Futuramente este handler será retirado desta activity, ela só está presente para "concept"
     Handler handler = new Handler();
+
+    public TelaCalculadora(MainActivity ma){
+        this.ma = ma;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +33,6 @@ public class TelaCalculadora extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-//        edPeso = findViewById(R.id.edPeso);
-//        edIdade = findViewById(R.id.edIdade);
         edFSensibil = findViewById(R.id.edFSensibil);
         edGlicemAlvo = findViewById(R.id.edGlicAlvo);
         edGlicemObt = findViewById(R.id.edGlicObt);
@@ -40,19 +43,15 @@ public class TelaCalculadora extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Peso, Idade, FatorSensibilidade, GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
+                String FatorSensibilidade, GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
 
-//                Peso = edPeso.getText().toString();
-//                Idade = edIdade.getText().toString();
                 FatorSensibilidade = edFSensibil.getText().toString();
                 GlicemiaAlvo = edGlicemAlvo.getText().toString();
                 GlicemiaObtida = edGlicemObt.getText().toString();
                 Carboidrato = edCarboidrato.getText().toString();
                 Bolus = edBolus.getText().toString();
 
-                if(
-//                        Peso.length() == 0 || Idade.length() == 0 ||
-                        FatorSensibilidade.length() == 0 || GlicemiaAlvo.length() == 0 || GlicemiaObtida.length() == 0 || Carboidrato.length() == 0 || Bolus.length() == 0){
+                if(FatorSensibilidade.length() == 0 || GlicemiaAlvo.length() == 0 || GlicemiaObtida.length() == 0 || Carboidrato.length() == 0 || Bolus.length() == 0){
                     Toast toast = Toast.makeText(getApplicationContext(), "Por favor, Insira todas as informações", Toast.LENGTH_LONG);
                     toast.show();
                 } else {

@@ -25,6 +25,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tela_principal = new TelaPrincipal(this);
+        tela_cadastro = new TelaCadastro(this);
+        tela_calculadora = new TelaCalculadora(this);
+        tela_config = new TelaConfig(this);
         dao = new DAO(this);
 
         //Inserindo Valores do DB para as ArrayList

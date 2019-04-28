@@ -93,6 +93,40 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNome" />
 
     <EditText
+        android:id="@+id/edDataNasc"
+        android:layout_width="281dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="DataNasc"
+        android:inputType="textAutoComplete"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edSensibFator" />
+
+    <EditText
+        android:id="@+id/edEmail"
+        android:layout_width="281dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textAutoComplete"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />
+
+    <EditText
         android:id="@+id/edIdade"
         android:layout_width="70dp"
         android:layout_height="40dp"
@@ -146,15 +180,16 @@
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:checked="false"
         android:clickable="true"
         android:text="Eu aceito os termos de uso"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edSensibFator" />
+        app:layout_constraintTop_toBottomOf="@+id/edEmail" />
 
     <Button
         android:id="@+id/btnCadastrar"
