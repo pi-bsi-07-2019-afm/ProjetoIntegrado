@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class DAO extends SQLiteOpenHelper{
 
-    private static int VERSAO = 1;
+    private static final int VERSAO = 1;
     private static final String NOME_BANCO = "dbCalculina";
 
     private static final String TABELA_ALIMENTO = "ALIMENTO";
@@ -60,17 +60,17 @@ public class DAO extends SQLiteOpenHelper{
                 + GOUML + " REAL, "
                 + QNT_CARBOIDRATO + " REAL, "
                 + CALORIAS + " REAL, "
-                + QNT_CARB_G + "REAL);";
+                + QNT_CARB_G + " REAL ); ";
         System.out.println(CREATE_TABLE);
         db.execSQL(CREATE_TABLE);
         String CREATE_TABLE_USER = "CREATE TABLE IF NOT EXISTS " + TABELA_USER + " ( "
                 + ID_USER + " INTEGER, "
                 + NOME_USER + " TEXT, "
-                + PESO + "REAL, "
+                + PESO + " REAL, "
                 + DATA_NASC + " TEXT, "
-                + FATOR_SENSIBIL + "REAL, "
+                + FATOR_SENSIBIL + " REAL, "
                 + EMAIL + " EMAIL, "
-                + DATA_REGISTRO_U + " TEXT); ";
+                + DATA_REGISTRO_U + " TEXT ); ";
         System.out.println(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_USER);
         String CREATE_TABLE_CALC = "CREATE TABLE IF NOT EXISTS " + TABELA_CALCULO + " ( "
@@ -96,14 +96,13 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_ALIMENTO);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_CALCULO);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_TM);
-        onCreate(db);
+        this.onCreate(db);
     }
 
     public ArrayList<Alimento> recuperaAlimentos(){
         ArrayList<Alimento> array_AL = new ArrayList<>();
 
-        String selectQuery = "SELECT " + ID_ALIMENTO + " , " + NOME_ALIMENTO + " , " + TIPO_MEDIDA + " , " + GOUML + " , "
-                + QNT_CARBOIDRATO + " , " + CALORIAS + " , " + QNT_CARB_G + " FROM " + TABELA_ALIMENTO;
+        String selectQuery = "SELECT " + ID_ALIMENTO + " , " + NOME_ALIMENTO + " , " + TIPO_MEDIDA + " , " + GOUML + " , " + QNT_CARBOIDRATO + " , " + CALORIAS + " , " + QNT_CARB_G + " FROM " + TABELA_ALIMENTO;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -263,4 +262,5 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL(limpaQuery4);
         db.close();
     }
+
 }

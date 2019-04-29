@@ -8,24 +8,23 @@ import android.os.Bundle;
 
 import calcinsulina.FMU.projetointegrado.R;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen {
 
-    MainActivity ma;
+    MainActivity act;
+    TelaPrincipal tela_principal;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        //Remove a barra de título
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+    public SplashScreen(MainActivity act, TelaPrincipal tela_principal){
+        this.act = act;
+        this.tela_principal = tela_principal;
+    }
+    public void CarregarTela() {
+        tela_principal = new TelaPrincipal(act);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                ma.tela_cadastro.CarregarTela();
-                finish();
+//                 tela_principal.CarregarTela();
             }
         }, 5000);
     }

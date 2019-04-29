@@ -1,34 +1,28 @@
 package calcinsulina.FMU.projetointegrado.View;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.os.Handler;
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaCarregando extends AppCompatActivity {
+public class TelaCarregando {
 
+    MainActivity act;
+    TelaPrincipal tela_principal;
     Handler handler = new Handler();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_carregando);
-        //Remove a barra de título
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+    public TelaCarregando(MainActivity act, TelaPrincipal tela_principal){
+        this.act = act;
+        this.tela_principal = tela_principal;
+    }
+
+    public void CarregarTela(){
+        act.setContentView(R.layout.tela_carregando);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                finish();
+                act.finish();
             }
         }, 15000);
-
-
-
-
 
     }
 }

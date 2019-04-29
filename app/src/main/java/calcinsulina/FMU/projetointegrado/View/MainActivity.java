@@ -1,9 +1,6 @@
 package calcinsulina.FMU.projetointegrado.View;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toast;
 import java.util.ArrayList;
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
 import calcinsulina.FMU.projetointegrado.Model.Calculo;
@@ -20,22 +17,35 @@ public class MainActivity extends Activity {
     TelaCalculadora tela_calculadora;
     TelaConfig tela_config;
     TelaCadastro tela_cadastro;
+    TelaCarregando tela_carregando;
+    SplashScreen splashScreen;
     private DAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tela_principal = new TelaPrincipal(this);
-        tela_cadastro = new TelaCadastro(this);
-        tela_calculadora = new TelaCalculadora(this);
-        tela_config = new TelaConfig(this);
+        tela_cadastro = new TelaCadastro(this, tela_principal);
+        tela_calculadora = new TelaCalculadora(this, tela_principal);
+        tela_config = new TelaConfig(this, tela_principal);
+        tela_carregando = new TelaCarregando(this, tela_principal);
+        splashScreen = new SplashScreen(this, tela_principal);
+        tela_principal.setTelaCadastro(tela_cadastro);
+        tela_principal.setTelaCalculadora(tela_calculadora);
+        tela_principal.setTelaConfig(tela_config);
+        tela_principal.setTelaCarregando(tela_carregando);
+        tela_principal.setSplashScreen(splashScreen);
         dao = new DAO(this);
+
+
 
         //Inserindo Valores do DB para as ArrayList
         aAlimento = dao.recuperaAlimentos();
         aCalculo = dao.recuperaCalculo();
         aTipoMedida = dao.recuperaTipoMedida();
         aUsuario = dao.recuperaUsuarios();
+
+        tela_principal.CarregarTela();
     }
 
     @Override
@@ -46,6 +56,11 @@ public class MainActivity extends Activity {
         dao.insereCalculo(aCalculo);
         dao.insereTipoMedida(aTipoMedida);
         dao.insereUsuario(aUsuario);
+    }
+
+    protected void onStart(){
+        super.onStart();
+        splashScreen.CarregarTela();
     }
 
     protected void onRestart(){

@@ -1,64 +1,79 @@
 package calcinsulina.FMU.projetointegrado.View;
-
-import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
+import android.widget.Toast;
+import java.util.ArrayList;
+import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaPrincipal extends AppCompatActivity {
+public class TelaPrincipal {
 
-    MainActivity ma;
+    MainActivity act;
     ImageView btnCalc, btnConfig, btnReport;
+    TelaCadastro tela_cadastro;
+    TelaCalculadora tela_calculadora;
+    TelaConfig tela_config;
+    TelaCarregando tela_carregando;
+    SplashScreen splashScreen;
 
-    public TelaPrincipal(MainActivity ma) {
-        this.ma = ma;
+    public TelaPrincipal(MainActivity act) {
+        this.act = act;
     }
 
     public void CarregarTela(){
-        ma.setContentView(R.layout.tela_principal);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_principal);
-        //Remove a barra de título
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
-        btnCalc = findViewById(R.id.btnCalc);
-        btnConfig = findViewById(R.id.btnConfig);
-        btnReport = findViewById(R.id.btnReport);
+        act.setContentView(R.layout.tela_principal);
+        btnCalc = act.findViewById(R.id.btnCalc);
+        btnConfig = act.findViewById(R.id.btnConfig);
+        btnReport = act.findViewById(R.id.btnReport);
 
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(TelaPrincipal.this, TelaCalculadora.class);
-                startActivity(intent);
-
+                tela_calculadora.CarregarTela();
             }
         });
         btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipal.this, TelaCadastro.class);
-                startActivity(intent);
+                tela_config.CarregarTela();
             }
         });
 
-        btnReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TelaPrincipal.this, TelaCadastro.class);
-                startActivity(intent);
-            }
-        });
+//        // Verificando se já existe um cadastro do Usuário
+//        if(act.getaUsuario().size() > 0){
+//            String username = usernameSearch(act.getaUsuario());
+//            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
+//        } else {
+//            tela_cadastro.CarregarTela();
+//        }
 
+     }
+     public void setTelaCalculadora(TelaCalculadora tela_calculadora){
+
+        this.tela_calculadora = tela_calculadora;
+     }
+     public void setTelaConfig(TelaConfig tela_config){
+
+        this.tela_config = tela_config;
+     }
+     public void setTelaCadastro(TelaCadastro tela_cadastro){
+
+        this.tela_cadastro = tela_cadastro;
+     }
+
+    public void setTelaCarregando(TelaCarregando tela_carregando){
+
+        this.tela_carregando = tela_carregando;
+    }
+
+    public void setSplashScreen(SplashScreen splashScreen){
+        this.splashScreen = splashScreen;
+    }
+
+    public String usernameSearch(ArrayList<Usuario> array){
+
+        return array.get(0).getNome();
     }
 
 }
+

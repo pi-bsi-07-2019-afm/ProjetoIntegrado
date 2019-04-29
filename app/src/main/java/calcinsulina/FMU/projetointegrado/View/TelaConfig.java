@@ -1,21 +1,18 @@
 package calcinsulina.FMU.projetointegrado.View;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaConfig extends AppCompatActivity {
+public class TelaConfig {
 
-    MainActivity ma;
+    MainActivity act;
+    TelaPrincipal tela_principal;
 
-    public TelaConfig(MainActivity ma){
-        this.ma = ma;
+    public TelaConfig(MainActivity act, TelaPrincipal tela_principal){
+        this.act = act;
+        this.tela_principal = tela_principal;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_config);
+    public void CarregarTela() {
+        act.setContentView(R.layout.tela_config);
     }
 }

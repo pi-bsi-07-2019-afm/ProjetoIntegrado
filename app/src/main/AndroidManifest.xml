@@ -16,7 +16,7 @@
         <activity android:name=".View.TelaCadastro" />
         <activity android:name=".View.TelaCalculadora" />
         <activity
-            android:name=".View.SplashScreen"
+            android:name=".View.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

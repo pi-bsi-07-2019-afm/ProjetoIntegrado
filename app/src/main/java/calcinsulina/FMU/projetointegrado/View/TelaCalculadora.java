@@ -10,36 +10,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaCalculadora extends AppCompatActivity {
+public class TelaCalculadora  {
 
-    MainActivity ma;
+    MainActivity act;
+    TelaPrincipal tela_principal;
     Button btnCalcular;
-//    EditText edPeso, edIdade;
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
+
     //Futuramente este handler será retirado desta activity, ela só está presente para "concept"
     Handler handler = new Handler();
+    int index = 0;
 
-    public TelaCalculadora(MainActivity ma){
-        this.ma = ma;
+    public TelaCalculadora(MainActivity act, TelaPrincipal tela_principal){
+        this.act = act;
+        this.tela_principal = tela_principal;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_calculo);
-        //Remove a barra de título
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+    public void CarregarTela() {
+        edFSensibil = act.findViewById(R.id.edFSensibil);
+        edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
+        edGlicemObt = act.findViewById(R.id.edGlicObt);
+        edCarboidrato = act.findViewById(R.id.edCarboidrato);
+        edBolus = act.findViewById(R.id.edBolus);
 
-        edFSensibil = findViewById(R.id.edFSensibil);
-        edGlicemAlvo = findViewById(R.id.edGlicAlvo);
-        edGlicemObt = findViewById(R.id.edGlicObt);
-        edCarboidrato = findViewById(R.id.edCarboidrato);
-        edBolus = findViewById(R.id.edBolus);
+        btnCalcular = act.findViewById(R.id.btnCalcular);
 
-        btnCalcular = findViewById(R.id.btnCalcular);
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,8 +49,9 @@ public class TelaCalculadora extends AppCompatActivity {
                 Carboidrato = edCarboidrato.getText().toString();
                 Bolus = edBolus.getText().toString();
 
+
                 if(FatorSensibilidade.length() == 0 || GlicemiaAlvo.length() == 0 || GlicemiaObtida.length() == 0 || Carboidrato.length() == 0 || Bolus.length() == 0){
-                    Toast toast = Toast.makeText(getApplicationContext(), "Por favor, Insira todas as informações", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(act.getApplicationContext(), "Por favor, Insira todas as informações", Toast.LENGTH_LONG);
                     toast.show();
                 } else {
                     // Parte do cálculo
@@ -62,13 +61,11 @@ public class TelaCalculadora extends AppCompatActivity {
                     int InsulinaAComer = Integer.parseInt(Carboidrato) / Integer.parseInt(Bolus);
 
                     final int NumeroDeDoses = CorrecaoInsul + InsulinaAComer;
-                    Intent intent = new Intent(TelaCalculadora.this, TelaCarregando.class);
-                    startActivity(intent);
 
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
                             toast.show();
                         }
                     }, 16000);
