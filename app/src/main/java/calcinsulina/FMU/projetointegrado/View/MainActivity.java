@@ -37,8 +37,6 @@ public class MainActivity extends Activity {
         tela_principal.setSplashScreen(splashScreen);
         dao = new DAO(this);
 
-
-
         //Inserindo Valores do DB para as ArrayList
         aAlimento = dao.recuperaAlimentos();
         aCalculo = dao.recuperaCalculo();

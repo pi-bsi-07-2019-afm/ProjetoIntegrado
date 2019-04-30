@@ -24,7 +24,7 @@ public class SplashScreen {
 
             @Override
             public void run() {
-//                 tela_principal.CarregarTela();
+                 act.tela_principal.CarregarTela();
             }
         }, 5000);
     }

@@ -1,7 +1,6 @@
 package calcinsulina.FMU.projetointegrado.View;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 import java.util.ArrayList;
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
@@ -29,13 +28,13 @@ public class TelaPrincipal {
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tela_calculadora.CarregarTela();
+                act.tela_calculadora.CarregarTela();
             }
         });
         btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tela_config.CarregarTela();
+                act.tela_config.CarregarTela();
             }
         });
 
