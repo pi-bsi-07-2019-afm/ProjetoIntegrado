@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaCalculadora  {
@@ -27,13 +25,13 @@ public class TelaCalculadora  {
 
     public void CarregarTela() {
         act.setContentView(R.layout.tela_calculo);
+        btnCalcular = act.findViewById(R.id.btnCalcular);
         edFSensibil = act.findViewById(R.id.edFSensibil);
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
         edCarboidrato = act.findViewById(R.id.edCarboidrato);
         edBolus = act.findViewById(R.id.edBolus);
 
-        btnCalcular = act.findViewById(R.id.btnCalcular);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override

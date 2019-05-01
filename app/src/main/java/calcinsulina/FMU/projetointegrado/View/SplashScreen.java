@@ -1,10 +1,6 @@
 package calcinsulina.FMU.projetointegrado.View;
 
-import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import calcinsulina.FMU.projetointegrado.R;
 
@@ -18,6 +14,7 @@ public class SplashScreen {
         this.tela_principal = tela_principal;
     }
     public void CarregarTela() {
+        act.setContentView(R.layout.splash_screen);
         tela_principal = new TelaPrincipal(act);
 
         new Handler().postDelayed(new Runnable() {

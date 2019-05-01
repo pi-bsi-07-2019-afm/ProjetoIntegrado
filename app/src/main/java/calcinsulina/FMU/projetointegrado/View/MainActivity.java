@@ -43,22 +43,17 @@ public class MainActivity extends Activity {
         aTipoMedida = dao.recuperaTipoMedida();
         aUsuario = dao.recuperaUsuarios();
 
-        tela_principal.CarregarTela();
+        splashScreen.CarregarTela();
     }
 
     @Override
     protected void onStop(){
         super.onStop();
         dao.limpaTabela();
+        dao.insereUsuario(aUsuario);
         dao.insereAlimento(aAlimento);
         dao.insereCalculo(aCalculo);
         dao.insereTipoMedida(aTipoMedida);
-        dao.insereUsuario(aUsuario);
-    }
-
-    protected void onStart(){
-        super.onStart();
-        splashScreen.CarregarTela();
     }
 
     protected void onRestart(){

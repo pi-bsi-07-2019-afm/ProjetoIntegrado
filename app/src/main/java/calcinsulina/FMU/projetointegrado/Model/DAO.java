@@ -15,6 +15,7 @@ public class DAO extends SQLiteOpenHelper{
     private static final int VERSAO = 1;
     private static final String NOME_BANCO = "dbCalculina";
 
+    //ALIMENTO
     private static final String TABELA_ALIMENTO = "ALIMENTO";
     private static final String ID_ALIMENTO = "ID_ALIMENTO";
     private static final String NOME_ALIMENTO = "NOME";
@@ -24,6 +25,7 @@ public class DAO extends SQLiteOpenHelper{
     private static final String CALORIAS = "CALORIAS";
     private static final String QNT_CARB_G = "QNT_CARB_G";
 
+    //USUÁRIO
     private static final String TABELA_USER = "USUARIO";
     private static final String ID_USER = "ID_USER";
     private static final String NOME_USER = "NOME";
@@ -33,6 +35,7 @@ public class DAO extends SQLiteOpenHelper{
     private static final String EMAIL = "EMAIL";
     private static final String DATA_REGISTRO_U = "DATA_REGISTRO";
 
+    //CALCULO
     private static final String TABELA_CALCULO = "CALCULO";
     private static final String ID_CALC = "ID_CALC";
     private static final String GLICEMIA_ALVO = "GLIC_ALVO";
@@ -41,6 +44,7 @@ public class DAO extends SQLiteOpenHelper{
     private static final String TOTAL_INSULINA = "TOTAL_INSULINA";
     private static final String DATA_REGISTRO_C = "DATA_REGISTRO";
 
+    //TIPO DE MEDIDA
     private static final String TABELA_TM = "TIPO_MEDIDA";
     private static final String ID_TIPO_MED = "ID_TIPO_MED";
     private static final String NOME_TIPOMED = "NOME_TIPOMED";
@@ -53,7 +57,7 @@ public class DAO extends SQLiteOpenHelper{
     @Override
     //onCreate é executado quando a aplicação cria o DB pela primeira vez.
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABELA_ALIMENTO + " ( "
+        String CREATE_TABLE_ALIMENTO = "CREATE TABLE IF NOT EXISTS " + TABELA_ALIMENTO + " ( "
                 + ID_ALIMENTO + " INTEGER, "
                 + NOME_ALIMENTO + " TEXT, "
                 + TIPO_MEDIDA + " TEXT, "
@@ -61,8 +65,8 @@ public class DAO extends SQLiteOpenHelper{
                 + QNT_CARBOIDRATO + " REAL, "
                 + CALORIAS + " REAL, "
                 + QNT_CARB_G + " REAL ); ";
-        System.out.println(CREATE_TABLE);
-        db.execSQL(CREATE_TABLE);
+        System.out.println(CREATE_TABLE_ALIMENTO);
+        db.execSQL(CREATE_TABLE_ALIMENTO);
         String CREATE_TABLE_USER = "CREATE TABLE IF NOT EXISTS " + TABELA_USER + " ( "
                 + ID_USER + " INTEGER, "
                 + NOME_USER + " TEXT, "
@@ -218,7 +222,7 @@ public class DAO extends SQLiteOpenHelper{
             valores.put(FATOR_SENSIBIL, usuario.get(i).getFatorSensibilidade());
             valores.put(EMAIL, usuario.get(i).getEmail());
             valores.put(DATA_REGISTRO_U, usuario.get(i).getDataRegistro());
-            db.insert(TABELA_ALIMENTO, null, valores);
+            db.insert(TABELA_USER, null, valores);
         }
         db.close();
     }

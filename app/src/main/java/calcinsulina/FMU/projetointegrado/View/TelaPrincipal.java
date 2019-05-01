@@ -1,6 +1,8 @@
 package calcinsulina.FMU.projetointegrado.View;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
@@ -38,13 +40,13 @@ public class TelaPrincipal {
             }
         });
 
-//        // Verificando se já existe um cadastro do Usuário
-//        if(act.getaUsuario().size() > 0){
-//            String username = usernameSearch(act.getaUsuario());
-//            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
-//        } else {
-//            tela_cadastro.CarregarTela();
-//        }
+        // Verificando se já existe um cadastro do Usuário
+        if(act.getaUsuario().size() > 0){
+            String username = usernameSearch(act.getaUsuario());
+            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
+        } else {
+            act.tela_cadastro.CarregarTela();
+        }
 
      }
      public void setTelaCalculadora(TelaCalculadora tela_calculadora){
