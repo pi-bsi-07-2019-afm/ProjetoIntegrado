@@ -20,7 +20,7 @@ public class TelaCarregando {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                act.finish();
+                act.tela_principal.CarregarTela();
             }
         }, 15000);
 

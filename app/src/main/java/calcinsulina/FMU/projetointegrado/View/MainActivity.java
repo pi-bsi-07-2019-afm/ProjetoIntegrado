@@ -58,10 +58,19 @@ public class MainActivity extends Activity {
 
     protected void onRestart(){
         super.onRestart();
+
     }
 
     protected void onDestroy(){
         super.onDestroy();
+        System.out.println('A');
+        for (int i = 0; i < aUsuario.size(); i++){
+            dao.limpaTabela();
+            dao.insereUsuario(aUsuario);
+        }
+        dao.insereAlimento(aAlimento);
+        dao.insereCalculo(aCalculo);
+        dao.insereTipoMedida(aTipoMedida);
     }
 
     public ArrayList<Usuario> getaUsuario(){

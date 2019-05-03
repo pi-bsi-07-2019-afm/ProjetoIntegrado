@@ -41,11 +41,11 @@ public class TelaPrincipal {
         });
 
         // Verificando se já existe um cadastro do Usuário
-        if(act.getaUsuario().size() > 0){
+        if(act.getaUsuario().size() == 0){
+            act.tela_cadastro.CarregarTela();
+        } else {
             String username = usernameSearch(act.getaUsuario());
             Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
-        } else {
-            act.tela_cadastro.CarregarTela();
         }
 
      }

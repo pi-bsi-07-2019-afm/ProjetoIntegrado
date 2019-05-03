@@ -1,5 +1,7 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,15 +41,25 @@ public class TelaCadastro {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String nome = edNome.getText().toString();
-                    double peso = Double.parseDouble(edPeso.getText().toString());
-                    String dataNasc = edDataNasc.getText().toString();
-                    double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
-                    String email = edEmail.getText().toString();
+                    AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+                    dialogo.setTitle("Atenção");
+                    dialogo.setMessage("As informações foram preenchidas corretamente?");
+                    dialogo.setNegativeButton("Não", null);
+                    dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String nome = edNome.getText().toString();
+                            double peso = Double.parseDouble(edPeso.getText().toString());
+                            String dataNasc = edDataNasc.getText().toString();
+                            double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
+                            String email = edEmail.getText().toString();
 
-                    act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email));
-                    Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
-                    act.tela_principal.CarregarTela();
+                            act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email));
+                            Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
+                            act.tela_principal.CarregarTela();
+                        }
+                    });
+                    dialogo.show();
                 }
             });
 

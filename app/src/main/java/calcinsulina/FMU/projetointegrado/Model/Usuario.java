@@ -10,7 +10,7 @@ public class Usuario {
     private String dataNascimento;
     private double fatorSensibilidade;
     private String email;
-    private String dataRegistro;
+//    private String dataRegistro;
 
     public Usuario(){
     }
@@ -73,13 +73,13 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getDataRegistro() {
-        return dataRegistro;
-    }
+//    public String getDataRegistro() {
+//        return dataRegistro;
+//    }
 
-    public void setDataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
-    }
+//    public void setDataRegistro(String dataRegistro) {
+//        this.dataRegistro = dataRegistro;
+//    }
 
     public void salvar(){
         //lógica aqui
