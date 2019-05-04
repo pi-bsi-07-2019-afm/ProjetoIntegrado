@@ -48,6 +48,13 @@ public class TelaPrincipal {
             Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
         }
 
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                act.tela_cadastro.CarregarTela();
+            }
+        });
+
      }
      public void setTelaCalculadora(TelaCalculadora tela_calculadora){
 

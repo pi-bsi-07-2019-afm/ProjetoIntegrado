@@ -1,5 +1,7 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import calcinsulina.FMU.projetointegrado.R;
@@ -9,6 +11,7 @@ public class TelaConfig {
     MainActivity act;
     TelaPrincipal tela_principal;
     TextView nome, peso, email, datanasc, fatorSenbil;
+    Button button2;
 
     public TelaConfig(MainActivity act, TelaPrincipal tela_principal){
         this.act = act;
@@ -22,12 +25,20 @@ public class TelaConfig {
         email = act.findViewById(R.id.email);
         datanasc = act.findViewById(R.id.dataNasc);
         fatorSenbil = act.findViewById(R.id.FatorSensibilidade);
+        button2 = act.findViewById(R.id.button2);
 
         nome.setText(act.getaUsuario().get(0).getNome());
-//        peso.setText((int) act.getaUsuario().get(0).getPeso());
+//        peso.setText(act.getaUsuario().get(0).getPeso());
         email.setText(act.getaUsuario().get(0).getEmail());
         datanasc.setText(act.getaUsuario().get(0).getDataNascimento());
-//        fatorSenbil.setText((int) act.getaUsuario().get(0).getFatorSensibilidade());
+//        fatorSenbil.setText(act.getaUsuario().get(0).getFatorSensibilidade());
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                act.tela_principal.CarregarTela();
+            }
+        });
 
     }
 }

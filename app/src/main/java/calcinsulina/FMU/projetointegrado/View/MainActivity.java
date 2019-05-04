@@ -44,33 +44,54 @@ public class MainActivity extends Activity {
         aUsuario = dao.recuperaUsuarios();
 
         splashScreen.CarregarTela();
+
     }
 
     @Override
     protected void onStop(){
         super.onStop();
-        dao.limpaTabela();
-        dao.insereUsuario(aUsuario);
-        dao.insereAlimento(aAlimento);
-        dao.insereCalculo(aCalculo);
-        dao.insereTipoMedida(aTipoMedida);
+        for (int i = 0; i < aUsuario.size(); i++){
+            dao.limpaUsuario();
+            dao.insereUsuario(aUsuario);
+        }
+        for (int i = 0; i < aAlimento.size(); i++){
+            dao.limpaAlimento();
+            dao.insereAlimento(aAlimento);
+        }
+        for (int i = 0; i < aCalculo.size(); i++){
+            dao.limpaCalculo();
+            dao.insereCalculo(aCalculo);
+        }
+        for (int i = 0; i < aTipoMedida.size(); i++){
+            dao.limpaTipoMedida();
+            dao.insereTipoMedida(aTipoMedida);
+        }
     }
 
     protected void onRestart(){
         super.onRestart();
 
+
     }
 
     protected void onDestroy(){
         super.onDestroy();
-        System.out.println('A');
         for (int i = 0; i < aUsuario.size(); i++){
-            dao.limpaTabela();
+            dao.limpaUsuario();
             dao.insereUsuario(aUsuario);
         }
-        dao.insereAlimento(aAlimento);
-        dao.insereCalculo(aCalculo);
-        dao.insereTipoMedida(aTipoMedida);
+        for (int i = 0; i < aAlimento.size(); i++){
+            dao.limpaAlimento();
+            dao.insereAlimento(aAlimento);
+        }
+        for (int i = 0; i < aCalculo.size(); i++){
+            dao.limpaCalculo();
+            dao.insereCalculo(aCalculo);
+        }
+        for (int i = 0; i < aTipoMedida.size(); i++){
+            dao.limpaTipoMedida();
+            dao.insereTipoMedida(aTipoMedida);
+        }
     }
 
     public ArrayList<Usuario> getaUsuario(){

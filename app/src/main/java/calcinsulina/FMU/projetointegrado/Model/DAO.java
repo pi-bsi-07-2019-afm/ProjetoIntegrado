@@ -93,8 +93,8 @@ public class DAO extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABELA_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_ALIMENTO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_CALCULO);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_TM);
         this.onCreate(db);
@@ -141,6 +141,7 @@ public class DAO extends SQLiteOpenHelper{
                 us.setFatorSensibilidade(cursor.getDouble(cursor.getColumnIndex(FATOR_SENSIBIL)));
                 us.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL)));
 //                us.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_U)));
+                array_User.add(us);
             } while (cursor.moveToNext());
         }db.close();
         return array_User;
@@ -162,6 +163,7 @@ public class DAO extends SQLiteOpenHelper{
                 cl.setTotalCarb(cursor.getDouble(cursor.getColumnIndex(TOTAL_CARB)));
                 cl.setTotalInsulina(cursor.getInt(cursor.getColumnIndex(TOTAL_INSULINA)));
                 cl.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_C)));
+                array_Calc.add(cl);
             } while (cursor.moveToNext());
         }db.close();
 
@@ -187,6 +189,7 @@ public class DAO extends SQLiteOpenHelper{
                 tm.setId(cursor.getInt(cursor.getColumnIndex(ID_TIPO_MED)));
                 tm.setNome(cursor.getString(cursor.getColumnIndex(NOME_TIPOMED)));
                 tm.setMedidoEmMl(cursor.getInt(cursor.getColumnIndex(MEDIDO_EM_ML)));
+                array_TM.add(tm);
             } while (cursor.moveToNext());
         }db.close();
         return array_TM;
@@ -251,14 +254,26 @@ public class DAO extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void limpaTabela(){
+    public void limpaAlimento() {
         SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery = "DELETE FROM " + TABELA_ALIMENTO;
         db.execSQL(limpaQuery);
+        db.close();
+    }
+    public void limpaUsuario() {
+        SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery2 = "DELETE FROM " + TABELA_USER;
         db.execSQL(limpaQuery2);
+        db.close();
+    }
+    public void limpaTipoMedida() {
+        SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery3 = "DELETE FROM " + TABELA_TM;
         db.execSQL(limpaQuery3);
+        db.close();
+    }
+    public void limpaCalculo(){
+        SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery4 = "DELETE FROM " + TABELA_CALCULO;
         db.execSQL(limpaQuery4);
         db.close();
