@@ -23,44 +23,44 @@ public class TelaPrincipal {
 
     public void CarregarTela(){
         act.setContentView(R.layout.tela_principal);
-//        btnCalc = act.findViewById(R.id.btnCalc);
-//        btnConfig = act.findViewById(R.id.btnConfig);
-//        btnReport = act.findViewById(R.id.btnReport);
-//
-//        btnCalc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                act.tela_calculadora.CarregarTela();
-//            }
-//        });
-//        btnConfig.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                act.tela_config.CarregarTela();
-//            }
-//        });
-//
-////         Verificando se já existe um cadastro do Usuário
-//        if(act.getaUsuario().size() == 0){
-//            act.tela_cadastro.CarregarTela();
-//        }else{
-//            String username = usernameSearch(act.getaUsuario());
-//            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
-//        }
+        btnCalc = act.findViewById(R.id.btnCalc);
+        btnConfig = act.findViewById(R.id.btnConfig);
+        btnReport = act.findViewById(R.id.btnReport);
 
-     }
-     public void setTelaCalculadora(TelaCalculadora tela_calculadora){
+        btnCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.tela_calculadora.CarregarTela();
+            }
+        });
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.tela_config.CarregarTela();
+            }
+        });
+
+        // Verificando se já existe um cadastro do Usuário
+        if(act.getaUsuario().size() == 0){
+            act.tela_cadastro.CarregarTela();
+        } else {
+            String username = usernameSearch(act.getaUsuario());
+            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public void setTelaCalculadora(TelaCalculadora tela_calculadora){
 
         this.tela_calculadora = tela_calculadora;
-     }
-     public void setTelaConfig(TelaConfig tela_config){
+    }
+    public void setTelaConfig(TelaConfig tela_config){
 
         this.tela_config = tela_config;
-     }
-     public void setTelaCadastro(TelaCadastro tela_cadastro){
+    }
+    public void setTelaCadastro(TelaCadastro tela_cadastro){
 
         this.tela_cadastro = tela_cadastro;
-     }
+    }
 
     public void setTelaCarregando(TelaCarregando tela_carregando){
 
@@ -72,8 +72,8 @@ public class TelaPrincipal {
     }
 
     public String usernameSearch(ArrayList<Usuario> array){
+
         return array.get(0).getNome();
     }
 
 }
-

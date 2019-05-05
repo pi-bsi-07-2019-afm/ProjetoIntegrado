@@ -13,7 +13,6 @@ public class SplashScreen {
     public SplashScreen(MainActivity act, TelaPrincipal tela_principal){
         this.act = act;
         this.tela_principal = tela_principal;
-        this.tela_cadastro = tela_cadastro;
     }
     public void CarregarTela() {
         act.setContentView(R.layout.splash_screen);
