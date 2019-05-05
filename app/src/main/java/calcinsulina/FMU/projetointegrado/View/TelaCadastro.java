@@ -10,6 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
 
@@ -54,9 +59,12 @@ public class TelaCadastro {
                             String dataNasc = edDataNasc.getText().toString();
                             double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
                             String email = edEmail.getText().toString();
+                            String pattern = "dd-MM-yyyy";
+                            DateFormat df = new SimpleDateFormat(pattern);
+                            Date today = Calendar.getInstance().getTime();
+                            String dataRegistro = df.format(today);
 
-                            act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email));
-                            Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
+                            act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email, dataRegistro));
                             act.tela_principal.CarregarTela();
                         }
                     });
