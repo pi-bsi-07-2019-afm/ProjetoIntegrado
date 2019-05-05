@@ -13,56 +13,29 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/icone_calculina"
+        android:src="@drawable/calculinaicone"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32"
-        app:srcCompat="@drawable/icone_calculina" />
+        app:layout_constraintVertical_bias="0.32" />
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="104dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/logotipo_calculina"
+        android:src="@drawable/logo"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/beta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icone"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logotipo_calculina"
-        tools:src="@drawable/logotipo_calculina"
-        tools:srcCompat="@drawable/logotipo_calculina" />-->
-
-    <ImageView
-        android:id="@+id/beta"
-        android:layout_width="144dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/beta"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79"
-        app:srcCompat="@drawable/beta"
-        tools:src="@drawable/beta"
-        tools:srcCompat="@drawable/beta" />
+        app:layout_constraintTop_toBottomOf="@+id/icone" />
 
 </android.support.constraint.ConstraintLayout>

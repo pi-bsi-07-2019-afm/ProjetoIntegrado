@@ -6,9 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
@@ -38,73 +45,59 @@ public class TelaCadastro {
         edEmail = act.findViewById(R.id.edEmail);
         edDataNasc = act.findViewById(R.id.edDataNasc);
 
+        SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
+        edDataNasc.addTextChangedListener(maskDataNasc);
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
-                    dialogo.setTitle("Atenção");
-                    dialogo.setMessage("As informações foram preenchidas corretamente?");
-                    dialogo.setNegativeButton("Não", null);
-                    dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String msgErro = "";
+                    if(edNome.getText().toString().length() == 0){
+                        ExibeMensagem("Informar o nome corretamente.");
+                    }else if(edPeso.getText().length() == 0){
+                        ExibeMensagem("Informar o peso corretamente.");
+                    }else if(edDataNasc.getText().length() == 0 || edDataNasc.length() < 10){
+                        ExibeMensagem("Informar a data de nascimento separando dia, mês e ano por barras. \n\n Exemplo: 01/04/1993");
+                    }else if(edSensibFator.getText().length() == 0){
+                        ExibeMensagem("Informar o fator de sensibilidade.");
+                    }else if(edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
+                        ExibeMensagem("Informar o E-Mail corretamente.");
+                    }else if(!cbEULA.isChecked()){
+                        ExibeMensagem("Aceitar os Termos de Uso.");
+                    }else{
+                        dialogo.setTitle("Atenção");
+                        dialogo.setMessage("As informações foram preenchidas corretamente?");
+                        dialogo.setNegativeButton("Não", null);
+                        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String nome = edNome.getText().toString();
+                                double peso = Double.parseDouble(edPeso.getText().toString());
+                                String dataNasc = edDataNasc.getText().toString();
+                                double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
+                                String email = edEmail.getText().toString();
+                                String pattern = "dd-MM-yyyy";
+                                DateFormat df = new SimpleDateFormat(pattern);
+                                Date today = Calendar.getInstance().getTime();
+                                String dataRegistro = df.format(today);
 
-                            if (edNome.getText().toString().length() <= 0 ){
-                                msgErro.concat("\n-Informar o nome corretamente.");
+                                act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email, dataRegistro));
+                                Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
+                                act.tela_principal.CarregarTela();
                             }
-
-                            if (edPeso.getText().toString().length() <= 0){
-                                msgErro.concat("\n-Informar o peso corretamente.");
-                            }
-
-                            String[] testaData = edDataNasc.getText().toString().split("/");
-                            if (edDataNasc.getText().toString().length() <= 0 || testaData.length != 3){
-                                if (testaData.length == 3){
-                                    if (testaData[2].length() != 4){
-                                        msgErro.concat("\n-Informar a data de nascimento separando dia, mês e ano por barras. \n\n Exemplo: 01/04/1993");
-                                    }
-                                }else{
-                                    msgErro.concat("\n-Informar a data de nascimento.");
-                                }
-                            }
-
-                            if (edSensibFator.getText().toString().length() <= 0){
-                                msgErro.concat("\n-Informar o fator de sensibilidade.");
-                            }
-
-                            if (edEmail.getText().toString().length() <= 0 || edEmail.getText().toString().indexOf("@") < 0 ){
-                                msgErro.concat("\n-Informar o e-mail corretamente.");
-                            }
-
-                            if (cbEULA.isChecked()){
-
-                            String nome = edNome.getText().toString();
-                            double peso = Double.parseDouble(edPeso.getText().toString());
-                            String dataNasc = edDataNasc.getText().toString();
-                            double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
-                            String email = edEmail.getText().toString();
-                            act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email));
-                            Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
-                            act.tela_principal.CarregarTela();
-
-                            }else{
-                                msgErro.concat("\n-Aceitar os termos de uso.");
-                            }
-
-                            if (msgErro.length() > 0){
-                                msgErro = "Para prosseguir, é necessário: \n" + msgErro;
-                                AlertDialog.Builder dialogoValida = new AlertDialog.Builder(act);
-                                dialogoValida.setTitle("Atenção");
-                                dialogoValida.setMessage(msgErro);
-                                dialogoValida.setNeutralButton("Ok", null);
-                                dialogoValida.show();
-                            }
-                        }
-                    });
-                    dialogo.show();
+                        });
+                        dialogo.show();
+                    }
                 }
             });
 
+        }
+        public void ExibeMensagem(String mensagem){
+            AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+                                Dialogo.setTitle("Atenção");
+                                Dialogo.setMessage(mensagem);
+                                Dialogo.setNeutralButton("OK", null);
+                                Dialogo.show();
         }
 }

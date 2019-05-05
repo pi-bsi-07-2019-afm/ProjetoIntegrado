@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaCalculadora  {
+public class TelaCalculadora {
 
     MainActivity act;
     TelaPrincipal tela_principal;
