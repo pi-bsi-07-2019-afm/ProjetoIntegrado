@@ -91,6 +91,19 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_TM);
     }
 
+    public void Recreate(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        this.onCreate(db);
+    }
+
+    public void dropTables() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_ALIMENTO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_CALCULO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_TM);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_ALIMENTO);

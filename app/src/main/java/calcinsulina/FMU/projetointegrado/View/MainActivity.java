@@ -35,7 +35,11 @@ public class MainActivity extends Activity {
         tela_principal.setTelaConfig(tela_config);
         tela_principal.setTelaCarregando(tela_carregando);
         tela_principal.setSplashScreen(splashScreen);
+
         dao = new DAO(this);
+        //Em caso de erro de tabela criada
+        //dao.dropTables();
+        //dao.Recreate();
 
         //Inserindo Valores do DB para as ArrayList
         aAlimento = dao.recuperaAlimentos();
