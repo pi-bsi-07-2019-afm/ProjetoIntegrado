@@ -10,19 +10,18 @@ public class Usuario {
     private String dataNascimento;
     private double fatorSensibilidade;
     private String email;
-//    private String dataRegistro;
+    private String dataRegistro;
 
     public Usuario(){
     }
 
-    public Usuario(String nome, double peso, String dataNascimento, double fatorSensibilidade, String email) {
+    public Usuario(String nome, double peso, String dataNascimento, double fatorSensibilidade, String email, String dataRegistro) {
         this.nome = nome;
         this.peso = peso;
         this.dataNascimento = dataNascimento;
         this.fatorSensibilidade = fatorSensibilidade;
         this.email = email;
-        //Date obj = new Date();
-        //this.dataRegistro = obj.getDate();
+        this.dataRegistro = dataRegistro;
     }
 
     public int getId() {
@@ -73,13 +72,13 @@ public class Usuario {
         this.email = email;
     }
 
-//    public String getDataRegistro() {
-//        return dataRegistro;
-//    }
+    public String getDataRegistro() {
+        return dataRegistro;
+    }
 
-//    public void setDataRegistro(String dataRegistro) {
-//        this.dataRegistro = dataRegistro;
-//    }
+    public void setDataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+    }
 
     public void salvar(){
         //lógica aqui

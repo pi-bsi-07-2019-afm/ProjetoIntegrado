@@ -28,7 +28,7 @@ public class TelaConfig {
         button2 = act.findViewById(R.id.button2);
 
         nome.setText(act.getaUsuario().get(0).getNome());
-//        peso.setText(act.getaUsuario().get(0).getPeso());
+        peso.setText(act.getaUsuario().get(0).getDataRegistro());
         email.setText(act.getaUsuario().get(0).getEmail());
         datanasc.setText(act.getaUsuario().get(0).getDataNascimento());
 //        fatorSenbil.setText(act.getaUsuario().get(0).getFatorSensibilidade());

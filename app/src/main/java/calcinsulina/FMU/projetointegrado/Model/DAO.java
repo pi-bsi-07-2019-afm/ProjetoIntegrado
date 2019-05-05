@@ -71,7 +71,8 @@ public class DAO extends SQLiteOpenHelper{
                 + PESO + " REAL, "
                 + DATA_NASC + " TEXT, "
                 + FATOR_SENSIBIL + " REAL, "
-                + EMAIL + " TEXT ); ";
+                + EMAIL + " TEXT, "
+                + DATA_REGISTRO_U + " TEXT ); ";
         System.out.println(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_USER);
         String CREATE_TABLE_CALC = "CREATE TABLE IF NOT EXISTS " + TABELA_CALCULO + " ( "
@@ -140,7 +141,7 @@ public class DAO extends SQLiteOpenHelper{
         ArrayList<Usuario> array_User = new ArrayList<>();
 
         String selectQuery = "SELECT " + ID_USER + " , " + NOME_USER + " , " + PESO + " , " + DATA_NASC + " , " + FATOR_SENSIBIL + " , "
-                + EMAIL + " FROM " + TABELA_USER;
+                + EMAIL + " , " + DATA_REGISTRO_U + " FROM " + TABELA_USER;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -153,7 +154,7 @@ public class DAO extends SQLiteOpenHelper{
                 us.setDataNascimento(cursor.getString(cursor.getColumnIndex(DATA_NASC)));
                 us.setFatorSensibilidade(cursor.getDouble(cursor.getColumnIndex(FATOR_SENSIBIL)));
                 us.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL)));
-//                us.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_U)));
+                us.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_U)));
                 array_User.add(us);
             } while (cursor.moveToNext());
         }db.close();
@@ -234,7 +235,7 @@ public class DAO extends SQLiteOpenHelper{
             valores.put(DATA_NASC, usuario.get(i).getDataNascimento());
             valores.put(FATOR_SENSIBIL, usuario.get(i).getFatorSensibilidade());
             valores.put(EMAIL, usuario.get(i).getEmail());
-//            valores.put(DATA_REGISTRO_U, usuario.get(i).getDataRegistro());
+            valores.put(DATA_REGISTRO_U, usuario.get(i).getDataRegistro());
             db.insert(TABELA_USER, null, valores);
         }
         db.close();
