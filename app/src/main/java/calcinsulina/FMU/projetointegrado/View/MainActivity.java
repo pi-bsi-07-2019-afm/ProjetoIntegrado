@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tela_principal = new TelaPrincipal(this);
-        tela_cadastro = new TelaCadastro(this, tela_principal);
+        tela_principal = new TelaPrincipal(this, "MainActicity");
+        tela_cadastro = new TelaCadastro(this, tela_principal, "MainActicity");
         tela_calculadora = new TelaCalculadora(this, tela_principal);
         tela_config = new TelaConfig(this, tela_principal);
         tela_carregando = new TelaCarregando(this, tela_principal);

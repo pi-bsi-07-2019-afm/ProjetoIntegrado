@@ -16,9 +16,11 @@ public class TelaPrincipal {
     TelaConfig tela_config;
     TelaCarregando tela_carregando;
     SplashScreen splashScreen;
+    String telaAnterior;
 
-    public TelaPrincipal(MainActivity act) {
+    public TelaPrincipal(MainActivity act, String telaAnterior) {
         this.act = act;
+        this.telaAnterior = telaAnterior;
     }
 
     public void CarregarTela(){
@@ -40,27 +42,25 @@ public class TelaPrincipal {
             }
         });
 
-        // Verificando se já existe um cadastro do Usuário
-        if(act.getaUsuario().size() == 0){
-            act.tela_cadastro.CarregarTela();
-        } else {
+//         Verificando se já existe um cadastro do Usuário e a tela anterios é a SplashScreen
+        if(!act.getaUsuario().isEmpty() && telaAnterior.equalsIgnoreCase("SplashScreen")){
             String username = usernameSearch(act.getaUsuario());
             Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
         }
 
-    }
-    public void setTelaCalculadora(TelaCalculadora tela_calculadora){
+     }
+     public void setTelaCalculadora(TelaCalculadora tela_calculadora){
 
         this.tela_calculadora = tela_calculadora;
-    }
-    public void setTelaConfig(TelaConfig tela_config){
+     }
+     public void setTelaConfig(TelaConfig tela_config){
 
         this.tela_config = tela_config;
-    }
-    public void setTelaCadastro(TelaCadastro tela_cadastro){
+     }
+     public void setTelaCadastro(TelaCadastro tela_cadastro){
 
         this.tela_cadastro = tela_cadastro;
-    }
+     }
 
     public void setTelaCarregando(TelaCarregando tela_carregando){
 
@@ -72,8 +72,8 @@ public class TelaPrincipal {
     }
 
     public String usernameSearch(ArrayList<Usuario> array){
-
         return array.get(0).getNome();
     }
 
 }
+

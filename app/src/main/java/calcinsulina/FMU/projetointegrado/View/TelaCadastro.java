@@ -28,10 +28,12 @@ public class TelaCadastro {
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
     CheckBox cbEULA;
+    String telaAnterior;
 
-    public TelaCadastro (MainActivity act, TelaPrincipal tela_principal) {
+    public TelaCadastro (MainActivity act, TelaPrincipal tela_principal, String telaAnterior) {
         this.act = act;
         this.tela_principal = tela_principal;
+        this.telaAnterior = telaAnterior;
     }
 
     public void CarregarTela() {
@@ -44,6 +46,16 @@ public class TelaCadastro {
         cbEULA = act.findViewById(R.id.cbEULA);
         edEmail = act.findViewById(R.id.edEmail);
         edDataNasc = act.findViewById(R.id.edDataNasc);
+
+        if(telaAnterior.equalsIgnoreCase("TelaConfig")){
+            txtCad.setText("Alterar Cadastro");
+            btnCadastrar.setText("Salvar");
+            edNome.setText(act.aUsuario.indexOf(1));
+            edEmail.setText(act.aUsuario.indexOf(5));
+            edDataNasc.setText(act.aUsuario.indexOf(3));
+            edPeso.setText(act.aUsuario.indexOf(2));
+            edSensibFator.setText(act.aUsuario.indexOf(4));
+        }
 
         SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
         MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
