@@ -16,8 +16,7 @@ public class SplashScreen {
     }
     public void CarregarTela() {
         act.setContentView(R.layout.splash_screen);
-        tela_principal = new TelaPrincipal(act, "SplashScreen");
-        tela_cadastro = new TelaCadastro(act, tela_principal, "SplashScreen");
+       // tela_cadastro = new TelaCadastro(act, tela_principal, "SplashScreen");
 
         new Handler().postDelayed(new Runnable() {
 
@@ -30,6 +29,6 @@ public class SplashScreen {
                 }
 
             }
-        }, 7000);
+        }, 1500);
     }
 }
