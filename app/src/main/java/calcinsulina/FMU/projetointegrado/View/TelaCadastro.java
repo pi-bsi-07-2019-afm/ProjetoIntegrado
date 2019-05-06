@@ -50,11 +50,11 @@ public class TelaCadastro {
         if(telaAnterior.equalsIgnoreCase("TelaConfig")){
             txtCad.setText("Alterar Cadastro");
             btnCadastrar.setText("Salvar");
-            edNome.setText(act.aUsuario.indexOf(1));
-            edEmail.setText(act.aUsuario.indexOf(5));
-            edDataNasc.setText(act.aUsuario.indexOf(3));
-            edPeso.setText(act.aUsuario.indexOf(2));
-            edSensibFator.setText(act.aUsuario.indexOf(4));
+            edNome.setText(act.getaUsuario().indexOf(1));
+            edEmail.setText(act.getaUsuario().indexOf(5));
+            edDataNasc.setText(act.getaUsuario().indexOf(3));
+            edPeso.setText(act.getaUsuario().indexOf(2));
+            edSensibFator.setText(act.getaUsuario().indexOf(4));
         }
 
         SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");

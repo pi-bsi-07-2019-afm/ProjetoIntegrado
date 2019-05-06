@@ -23,7 +23,7 @@ public class SplashScreen {
 
             @Override
             public void run() {
-                if(act.aUsuario.isEmpty()){
+                if(act.getaUsuario().isEmpty()){
                     act.tela_cadastro.CarregarTela();
                 }else{
                     act.tela_principal.CarregarTela();
