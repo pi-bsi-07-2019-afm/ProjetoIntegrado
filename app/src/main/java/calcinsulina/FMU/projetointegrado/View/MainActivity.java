@@ -9,10 +9,10 @@ import calcinsulina.FMU.projetointegrado.Model.TipoMedida;
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 
 public class MainActivity extends Activity {
-    private ArrayList<Usuario> aUsuario = new ArrayList<>();
-    private ArrayList<Calculo> aCalculo = new ArrayList<>();
-    private ArrayList<TipoMedida> aTipoMedida = new ArrayList<>();
-    private ArrayList<Alimento> aAlimento = new ArrayList<>();
+    ArrayList<Usuario> aUsuario = new ArrayList<>();
+    ArrayList<Calculo> aCalculo = new ArrayList<>();
+    ArrayList<TipoMedida> aTipoMedida = new ArrayList<>();
+    ArrayList<Alimento> aAlimento = new ArrayList<>();
     TelaPrincipal tela_principal;
     TelaCalculadora tela_calculadora;
     TelaConfig tela_config;

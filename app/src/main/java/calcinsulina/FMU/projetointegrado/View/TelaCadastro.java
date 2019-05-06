@@ -28,7 +28,7 @@ public class TelaCadastro {
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
     CheckBox cbEULA;
-    String telaAnterior;
+    String telaAnterior = "MainActivity";
 
     public TelaCadastro (MainActivity act, TelaPrincipal tela_principal, String telaAnterior) {
         this.act = act;
