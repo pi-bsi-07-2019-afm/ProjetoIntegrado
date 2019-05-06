@@ -1,4 +1,5 @@
 package calcinsulina.FMU.projetointegrado.View;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,7 +23,6 @@ public class TelaPrincipal {
         this.act = act;
         this.telaAnterior = telaAnterior;
     }
-
     public void CarregarTela(){
         act.setContentView(R.layout.tela_principal);
         btnCalc = act.findViewById(R.id.btnCalc);
@@ -50,7 +50,6 @@ public class TelaPrincipal {
 
      }
      public void setTelaCalculadora(TelaCalculadora tela_calculadora){
-
         this.tela_calculadora = tela_calculadora;
      }
      public void setTelaConfig(TelaConfig tela_config){
@@ -58,21 +57,20 @@ public class TelaPrincipal {
         this.tela_config = tela_config;
      }
      public void setTelaCadastro(TelaCadastro tela_cadastro){
-
         this.tela_cadastro = tela_cadastro;
      }
-
     public void setTelaCarregando(TelaCarregando tela_carregando){
-
         this.tela_carregando = tela_carregando;
     }
-
     public void setSplashScreen(SplashScreen splashScreen){
         this.splashScreen = splashScreen;
     }
-
     public String usernameSearch(ArrayList<Usuario> array){
         return array.get(0).getNome();
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        //teste
     }
 
 }

@@ -8,35 +8,27 @@
     android:background="#B7FFFF"
     tools:context=".View.TelaPrincipal">
 
-    <ImageButton
-        android:id="@+id/btnReport"
-        android:layout_width="131dp"
-        android:layout_height="147dp"
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="346dp"
+        android:layout_height="79dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/analisar"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnConfig"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalc" />
-
-    <ImageButton
-        android:id="@+id/btnConfig"
-        android:layout_width="145dp"
-        android:layout_height="149dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/configurar"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/btnReport"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/logo"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalc" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011"
+        app:srcCompat="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
 
     <ImageButton
         android:id="@+id/btnCalc"
@@ -47,27 +39,45 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/calcular"
+        android:background="@android:color/transparent"
         android:scaleType="centerInside"
+        android:src="@drawable/calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
+        tools:src="@drawable/calcular" />
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="346dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+    <ImageButton
+        android:id="@+id/btnConfig"
+        android:layout_width="145dp"
+        android:layout_height="149dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/configurar"
+        app:layout_constraintEnd_toStartOf="@+id/btnReport"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCalc"
+        tools:src="@drawable/configurar" />
 
+    <ImageButton
+        android:id="@+id/btnReport"
+        android:layout_width="131dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/analisar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnConfig"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalc"
+        tools:src="@drawable/analisar" />
 </android.support.constraint.ConstraintLayout>
