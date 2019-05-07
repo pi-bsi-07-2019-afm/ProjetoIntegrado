@@ -8,6 +8,7 @@ public class SplashScreen {
 
     MainActivity act;
     TelaPrincipal tela_principal;
+    TelaCadastro tela_cadastro;
 
     public SplashScreen(MainActivity act, TelaPrincipal tela_principal){
         this.act = act;
@@ -15,6 +16,7 @@ public class SplashScreen {
     }
     public void CarregarTela() {
         act.setContentView(R.layout.splash_screen);
+        //tela_cadastro = new TelaCadastro(act, "SplashScreen");
 
         new Handler().postDelayed(new Runnable() {
 

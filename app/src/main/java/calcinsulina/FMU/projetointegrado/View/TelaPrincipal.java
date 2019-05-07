@@ -45,7 +45,7 @@ public class TelaPrincipal {
 //         Verificando se já existe um cadastro do Usuário e a tela anterios é a SplashScreen
         if(!act.getaUsuario().isEmpty() && telaAnterior.equalsIgnoreCase("SplashScreen")){
             String username = usernameSearch(act.getaUsuario());
-            Toast.makeText(act, "Bem Vindo de Volta " + username, Toast.LENGTH_SHORT).show();
+            Toast.makeText(act, "Bem Vindo " + username, Toast.LENGTH_SHORT).show();
         }
 
      }

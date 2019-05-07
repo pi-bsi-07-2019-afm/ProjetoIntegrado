@@ -30,9 +30,8 @@ public class TelaCadastro {
     CheckBox cbEULA;
     String telaAnterior = "MainActivity";
 
-    public TelaCadastro (MainActivity act, TelaPrincipal tela_principal, String telaAnterior) {
+    public TelaCadastro (MainActivity act, String telaAnterior) {
         this.act = act;
-        this.tela_principal = tela_principal;
         this.telaAnterior = telaAnterior;
     }
 
