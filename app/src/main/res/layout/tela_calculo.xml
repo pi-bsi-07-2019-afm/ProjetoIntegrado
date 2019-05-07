@@ -14,16 +14,19 @@
         android:layout_margin="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Calculadora"
-        android:textColor="#000000"
-        android:textSize="36sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
         android:textStyle="bold"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029999971" />
 
     <EditText
         android:id="@+id/edPeso"
@@ -153,15 +156,18 @@
 
     <Button
         android:id="@+id/btnCalcular"
-        android:layout_width="98dp"
-        android:layout_height="92dp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
         android:layout_margin="50dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/holo_green_light"
         android:text="Calcular"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edBolus"
-        tools:text="Calcular" />
+        app:layout_constraintTop_toBottomOf="@+id/edBolus" />
 
     <TextView
         android:id="@+id/txtIdade"
@@ -172,6 +178,7 @@
         android:layout_marginRight="4dp"
         android:text="Idade:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edIdade"
         app:layout_constraintTop_toBottomOf="@+id/txtCalculo" />
 
@@ -184,6 +191,7 @@
         android:layout_marginRight="8dp"
         android:text="Peso (Kg):"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edPeso"
         app:layout_constraintTop_toBottomOf="@+id/edIdade" />
 
@@ -196,6 +204,7 @@
         android:layout_marginRight="8dp"
         android:text="Glicemia Alvo:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edGlicAlvo"
         app:layout_constraintTop_toBottomOf="@+id/edPeso" />
 
@@ -208,6 +217,7 @@
         android:layout_marginRight="8dp"
         android:text="Glicemia Obtida:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edGlicObt"
         app:layout_constraintTop_toBottomOf="@+id/edGlicAlvo" />
 
@@ -220,6 +230,7 @@
         android:layout_marginRight="8dp"
         android:text="Fator Sensibilidade:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edFSensibil"
         app:layout_constraintTop_toBottomOf="@+id/edGlicObt" />
 
@@ -232,6 +243,7 @@
         android:layout_marginRight="8dp"
         android:text="Carboidrato:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edCarboidrato"
         app:layout_constraintTop_toBottomOf="@+id/edFSensibil" />
 
@@ -244,6 +256,7 @@
         android:layout_marginRight="8dp"
         android:text="Bolus da Alimentação:"
         android:textSize="18dp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toStartOf="@+id/edBolus"
         app:layout_constraintTop_toBottomOf="@+id/edCarboidrato" />
 

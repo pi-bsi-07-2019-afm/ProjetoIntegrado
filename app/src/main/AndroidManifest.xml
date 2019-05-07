@@ -10,7 +10,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.TelaCalculadora"></activity>
+        <activity android:name=".View.TelaCalculadora" />
         <activity android:name=".View.TelaPrincipal" />
         <activity android:name=".View.TelaConfig" />
         <activity android:name=".View.TelaCarregando" />
