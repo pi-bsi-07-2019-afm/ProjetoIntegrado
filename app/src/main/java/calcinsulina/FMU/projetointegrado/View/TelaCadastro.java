@@ -23,7 +23,6 @@ import calcinsulina.FMU.projetointegrado.R;
 public class TelaCadastro {
 
     MainActivity act;
-    TelaPrincipal tela_principal;
     TextView txtCad;
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
@@ -49,11 +48,11 @@ public class TelaCadastro {
         if(telaAnterior.equalsIgnoreCase("TelaConfig")){
             txtCad.setText("Alterar Cadastro");
             btnCadastrar.setText("Salvar");
-            edNome.setText(act.getaUsuario().indexOf(1));
-            edEmail.setText(act.getaUsuario().indexOf(5));
-            edDataNasc.setText(act.getaUsuario().indexOf(3));
-            edPeso.setText(act.getaUsuario().indexOf(2));
-            edSensibFator.setText(act.getaUsuario().indexOf(4));
+            edNome.setText(act.getaUsuario().get(0).getNome());
+            edEmail.setText(act.getaUsuario().get(0).getEmail());
+            edDataNasc.setText(act.getaUsuario().get(0).getDataNascimento());
+            edPeso.setText(String.valueOf(act.getaUsuario().get(0).getPeso()));
+            edSensibFator.setText(String.valueOf(act.getaUsuario().get(0).getFatorSensibilidade()));
         }
 
         SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
@@ -64,18 +63,27 @@ public class TelaCadastro {
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+                    String msgErro  = "";
                     if(edNome.getText().toString().length() == 0){
-                        ExibeMensagem("Informar o nome corretamente.");
-                    }else if(edPeso.getText().length() == 0){
-                        ExibeMensagem("Informar o peso corretamente.");
-                    }else if(edDataNasc.getText().length() == 0 || edDataNasc.length() < 10){
-                        ExibeMensagem("Informar a data de nascimento separando dia, mês e ano por barras. \n\n Exemplo: 01/04/1993");
-                    }else if(edSensibFator.getText().length() == 0){
-                        ExibeMensagem("Informar o fator de sensibilidade.");
-                    }else if(edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
-                        ExibeMensagem("Informar o E-Mail corretamente.");
-                    }else if(!cbEULA.isChecked()){
-                        ExibeMensagem("Aceitar os Termos de Uso.");
+                        msgErro = msgErro.concat("\n• Informar o nome corretamente.");
+                    }
+                    if(edPeso.getText().length() == 0){
+                        msgErro = msgErro.concat("\n• Informar o peso corretamente.");
+                    }
+                    if(edDataNasc.getText().length() == 0 || edDataNasc.length() < 10){
+                        msgErro = msgErro.concat("\n• Informar a data de nascimento.");
+                    }
+                    if(edSensibFator.getText().length() == 0){
+                        msgErro = msgErro.concat("\n• Informar o fator de sensibilidade.");
+                    }
+                    if(edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
+                        msgErro = msgErro.concat("\n• Informar o E-Mail corretamente.");
+                    }
+                    if(!cbEULA.isChecked()){
+                        msgErro = msgErro.concat("\n• Aceitar os Termos de Uso.");
+                    }
+                    if(msgErro.length() > 0){
+                        ExibeMensagem(msgErro);
                     }else{
                         dialogo.setTitle("Atenção");
                         dialogo.setMessage("As informações foram preenchidas corretamente?");

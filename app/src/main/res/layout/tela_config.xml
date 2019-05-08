@@ -106,7 +106,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="#FF0000"
-        android:text="Deletar Cadastro"
+        android:text="Deletar Alimento"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="18sp"
