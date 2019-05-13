@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class TelaCadastro {
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
     CheckBox cbEULA;
+    ImageView FatorSensibilHint;
     String telaAnterior = "MainActivity";
 
     public TelaCadastro (MainActivity act, String telaAnterior) {
@@ -44,6 +46,7 @@ public class TelaCadastro {
         cbEULA = act.findViewById(R.id.cbEULA);
         edEmail = act.findViewById(R.id.edEmail);
         edDataNasc = act.findViewById(R.id.edDataNasc);
+        FatorSensibilHint = act.findViewById(R.id.fatorSensibilHint);
 
         if(telaAnterior.equalsIgnoreCase("TelaConfig")){
             txtCad.setText("Alterar Cadastro");
@@ -58,6 +61,13 @@ public class TelaCadastro {
         SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
         MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
         edDataNasc.addTextChangedListener(maskDataNasc);
+
+        FatorSensibilHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExibeMensagem("Essa informação é fornecida por seu médico.");
+            }
+        });
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
                 @Override
