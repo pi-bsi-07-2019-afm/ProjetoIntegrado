@@ -103,6 +103,7 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_CALCULO);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_TM);
+        this.onCreate(db);
     }
 
     @Override

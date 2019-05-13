@@ -110,4 +110,8 @@ public class MainActivity extends Activity {
     public ArrayList<Alimento> getaAlimento(){
         return aAlimento;
     }
+
+    public void dropBD(){
+        dao.dropTables();
+    }
 }

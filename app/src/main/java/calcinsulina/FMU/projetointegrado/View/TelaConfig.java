@@ -3,6 +3,8 @@ package calcinsulina.FMU.projetointegrado.View;
 import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaConfig {
@@ -27,6 +29,16 @@ public class TelaConfig {
             @Override
             public void onClick(View v) {
                 act.tela_principal.CarregarTela();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //act.dropBD();
+                act.getaUsuario().remove(0);
+                Toast toast = Toast.makeText(act.getApplicationContext(), "Banco excluído. Feche o aplicativo.", Toast.LENGTH_LONG);
+                toast.show();
             }
         });
 

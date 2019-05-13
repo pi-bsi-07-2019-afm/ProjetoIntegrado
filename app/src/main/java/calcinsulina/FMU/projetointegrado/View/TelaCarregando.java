@@ -22,7 +22,7 @@ public class TelaCarregando {
             public void run() {
                 act.tela_principal.CarregarTela();
             }
-        }, 15000);
+        }, 3000);
 
     }
 }

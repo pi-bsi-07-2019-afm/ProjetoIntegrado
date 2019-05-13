@@ -41,6 +41,12 @@ public class TelaPrincipal {
                 act.tela_config.CarregarTela();
             }
         });
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //         Verificando se já existe um cadastro do Usuário e a tela anterios é a SplashScreen
         if(!act.getaUsuario().isEmpty() && telaAnterior.equalsIgnoreCase("SplashScreen")){

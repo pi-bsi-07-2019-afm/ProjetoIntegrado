@@ -64,7 +64,7 @@ public class TelaCalculadora {
                             Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
                             toast.show();
                         }
-                    }, 16000);
+                    }, 17000);
 
                 }
 
