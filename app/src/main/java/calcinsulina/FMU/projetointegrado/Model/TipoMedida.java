@@ -3,12 +3,12 @@ package calcinsulina.FMU.projetointegrado.Model;
 public class TipoMedida {
     private int id;
     private String nome;
-    private int medidoEmMl;
+    private boolean medidoEmMl;
 
-    public TipoMedida(){
+    public TipoMedida() {
     }
 
-    public TipoMedida(String nome, int medidoEmMl) {
+    public TipoMedida(String nome, boolean medidoEmMl) {
         this.nome = nome;
         this.medidoEmMl = medidoEmMl;
     }
@@ -29,11 +29,11 @@ public class TipoMedida {
         this.nome = nome;
     }
 
-    public int isMedidoEmMl() {
+    public boolean isMedidoEmMl() {
         return medidoEmMl;
     }
 
-    public void setMedidoEmMl(int medidoEmMl) {
+    public void setMedidoEmMl(boolean medidoEmMl) {
         this.medidoEmMl = medidoEmMl;
     }
 }

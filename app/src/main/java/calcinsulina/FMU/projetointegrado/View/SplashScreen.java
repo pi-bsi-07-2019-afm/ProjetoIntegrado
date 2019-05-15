@@ -10,10 +10,11 @@ public class SplashScreen {
     TelaPrincipal tela_principal;
     TelaCadastro tela_cadastro;
 
-    public SplashScreen(MainActivity act, TelaPrincipal tela_principal){
+    public SplashScreen(MainActivity act, TelaPrincipal tela_principal) {
         this.act = act;
         this.tela_principal = tela_principal;
     }
+
     public void CarregarTela() {
         act.setContentView(R.layout.splash_screen);
         //tela_cadastro = new TelaCadastro(act, "SplashScreen");
@@ -22,9 +23,9 @@ public class SplashScreen {
 
             @Override
             public void run() {
-                if(act.getaUsuario().isEmpty()){
+                if (act.getaUsuario().isEmpty()) {
                     act.tela_cadastro.CarregarTela();
-                }else{
+                } else {
                     act.tela_principal.CarregarTela();
                 }
 

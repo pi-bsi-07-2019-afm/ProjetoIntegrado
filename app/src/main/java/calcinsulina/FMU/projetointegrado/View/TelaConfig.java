@@ -13,7 +13,7 @@ public class TelaConfig {
     TelaPrincipal tela_principal;
     Button btnVoltar, btnAltCad, btnAbout, btnDelete;
 
-    public TelaConfig(MainActivity act, TelaPrincipal tela_principal){
+    public TelaConfig(MainActivity act, TelaPrincipal tela_principal) {
         this.act = act;
         this.tela_principal = tela_principal;
     }
@@ -57,7 +57,7 @@ public class TelaConfig {
                 Dialogo.setTitle("Projeto Desenvolido por: ");
                 Dialogo.setMessage("• Allan Keiiti Nakakita - 7925889\n" +
                         "• Felippe Wohlers Leão - 8049443\n" +
-                        "• Matheus Henrique - 8054672\n"+
+                        "• Matheus Henrique - 8054672\n" +
                         "• Michel Andrade - 8253225\n" +
                         "• Natalia Martins - 8074081");
                 Dialogo.setNeutralButton("OK", null);

@@ -5,10 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class DAO extends SQLiteOpenHelper{
+public class DAO extends SQLiteOpenHelper {
 
     private static final int VERSAO = 1;
     private static final String NOME_BANCO = "dbCalculina";
@@ -92,7 +94,7 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_TM);
     }
 
-    public void Recreate(){
+    public void Recreate() {
         SQLiteDatabase db = this.getReadableDatabase();
         this.onCreate(db);
     }
@@ -115,14 +117,14 @@ public class DAO extends SQLiteOpenHelper{
         this.onCreate(db);
     }
 
-    public ArrayList<Alimento> recuperaAlimentos(){
-        ArrayList<Alimento> array_AL = new ArrayList<>();
+    public List<Alimento> recuperaAlimentos() {
+        List<Alimento> array_AL = new ArrayList<Alimento>();
 
         String selectQuery = "SELECT " + ID_ALIMENTO + " , " + NOME_ALIMENTO + " , " + TIPO_MEDIDA + " , " + GOUML + " , " + QNT_CARBOIDRATO + " , " + CALORIAS + " , " + QNT_CARB_G + " FROM " + TABELA_ALIMENTO;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 Alimento al = new Alimento();
                 al.setId(cursor.getInt(cursor.getColumnIndex(ID_ALIMENTO)));
@@ -134,19 +136,19 @@ public class DAO extends SQLiteOpenHelper{
                 al.setQuantCarbPorG(cursor.getDouble(cursor.getColumnIndex(QNT_CARB_G)));
                 array_AL.add(al);
             } while (cursor.moveToNext());
-        }db.close();
+        }
+        db.close();
         return array_AL;
     }
 
-    public ArrayList<Usuario> recuperaUsuarios(){
-        ArrayList<Usuario> array_User = new ArrayList<>();
-
+    public List<Usuario> recuperaUsuarios() {
+        List<Usuario> array_User = new ArrayList<Usuario>();
         String selectQuery = "SELECT " + ID_USER + " , " + NOME_USER + " , " + PESO + " , " + DATA_NASC + " , " + FATOR_SENSIBIL + " , "
                 + EMAIL + " , " + DATA_REGISTRO_U + " FROM " + TABELA_USER;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 Usuario us = new Usuario();
                 us.setId(cursor.getInt(cursor.getColumnIndex(ID_USER)));
@@ -158,59 +160,55 @@ public class DAO extends SQLiteOpenHelper{
                 us.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_U)));
                 array_User.add(us);
             } while (cursor.moveToNext());
-        }db.close();
+        }
+        db.close();
         return array_User;
     }
 
-    public ArrayList<Calculo> recuperaCalculo(){
-        ArrayList<Calculo> array_Calc = new ArrayList<>();
+    public List<Calculo> recuperaCalculo() {
+        List<Calculo> array_Calc = new ArrayList<Calculo>();
         String selectQuery = "SELECT " + ID_CALC + " , " + GLICEMIA_ALVO + " , " + CONJUNTO_ALIMENTOS + " , " + TOTAL_CARB + " , " + TOTAL_INSULINA + " , " + DATA_REGISTRO_C
                 + " FROM " + TABELA_CALCULO;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 Calculo cl = new Calculo();
                 cl.setId(cursor.getInt(cursor.getColumnIndex(ID_CALC)));
                 cl.setGlicemiaAlvo(cursor.getDouble(cursor.getColumnIndex(GLICEMIA_ALVO)));
-                cl.setConjuntoAlimentos(cursor.getString(cursor.getColumnIndex(CONJUNTO_ALIMENTOS)));
+                cl.setConjuntoAlimentosFromString(cursor.getString(cursor.getColumnIndex(CONJUNTO_ALIMENTOS)));
                 cl.setTotalCarb(cursor.getDouble(cursor.getColumnIndex(TOTAL_CARB)));
                 cl.setTotalInsulina(cursor.getInt(cursor.getColumnIndex(TOTAL_INSULINA)));
                 cl.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_C)));
                 array_Calc.add(cl);
             } while (cursor.moveToNext());
-        }db.close();
-
-        String teste = "1997/12/01";
-        String vetor[] = teste.split("/");
-        Date objData = new Date(Integer.parseInt(vetor[0]),Integer.parseInt(vetor[1]),Integer.parseInt(vetor[2]) );
-
-        int diferencaDias = objData.getDate();
-
+        }
+        db.close();
         return array_Calc;
     }
 
-    public ArrayList<TipoMedida> recuperaTipoMedida(){
-        ArrayList<TipoMedida> array_TM = new ArrayList<>();
+    public List<TipoMedida> recuperaTipoMedida() {
+        List<TipoMedida> array_TM = new ArrayList<TipoMedida>();
         String selectQuery = "SELECT " + ID_TIPO_MED + " , " + NOME_TIPOMED + " , " + MEDIDO_EM_ML + " FROM "
                 + TABELA_TM;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 TipoMedida tm = new TipoMedida();
                 tm.setId(cursor.getInt(cursor.getColumnIndex(ID_TIPO_MED)));
                 tm.setNome(cursor.getString(cursor.getColumnIndex(NOME_TIPOMED)));
-                tm.setMedidoEmMl(cursor.getInt(cursor.getColumnIndex(MEDIDO_EM_ML)));
+                tm.setMedidoEmMl(Boolean.parseBoolean(String.valueOf(cursor.getInt(cursor.getColumnIndex(MEDIDO_EM_ML)))));
                 array_TM.add(tm);
             } while (cursor.moveToNext());
-        }db.close();
+        }
+        db.close();
         return array_TM;
     }
 
-    public void insereAlimento(ArrayList<Alimento> alimento){
+    public void insereAlimento(List<Alimento> alimento) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
         for (int i = 0; i < alimento.size(); i++) {
@@ -226,7 +224,7 @@ public class DAO extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void insereUsuario(ArrayList<Usuario> usuario){
+    public void insereUsuario(List<Usuario> usuario) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
         for (int i = 0; i < usuario.size(); i++) {
@@ -242,14 +240,14 @@ public class DAO extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void insereCalculo(ArrayList<Calculo> calculo){
+    public void insereCalculo(List<Calculo> calculo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
         for (int i = 0; i < calculo.size(); i++) {
             valores.put(ID_CALC, calculo.get(i).getId());
             valores.put(QNT_CARB_G, calculo.get(i).getQuantCarbPorUnidInsulina());
             valores.put(GLICEMIA_ALVO, calculo.get(i).getGlicemiaAlvo());
-            valores.put(CONJUNTO_ALIMENTOS, calculo.get(i).getConjuntoAlimentos());
+            valores.put(CONJUNTO_ALIMENTOS, calculo.get(i).getStringConjuntoAlimentos());
             valores.put(TOTAL_CARB, calculo.get(i).getTotalCarb());
             valores.put(TOTAL_INSULINA, calculo.get(i).getTotalInsulina());
             valores.put(DATA_REGISTRO_C, calculo.get(i).getDataRegistro());
@@ -258,7 +256,7 @@ public class DAO extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void insereTipoMedida(ArrayList<TipoMedida> tipoMedida){
+    public void insereTipoMedida(List<TipoMedida> tipoMedida) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valores = new ContentValues();
         for (int i = 0; i < tipoMedida.size(); i++) {
@@ -275,19 +273,22 @@ public class DAO extends SQLiteOpenHelper{
         db.execSQL(limpaQuery);
         db.close();
     }
+
     public void limpaUsuario() {
         SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery2 = "DELETE FROM " + TABELA_USER;
         db.execSQL(limpaQuery2);
         db.close();
     }
+
     public void limpaTipoMedida() {
         SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery3 = "DELETE FROM " + TABELA_TM;
         db.execSQL(limpaQuery3);
         db.close();
     }
-    public void limpaCalculo(){
+
+    public void limpaCalculo() {
         SQLiteDatabase db = this.getWritableDatabase();
         String limpaQuery4 = "DELETE FROM " + TABELA_CALCULO;
         db.execSQL(limpaQuery4);

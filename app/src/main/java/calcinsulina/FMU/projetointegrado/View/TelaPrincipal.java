@@ -1,10 +1,12 @@
 package calcinsulina.FMU.projetointegrado.View;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 import calcinsulina.FMU.projetointegrado.R;
 
@@ -23,7 +25,8 @@ public class TelaPrincipal {
         this.act = act;
         this.telaAnterior = telaAnterior;
     }
-    public void CarregarTela(){
+
+    public void CarregarTela() {
         act.setContentView(R.layout.tela_principal);
         btnCalc = act.findViewById(R.id.btnCalc);
         btnConfig = act.findViewById(R.id.btnConfig);
@@ -49,29 +52,35 @@ public class TelaPrincipal {
         });
 
 //         Verificando se já existe um cadastro do Usuário e a tela anterios é a SplashScreen
-        if(!act.getaUsuario().isEmpty() && telaAnterior.equalsIgnoreCase("SplashScreen")){
+        if (!act.getaUsuario().isEmpty() && telaAnterior.equalsIgnoreCase("SplashScreen")) {
             String username = usernameSearch(act.getaUsuario());
             Toast.makeText(act, "Bem Vindo " + username, Toast.LENGTH_SHORT).show();
         }
 
-     }
-     public void setTelaCalculadora(TelaCalculadora tela_calculadora){
+    }
+
+    public void setTelaCalculadora(TelaCalculadora tela_calculadora) {
         this.tela_calculadora = tela_calculadora;
-     }
-     public void setTelaConfig(TelaConfig tela_config){
+    }
+
+    public void setTelaConfig(TelaConfig tela_config) {
 
         this.tela_config = tela_config;
-     }
-     public void setTelaCadastro(TelaCadastro tela_cadastro){
+    }
+
+    public void setTelaCadastro(TelaCadastro tela_cadastro) {
         this.tela_cadastro = tela_cadastro;
-     }
-    public void setTelaCarregando(TelaCarregando tela_carregando){
+    }
+
+    public void setTelaCarregando(TelaCarregando tela_carregando) {
         this.tela_carregando = tela_carregando;
     }
-    public void setSplashScreen(SplashScreen splashScreen){
+
+    public void setSplashScreen(SplashScreen splashScreen) {
         this.splashScreen = splashScreen;
     }
-    public String usernameSearch(ArrayList<Usuario> array){
+
+    public String usernameSearch(List<Usuario> array) {
         return array.get(0).getNome();
     }
 

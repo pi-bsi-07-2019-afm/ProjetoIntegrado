@@ -1,7 +1,11 @@
 package calcinsulina.FMU.projetointegrado.View;
+
 import android.app.Activity;
 import android.os.Bundle;
+
 import java.util.ArrayList;
+import java.util.List;
+
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
 import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.Model.DAO;
@@ -9,10 +13,10 @@ import calcinsulina.FMU.projetointegrado.Model.TipoMedida;
 import calcinsulina.FMU.projetointegrado.Model.Usuario;
 
 public class MainActivity extends Activity {
-    ArrayList<Usuario> aUsuario = new ArrayList<>();
-    ArrayList<Calculo> aCalculo = new ArrayList<>();
-    ArrayList<TipoMedida> aTipoMedida = new ArrayList<>();
-    ArrayList<Alimento> aAlimento = new ArrayList<>();
+    List<Usuario> aUsuario = new ArrayList<Usuario>();
+    List<Calculo> aCalculo = new ArrayList<Calculo>();
+    List<TipoMedida> aTipoMedida = new ArrayList<TipoMedida>();
+    List<Alimento> aAlimento = new ArrayList<Alimento>();
     TelaPrincipal tela_principal;
     TelaCalculadora tela_calculadora;
     TelaConfig tela_config;
@@ -52,66 +56,69 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
-        for (int i = 0; i < aUsuario.size(); i++){
+        for (int i = 0; i < aUsuario.size(); i++) {
             dao.limpaUsuario();
             dao.insereUsuario(aUsuario);
         }
-        for (int i = 0; i < aAlimento.size(); i++){
+        for (int i = 0; i < aAlimento.size(); i++) {
             dao.limpaAlimento();
             dao.insereAlimento(aAlimento);
         }
-        for (int i = 0; i < aCalculo.size(); i++){
+        for (int i = 0; i < aCalculo.size(); i++) {
             dao.limpaCalculo();
             dao.insereCalculo(aCalculo);
         }
-        for (int i = 0; i < aTipoMedida.size(); i++){
+        for (int i = 0; i < aTipoMedida.size(); i++) {
             dao.limpaTipoMedida();
             dao.insereTipoMedida(aTipoMedida);
         }
     }
 
-    protected void onRestart(){
+    protected void onRestart() {
         super.onRestart();
 
 
     }
 
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
-        for (int i = 0; i < aUsuario.size(); i++){
+        for (int i = 0; i < aUsuario.size(); i++) {
             dao.limpaUsuario();
             dao.insereUsuario(aUsuario);
         }
-        for (int i = 0; i < aAlimento.size(); i++){
+        for (int i = 0; i < aAlimento.size(); i++) {
             dao.limpaAlimento();
             dao.insereAlimento(aAlimento);
         }
-        for (int i = 0; i < aCalculo.size(); i++){
+        for (int i = 0; i < aCalculo.size(); i++) {
             dao.limpaCalculo();
             dao.insereCalculo(aCalculo);
         }
-        for (int i = 0; i < aTipoMedida.size(); i++){
+        for (int i = 0; i < aTipoMedida.size(); i++) {
             dao.limpaTipoMedida();
             dao.insereTipoMedida(aTipoMedida);
         }
     }
 
-    public ArrayList<Usuario> getaUsuario(){
+    public List<Usuario> getaUsuario() {
         return aUsuario;
     }
-    public ArrayList<Calculo> getaCalculo(){
+
+    public List<Calculo> getaCalculo() {
         return aCalculo;
     }
-    public ArrayList<TipoMedida> getaTipoMedida(){
+
+    public List<TipoMedida> getaTipoMedida() {
         return aTipoMedida;
     }
-    public ArrayList<Alimento> getaAlimento(){
+
+    public List<Alimento> getaAlimento() {
         return aAlimento;
     }
 
-    public void dropBD(){
+    public void dropBD() {
         dao.dropTables();
     }
 }

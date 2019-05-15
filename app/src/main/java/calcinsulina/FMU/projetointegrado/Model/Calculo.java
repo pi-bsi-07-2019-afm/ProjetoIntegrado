@@ -6,23 +6,23 @@ public class Calculo {
     private int id;
     private double quantCarbPorUnidInsulina;
     private double glicemiaAlvo;
-    private String conjuntoAlimentos;
+    private int[] conjuntoAlimentos;
     private double totalCarb;
     private int totalInsulina;
     private String dataRegistro;
 
-    public Calculo(){
+    public Calculo() {
 
     }
 
-    public Calculo(double quantCarbPorUnidInsulina, double glicemiaAlvo, String conjuntoAlimentos, double totalCarb, int totalInsulina) {
+    public Calculo(double quantCarbPorUnidInsulina, double glicemiaAlvo, int[] conjuntoAlimentos, double totalCarb, int totalInsulina) {
         this.quantCarbPorUnidInsulina = quantCarbPorUnidInsulina;
         this.glicemiaAlvo = glicemiaAlvo;
         this.conjuntoAlimentos = conjuntoAlimentos;
         this.totalCarb = totalCarb;
         this.totalInsulina = totalInsulina;
-        //Date obj = new Date();
-        //this.dataRegistro = obj.getDate();
+        Date obj = new Date();
+        this.dataRegistro = obj.toString();
     }
 
     public int getId() {
@@ -49,11 +49,11 @@ public class Calculo {
         this.glicemiaAlvo = glicemiaAlvo;
     }
 
-    public String getConjuntoAlimentos() {
+    public int[] getConjuntoAlimentos() {
         return conjuntoAlimentos;
     }
 
-    public void setConjuntoAlimentos(String conjuntoAlimentos) {
+    public void setConjuntoAlimentos(int[] conjuntoAlimentos) {
         this.conjuntoAlimentos = conjuntoAlimentos;
     }
 
@@ -80,4 +80,25 @@ public class Calculo {
     public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
+
+    public String getStringConjuntoAlimentos(){
+        String retorno = "";
+        for (int i = 0; i < conjuntoAlimentos.length; i ++){
+            if (retorno != ""){
+                retorno += ",";
+            }
+            retorno += String.valueOf(conjuntoAlimentos[i]);
+        }
+        return retorno;
+    }
+
+    public void setConjuntoAlimentosFromString(String s){
+        String[] vetor = s.split(",");
+        int[] conjuntoAlimentosT = new int[vetor.length];
+        for (int i = 0; i < vetor.length; i++){
+            conjuntoAlimentosT[i] = Integer.getInteger(vetor[i]);
+        }
+        this.conjuntoAlimentos = conjuntoAlimentosT;
+    }
+
 }

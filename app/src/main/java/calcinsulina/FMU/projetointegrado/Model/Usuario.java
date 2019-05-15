@@ -1,7 +1,5 @@
 package calcinsulina.FMU.projetointegrado.Model;
 
-import java.util.Date;
-
 public class Usuario {
 
     private int id;
@@ -12,7 +10,7 @@ public class Usuario {
     private String email;
     private String dataRegistro;
 
-    public Usuario(){
+    public Usuario() {
     }
 
     public Usuario(String nome, double peso, String dataNascimento, double fatorSensibilidade, String email, String dataRegistro) {
@@ -80,11 +78,11 @@ public class Usuario {
         this.dataRegistro = dataRegistro;
     }
 
-    public void salvar(){
+    public void salvar() {
         //lógica aqui
     }
 
-    public void alterar(){
+    public void alterar() {
         //lógica aqui
     }
 
