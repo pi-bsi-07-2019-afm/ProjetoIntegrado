@@ -27,7 +27,6 @@ public class TelaCalculadora {
     public void CarregarTela() {
         act.setContentView(R.layout.tela_calculo);
         btnCalcular = act.findViewById(R.id.btnCalcular);
-        edFSensibil = act.findViewById(R.id.edFSensibil);
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
         edCarboidrato = act.findViewById(R.id.edCarboidrato);
@@ -37,35 +36,31 @@ public class TelaCalculadora {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String FatorSensibilidade, GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
+                Double FatorSensibilidade, GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
 
-                FatorSensibilidade = edFSensibil.getText().toString();
-                GlicemiaAlvo = edGlicemAlvo.getText().toString();
-                GlicemiaObtida = edGlicemObt.getText().toString();
-                Carboidrato = edCarboidrato.getText().toString();
-                Bolus = edBolus.getText().toString();
+                FatorSensibilidade = act.getaUsuario().get(0).getFatorSensibilidade();
+                GlicemiaAlvo = Double.parseDouble(edGlicemAlvo.getText().toString());
+                GlicemiaObtida = Double.parseDouble(edGlicemObt.getText().toString());
+                Carboidrato = Double.parseDouble(edCarboidrato.getText().toString());
+                Bolus = Double.parseDouble(edBolus.getText().toString());
 
-                if (FatorSensibilidade.length() == 0 || GlicemiaAlvo.length() == 0 || GlicemiaObtida.length() == 0 || Carboidrato.length() == 0 || Bolus.length() == 0) {
-                    Toast toast = Toast.makeText(act.getApplicationContext(), "Por favor, Insira todas as informações", Toast.LENGTH_LONG);
+                if ((FatorSensibilidade.toString().length()) == 0 || (GlicemiaAlvo.toString().length()) == 0 || (GlicemiaObtida.toString().length()) == 0 || (Carboidrato.toString().length()) == 0 || (Bolus.toString().length()) == 0 || FatorSensibilidade <= 0 || FatorSensibilidade > 300 || GlicemiaAlvo <= 0 || GlicemiaAlvo >= 300 || GlicemiaObtida <= 0 || GlicemiaObtida >= 300 || Carboidrato <= 0 || Bolus <= 0) {
+                    Toast toast = Toast.makeText(act.getApplicationContext(), "Por favor, Insira todas as informações corretamente.", Toast.LENGTH_LONG);
                     toast.show();
                 } else {
                     // Parte do cálculo
-
-                    int Glicemia = Integer.parseInt(GlicemiaObtida) - Integer.parseInt(GlicemiaAlvo);
-                    int CorrecaoInsul = Glicemia / Integer.parseInt(FatorSensibilidade);
-                    int InsulinaAComer = Integer.parseInt(Carboidrato) / Integer.parseInt(Bolus);
-
-                    final int NumeroDeDoses = CorrecaoInsul + InsulinaAComer;
-
+                    double Glicemia = GlicemiaObtida - GlicemiaAlvo;
+                    double CorrecaoInsul = Glicemia / FatorSensibilidade;
+                    double InsulinaAComer =  Carboidrato / Bolus;
+                    final int NumeroDeDoses =  (int) (CorrecaoInsul + InsulinaAComer);
                     act.tela_carregando.CarregarTela();
-
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
                             toast.show();
                         }
-                    }, 17000);
+                    }, 3000);
 
                 }
 
