@@ -10,6 +10,10 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".View.eula"
+            android:label="@string/title_activity_eula"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".View.TelaCalculadora" />
         <activity android:name=".View.TelaPrincipal" />
         <activity android:name=".View.TelaConfig" />
