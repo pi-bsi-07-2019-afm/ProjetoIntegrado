@@ -2,6 +2,7 @@ package calcinsulina.FMU.projetointegrado.View;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,7 +29,7 @@ public class TelaCadastro {
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
     CheckBox cbEULA;
-    ImageView FatorSensibilHint;
+    ImageView FatorSensibilHint, EULAread;
     String telaAnterior = "MainActivity";
 
     public TelaCadastro (MainActivity act, String telaAnterior) {
@@ -47,6 +48,7 @@ public class TelaCadastro {
         edEmail = act.findViewById(R.id.edEmail);
         edDataNasc = act.findViewById(R.id.edDataNasc);
         FatorSensibilHint = act.findViewById(R.id.fatorSensibilHint);
+        EULAread = act.findViewById(R.id.EULARead);
 
         if(telaAnterior.equalsIgnoreCase("TelaConfig")){
             txtCad.setText("Alterar Cadastro");
@@ -66,6 +68,14 @@ public class TelaCadastro {
             @Override
             public void onClick(View v) {
                 ExibeMensagem("Essa informação é fornecida por seu médico.");
+            }
+        });
+
+        EULAread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(act, eula.class);
+                act.startActivity(intent);
             }
         });
 
