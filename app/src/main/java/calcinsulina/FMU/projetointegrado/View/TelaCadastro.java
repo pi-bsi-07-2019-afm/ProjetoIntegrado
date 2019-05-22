@@ -120,7 +120,7 @@ public class TelaCadastro {
                             DateFormat df = new SimpleDateFormat(pattern);
                             Date today = Calendar.getInstance().getTime();
                             String dataRegistro = df.format(today);
-
+                            act.aUsuario.clear();
                             act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email, dataRegistro));
                             Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
                             act.tela_principal.CarregarTela();

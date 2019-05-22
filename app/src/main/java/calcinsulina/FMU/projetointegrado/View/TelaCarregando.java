@@ -15,13 +15,14 @@ public class TelaCarregando {
         this.tela_principal = tela_principal;
     }
 
-    public void CarregarTela() {
+    public void CarregarTela(final int unidadesResultado) {
         act.setContentView(R.layout.tela_carregando);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                act.tela_principal.CarregarTela();
+                //act.tela_principal.CarregarTela();
+                act.tela_resultado.CarregarTela(unidadesResultado);
             }
         }, 3000);
 

@@ -185,7 +185,7 @@
                 android:gravity="center"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="3"
+                android:maxLength="6"
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -255,10 +255,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:contentDescription="TODO"
                 android:src="@android:drawable/ic_menu_help"
+                android:tint="#CB0001"
                 app:layout_constraintStart_toEndOf="@+id/txtFSensibil"
-                app:layout_constraintTop_toBottomOf="@+id/edDataNasc"
-                android:contentDescription="TODO" />
+                app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
@@ -269,6 +270,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:src="@android:drawable/ic_menu_help"
+        android:tint="#CB0001"
         app:layout_constraintStart_toEndOf="@+id/cbEULA"
         app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 

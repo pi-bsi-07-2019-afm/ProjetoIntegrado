@@ -54,12 +54,14 @@ public class TelaConfig {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
-                Dialogo.setTitle("Projeto Desenvolido por: ");
+                Dialogo.setTitle("Projeto Desenvolvido por: ");
                 Dialogo.setMessage("• Allan Keiiti Nakakita - 7925889\n" +
                         "• Felippe Wohlers Leão - 8049443\n" +
                         "• Matheus Henrique - 8054672\n" +
                         "• Michel Andrade - 8253225\n" +
-                        "• Natalia Martins - 8074081");
+                        "• Natalia Martins - 8074081\n" +
+                        "\nAlunos do curso de Bacharelado em Sistemas de Informação da FMU.\n" +
+                        "\nOrientação por Paulo Sérgio Rangel Garcia." );
                 Dialogo.setNeutralButton("OK", null);
                 Dialogo.show();
 

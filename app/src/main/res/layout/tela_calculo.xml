@@ -116,6 +116,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edBolus" />
 
+    <Button
+        android:id="@+id/btnVoltarCalc"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_margin="50dp"
+        android:layout_marginTop="8dp"
+        android:background="#8F8F8F"
+        android:text="Voltar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcular" />
+
     <TextView
         android:id="@+id/txtGlicAlvo"
         android:layout_width="wrap_content"

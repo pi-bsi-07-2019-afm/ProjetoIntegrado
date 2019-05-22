@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     TelaConfig tela_config;
     TelaCadastro tela_cadastro;
     TelaCarregando tela_carregando;
+    TelaResultado tela_resultado;
     SplashScreen splashScreen;
     private DAO dao;
 
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
         tela_config = new TelaConfig(this, tela_principal);
         tela_carregando = new TelaCarregando(this, tela_principal);
         splashScreen = new SplashScreen(this, tela_principal);
+        tela_resultado = new TelaResultado(this, "TelaCalculadora");
         tela_principal.setTelaCadastro(tela_cadastro);
         tela_principal.setTelaCalculadora(tela_calculadora);
         tela_principal.setTelaConfig(tela_config);

@@ -12,7 +12,7 @@ public class TelaCalculadora {
 
     MainActivity act;
     TelaPrincipal tela_principal;
-    Button btnCalcular;
+    Button btnCalcular,btnVoltarCalc;
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
 
     //Futuramente este handler será retirado desta activity, ela só está presente para "concept"
@@ -31,7 +31,7 @@ public class TelaCalculadora {
         edGlicemObt = act.findViewById(R.id.edGlicObt);
         edCarboidrato = act.findViewById(R.id.edCarboidrato);
         edBolus = act.findViewById(R.id.edBolus);
-
+        btnVoltarCalc = act.findViewById(R.id.btnVoltarCalc);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,18 +53,27 @@ public class TelaCalculadora {
                     double CorrecaoInsul = Glicemia / FatorSensibilidade;
                     double InsulinaAComer =  Carboidrato / Bolus;
                     final int NumeroDeDoses =  (int) (CorrecaoInsul + InsulinaAComer);
-                    act.tela_carregando.CarregarTela();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    }, 3000);
+                    act.tela_carregando.CarregarTela(NumeroDeDoses);
+
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
+//                            toast.show();
+//                        }
+//                    }, 3000);
 
                 }
 
             }
         });
+
+        btnVoltarCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                act.tela_principal.CarregarTela();
+            }
+        });
+
     }
 }
