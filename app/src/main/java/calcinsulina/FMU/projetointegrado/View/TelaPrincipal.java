@@ -35,19 +35,25 @@ public class TelaPrincipal {
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnCalc.getLayoutParams().width = 200;
+                btnCalc.getLayoutParams().height = 230;
                 act.tela_calculadora.CarregarTela();
             }
         });
         btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnConfig.getLayoutParams().width = 120;
+                btnConfig.getLayoutParams().height = 130;
                 act.tela_config.CarregarTela();
             }
         });
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
+                btnReport.getLayoutParams().width = 120;
+                btnReport.getLayoutParams().height = 130;
+//                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
             }
         });
 
