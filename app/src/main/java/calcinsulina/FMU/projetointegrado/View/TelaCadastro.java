@@ -58,6 +58,11 @@ public class TelaCadastro {
             edDataNasc.setText(act.getaUsuario().get(0).getDataNascimento());
             edPeso.setText(String.valueOf(act.getaUsuario().get(0).getPeso()));
             edSensibFator.setText(String.valueOf(act.getaUsuario().get(0).getFatorSensibilidade()));
+
+            cbEULA.setChecked(true);
+            // As linhas abaixo tornam a checkbox e ? do EULA invisiveis
+            cbEULA.setVisibility(View.GONE);
+            EULAread.setVisibility(View.GONE);
         }
 
         SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
@@ -79,58 +84,67 @@ public class TelaCadastro {
             }
         });
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
-                String msgErro = "";
-                if (edNome.getText().toString().length() == 0) {
-                    msgErro = msgErro.concat("\n• Informar o nome corretamente.");
-                }
-                if (edPeso.getText().length() == 0) {
-                    msgErro = msgErro.concat("\n• Informar o peso corretamente.");
-                }
-                if (edDataNasc.getText().length() == 0 || edDataNasc.length() < 10) {
-                    msgErro = msgErro.concat("\n• Informar a data de nascimento.");
-                }
-                if (edSensibFator.getText().length() == 0) {
-                    msgErro = msgErro.concat("\n• Informar o fator de sensibilidade.");
-                }
-                if (edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
-                    msgErro = msgErro.concat("\n• Informar o E-Mail corretamente.");
-                }
-                if (!cbEULA.isChecked()) {
-                    msgErro = msgErro.concat("\n• Aceitar os Termos de Uso.");
-                }
-                if (msgErro.length() > 0) {
-                    ExibeMensagem(msgErro);
-                } else {
-                    dialogo.setTitle("Atenção");
-                    dialogo.setMessage("As informações foram preenchidas corretamente?");
-                    dialogo.setNegativeButton("Não", null);
-                    dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String nome = edNome.getText().toString();
-                            double peso = Double.parseDouble(edPeso.getText().toString());
-                            String dataNasc = edDataNasc.getText().toString();
-                            double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
-                            String email = edEmail.getText().toString();
-                            String pattern = "dd-MM-yyyy";
-                            DateFormat df = new SimpleDateFormat(pattern);
-                            Date today = Calendar.getInstance().getTime();
-                            String dataRegistro = df.format(today);
-                            act.aUsuario.clear();
-                            act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email, dataRegistro));
-                            Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
-                            act.tela_principal.CarregarTela();
+        try {
+            btnCadastrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+                    String msgErro = "";
+                    if (edNome.getText().toString().length() == 0) {
+                        msgErro = msgErro.concat("\n• Informar o nome corretamente.");
+                    }
+                    if (edPeso.getText().length() == 0) {
+                        msgErro = msgErro.concat("\n• Informar o peso corretamente.");
+                    }
+                    if (edDataNasc.getText().length() == 0 || edDataNasc.length() < 10) {
+                        msgErro = msgErro.concat("\n• Informar a data de nascimento.");
+                    }else{
+                        Boolean dataNascValidada = ValidaDataNasc(edDataNasc.getText().toString());
+                        if (!dataNascValidada){
+                            msgErro = msgErro.concat("\n• Data de nascimento inválida");
                         }
-                    });
-                    dialogo.show();
+                    }
+                    if (edSensibFator.getText().length() == 0) {
+                        msgErro = msgErro.concat("\n• Informar o fator de sensibilidade.");
+                    }
+                    if (edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
+                        msgErro = msgErro.concat("\n• Informar o E-Mail corretamente.");
+                    }
+                    if (!cbEULA.isChecked()) {
+                        msgErro = msgErro.concat("\n• Aceitar os Termos de Uso.");
+                    }
+                    if (msgErro.length() > 0) {
+                        ExibeMensagem(msgErro);
+                    } else {
+                        dialogo.setTitle("Atenção");
+                        dialogo.setMessage("As informações foram preenchidas corretamente?");
+                        dialogo.setNegativeButton("Não", null);
+                        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String nome = edNome.getText().toString();
+                                double peso = Double.parseDouble(edPeso.getText().toString());
+                                String dataNasc = edDataNasc.getText().toString();
+                                double fatorSensibilidade = Double.parseDouble(edSensibFator.getText().toString());
+                                String email = edEmail.getText().toString();
+                                String pattern = "dd-MM-yyyy";
+                                DateFormat df = new SimpleDateFormat(pattern);
+                                Date today = Calendar.getInstance().getTime();
+                                String dataRegistro = df.format(today);
+                                act.aUsuario.clear();
+                                act.getaUsuario().add(new Usuario(nome, peso, dataNasc, fatorSensibilidade, email, dataRegistro));
+                                Toast.makeText(act, "Feito o cadastro.", Toast.LENGTH_SHORT).show();
+                                act.tela_principal.CarregarTela();
+                            }
+                        });
+                        dialogo.show();
+                    }
                 }
-            }
-        });
-
+            });
+        }catch (RuntimeException re){
+            String erro = re.toString();
+            ExibeMensagem(erro);
+        }
     }
 
     public void ExibeMensagem(String mensagem) {
@@ -139,5 +153,28 @@ public class TelaCadastro {
         Dialogo.setMessage(mensagem);
         Dialogo.setNeutralButton("OK", null);
         Dialogo.show();
+    }
+
+    public boolean ValidaDataNasc(String dataNasc){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        int CurrentYear = Integer.parseInt(dateFormat.format(date));
+
+        int Day, Month, Year;
+        String[] InsertedDate = dataNasc.split("/");
+        Day = Integer.parseInt(InsertedDate[0]);
+        Month = Integer.parseInt(InsertedDate[1]);
+        Year = Integer.parseInt(InsertedDate[2]);
+
+        if(Day >= 32 && Day <= 0){
+            return false;
+        }
+        if(Month >= 13 && Month <= 0){
+            return false;
+        }
+        if(Year > CurrentYear){
+            return false;
+        }
+        return true;
     }
 }

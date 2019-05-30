@@ -1,6 +1,7 @@
 package calcinsulina.FMU.projetointegrado.View;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,7 +12,7 @@ public class TelaConfig {
 
     MainActivity act;
     TelaPrincipal tela_principal;
-    Button btnVoltar, btnAltCad, btnAbout, btnDelete;
+    Button btnVoltar, btnAltCad, btnAbout, btnDelete, btnEULA;
 
     public TelaConfig(MainActivity act, TelaPrincipal tela_principal) {
         this.act = act;
@@ -22,6 +23,7 @@ public class TelaConfig {
         act.setContentView(R.layout.tela_config);
         btnVoltar = act.findViewById(R.id.btnVoltar);
         btnAltCad = act.findViewById(R.id.btnAltCad);
+        btnEULA = act.findViewById(R.id.btnEULA);
         btnAbout = act.findViewById(R.id.btnAbout);
         btnDelete = act.findViewById(R.id.btnDelete);
 
@@ -47,6 +49,14 @@ public class TelaConfig {
             public void onClick(View v) {
                 act.tela_cadastro.telaAnterior = "TelaConfig";
                 act.tela_cadastro.CarregarTela();
+            }
+        });
+
+        btnEULA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(act, eula.class);
+                act.startActivity(intent);
             }
         });
 
