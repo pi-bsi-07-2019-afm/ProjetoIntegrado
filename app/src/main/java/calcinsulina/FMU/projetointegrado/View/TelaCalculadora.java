@@ -8,12 +8,16 @@ import android.widget.Toast;
 
 import calcinsulina.FMU.projetointegrado.R;
 
+import calcinsulina.FMU.projetointegrado.Model.Calculo;
+
 public class TelaCalculadora {
 
     MainActivity act;
     TelaPrincipal tela_principal;
-    Button btnCalcular,btnVoltarCalc;
+    Button btnCalcular,btnVoltarCalc,btnAdicionar,btnEditar;
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
+
+    Calculo objCalculo;
 
     //Futuramente este handler será retirado desta activity, ela só está presente para "concept"
     Handler handler = new Handler();
@@ -24,6 +28,10 @@ public class TelaCalculadora {
         this.tela_principal = tela_principal;
     }
 
+    public void setObjCalculo(Calculo objCalculo){
+        this.objCalculo = objCalculo;
+    }
+
     public void CarregarTela() {
         act.setContentView(R.layout.tela_calculo);
         btnCalcular = act.findViewById(R.id.btnCalcular);
@@ -32,6 +40,12 @@ public class TelaCalculadora {
         edCarboidrato = act.findViewById(R.id.edCarboidrato);
         edBolus = act.findViewById(R.id.edBolus);
         btnVoltarCalc = act.findViewById(R.id.btnVoltarCalc);
+        btnAdicionar = act.findViewById(R.id.btnAdicionar);
+        btnEditar = act.findViewById(R.id.btnEditar);
+
+        if(objCalculo != null){
+            setFormCalculadora();
+        }
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,5 +89,22 @@ public class TelaCalculadora {
             }
         });
 
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveObjCalculo();
+                act.tela_pesquisa.CarregarTela(objCalculo);
+            }
+        });
+
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveObjCalculo();
+                act.tela_selecionados.CarregarTela(objCalculo);
+            }
+        });
+
     }
+
 }

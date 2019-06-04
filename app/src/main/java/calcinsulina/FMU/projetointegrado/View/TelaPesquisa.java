@@ -3,12 +3,15 @@ package calcinsulina.FMU.projetointegrado.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
+import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaPesquisa {
@@ -16,6 +19,8 @@ public class TelaPesquisa {
     TextView txtPesquisa;
     ListView listaPesquisa;
     Button btnPesquisar, btnVoltar;
+
+    Calculo objCalculo;
 
 
     MainActivity act;
@@ -26,8 +31,8 @@ public class TelaPesquisa {
         this.telaAnterior = telaAnterior;
     }
 
-    public void CarregarTela(){
-
+    public void CarregarTela(final Calculo objCalculo){
+        this.objCalculo = objCalculo;
         act.setContentView(R.layout.tela_pesquisa);
 
         listaPesquisa = act.findViewById(R.id.listResults);
@@ -60,7 +65,8 @@ public class TelaPesquisa {
                     };
 
                     if (listResults.size() > 0){
-                        listaPesquisa.set
+                        ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_multiple_choice, listResults);
+                        listaPesquisa.setAdapter(arrayAdapter);
                     }else{
                         //Implementar mensagem "A busca não obteve resultados."
                     }
@@ -74,18 +80,22 @@ public class TelaPesquisa {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                act.tela_calculadora.setObjCalculo(objCalculo);
                 act.tela_calculadora.CarregarTela();
             }
         });
 
-        listaPesquisa.setOnClickListener(new View.OnClickListener() {
+        listaPesquisa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                int idx = listaPesquisa.getSelectedItemPosition();
-                Alimento x = act.getaAlimento().get(idx);
-                act.tela_detalhe.CarregarTela(x);
+            public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
+                //Object clickItemObj = adapterView.getAdapter().getItem(index);
+                Object clickItemObj = adapterView.getAdapter().getItem(index);
+                if(clickItemObj != null) {
+                    act.tela_detalhe.CarregarTela(clickItemObj);
+                }
             }
         });
+
 
     }
 
