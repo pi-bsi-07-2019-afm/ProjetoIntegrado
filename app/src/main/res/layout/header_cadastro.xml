@@ -2,42 +2,38 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AEFFFF"
-    tools:context=".View.TelaCarregando">
+    android:background="#0071bc"
+    tools:context=".View.HeaderCadastro">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/AD"
-        android:layout_width="382dp"
-        android:layout_height="431dp"
+    <TextView
+        android:id="@+id/txtCadastro"
+        android:layout_width="318dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:background="#FF0000"
-        android:text="AD"
+        android:gravity="center"
+        android:text="Cadastro de usuário"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <include
+        android:id="@+id/include"
+        layout="@layout/tela_cadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AD" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCadastro" />
 
 </android.support.constraint.ConstraintLayout>

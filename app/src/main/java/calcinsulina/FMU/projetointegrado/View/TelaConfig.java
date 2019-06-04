@@ -12,7 +12,7 @@ public class TelaConfig {
 
     MainActivity act;
     TelaPrincipal tela_principal;
-    Button btnVoltar, btnAltCad, btnAbout, btnDelete, btnEULA;
+    Button btnVoltar, btnAltCad, btnAbout, btnDelete, btnEULA, btnAltCalc;
 
     public TelaConfig(MainActivity act, TelaPrincipal tela_principal) {
         this.act = act;
@@ -21,16 +21,26 @@ public class TelaConfig {
 
     public void CarregarTela() {
         act.setContentView(R.layout.tela_config);
-        btnVoltar = act.findViewById(R.id.btnVoltar);
-        btnAltCad = act.findViewById(R.id.btnAltCad);
-        btnEULA = act.findViewById(R.id.btnEULA);
-        btnAbout = act.findViewById(R.id.btnAbout);
-        btnDelete = act.findViewById(R.id.btnDelete);
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
+        btnAltCad = act.findViewById(R.id.btnAltCad);
+        btnAltCalc = act.findViewById(R.id.btnAltCalc);
+        btnDelete = act.findViewById(R.id.btnDelete);
+        btnVoltar = act.findViewById(R.id.btnVoltar);
+        btnAbout = act.findViewById(R.id.btnAbout);
+        btnEULA = act.findViewById(R.id.btnEULA);
+
+        btnAltCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                act.tela_principal.CarregarTela();
+                act.tela_cadastro.telaAnterior = "TelaConfig";
+                act.tela_cadastro.CarregarTela();
+            }
+        });
+
+        btnAltCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -44,19 +54,10 @@ public class TelaConfig {
             }
         });
 
-        btnAltCad.setOnClickListener(new View.OnClickListener() {
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                act.tela_cadastro.telaAnterior = "TelaConfig";
-                act.tela_cadastro.CarregarTela();
-            }
-        });
-
-        btnEULA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(act, eula.class);
-                act.startActivity(intent);
+                act.tela_principal.CarregarTela();
             }
         });
 
@@ -74,7 +75,14 @@ public class TelaConfig {
                         "\nOrientação por Paulo Sérgio Rangel Garcia." );
                 Dialogo.setNeutralButton("OK", null);
                 Dialogo.show();
+            }
+        });
 
+        btnEULA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(act, TelaEULA.class);
+                act.startActivity(intent);
             }
         });
     }

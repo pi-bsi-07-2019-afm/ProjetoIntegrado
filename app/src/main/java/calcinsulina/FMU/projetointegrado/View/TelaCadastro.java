@@ -1,10 +1,13 @@
 package calcinsulina.FMU.projetointegrado.View;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,8 +32,10 @@ public class TelaCadastro {
     Button btnCadastrar;
     EditText edNome, edPeso, edSensibFator, edDataNasc, edEmail;
     CheckBox cbEULA;
-    ImageView FatorSensibilHint, EULAread;
-    String telaAnterior = "MainActivity";
+    ImageView FatorSensibilHint, EULAread, btnCalendar;
+    CalendarView calendar;
+    String telaAnterior = "MainActivity", dataNasc = "-";
+
 
     public TelaCadastro(MainActivity act, String telaAnterior) {
         this.act = act;
@@ -38,7 +43,7 @@ public class TelaCadastro {
     }
 
     public void CarregarTela() {
-        act.setContentView(R.layout.tela_cadastro);
+        act.setContentView(R.layout.header_cadastro);
         txtCad = act.findViewById(R.id.txtCadastro);
         btnCadastrar = act.findViewById(R.id.btnCadastrar);
         edNome = act.findViewById(R.id.edNome);
@@ -49,6 +54,7 @@ public class TelaCadastro {
         edDataNasc = act.findViewById(R.id.edDataNasc);
         FatorSensibilHint = act.findViewById(R.id.fatorSensibilHint);
         EULAread = act.findViewById(R.id.EULARead);
+        calendar = act.findViewById(R.id.calendarView);
 
         if (telaAnterior.equalsIgnoreCase("TelaConfig")) {
             txtCad.setText("Alterar Cadastro");
@@ -64,10 +70,18 @@ public class TelaCadastro {
             cbEULA.setVisibility(View.GONE);
             EULAread.setVisibility(View.GONE);
         }
+//
+//        SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
+//        MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
+//        edDataNasc.addTextChangedListener(maskDataNasc);
 
-        SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
-        MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
-        edDataNasc.addTextChangedListener(maskDataNasc);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                edDataNasc.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+            }
+        });
+
 
         FatorSensibilHint.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +93,7 @@ public class TelaCadastro {
         EULAread.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(act, eula.class);
+                Intent intent = new Intent(act, TelaEULA.class);
                 act.startActivity(intent);
             }
         });
@@ -96,13 +110,8 @@ public class TelaCadastro {
                     if (edPeso.getText().length() == 0) {
                         msgErro = msgErro.concat("\n• Informar o peso corretamente.");
                     }
-                    if (edDataNasc.getText().length() == 0 || edDataNasc.length() < 10) {
+                    if (edDataNasc.getText().length() == 0) {
                         msgErro = msgErro.concat("\n• Informar a data de nascimento.");
-                    }else{
-                        Boolean dataNascValidada = ValidaDataNasc(edDataNasc.getText().toString());
-                        if (!dataNascValidada){
-                            msgErro = msgErro.concat("\n• Data de nascimento inválida");
-                        }
                     }
                     if (edSensibFator.getText().length() == 0) {
                         msgErro = msgErro.concat("\n• Informar o fator de sensibilidade.");
@@ -160,21 +169,29 @@ public class TelaCadastro {
         Date date = new Date();
         int CurrentYear = Integer.parseInt(dateFormat.format(date));
 
-        int Day, Month, Year;
+        int Day, Month, Year, valid = 0;
         String[] InsertedDate = dataNasc.split("/");
         Day = Integer.parseInt(InsertedDate[0]);
         Month = Integer.parseInt(InsertedDate[1]);
         Year = Integer.parseInt(InsertedDate[2]);
 
         if(Day >= 32 && Day <= 0){
-            return false;
+            valid = 1;
+        }else if(Day >= 29 && Month == 2 && Year % 100 == 0 && Year % 4 != 0){
+            valid = 1;
+        }else if(Day >= 30 && Month == 2 && Year % 100 != 0 && Year % 4 == 0){
+            valid = 1;
         }
         if(Month >= 13 && Month <= 0){
-            return false;
+            valid = 1;
         }
-        if(Year > CurrentYear){
-            return false;
+        if(Year > CurrentYear && Year <= 0){
+            valid = 1;
         }
-        return true;
+        if(valid == 1){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

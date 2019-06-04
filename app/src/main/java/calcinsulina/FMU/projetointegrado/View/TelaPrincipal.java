@@ -53,7 +53,7 @@ public class TelaPrincipal {
             public void onClick(View view) {
                 btnReport.getLayoutParams().width = 120;
                 btnReport.getLayoutParams().height = 130;
-//                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
             }
         });
 

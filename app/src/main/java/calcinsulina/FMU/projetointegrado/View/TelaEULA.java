@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import calcinsulina.FMU.projetointegrado.R;
 
-public class eula extends AppCompatActivity {
+public class TelaEULA extends AppCompatActivity {
 
     Button btnVoltar;
 

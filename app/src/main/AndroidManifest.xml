@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.eula"
+            android:name=".View.TelaEULA"
             android:label="@string/title_activity_eula"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.TelaCalculadora" />
