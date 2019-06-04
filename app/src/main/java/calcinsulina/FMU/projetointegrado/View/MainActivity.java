@@ -24,6 +24,10 @@ public class MainActivity extends Activity {
     TelaCarregando tela_carregando;
     TelaResultado tela_resultado;
     SplashScreen splashScreen;
+    TelaPesquisa tela_pesquisa;
+    TelaDetalhe tela_detalhe;
+    TelaSelecionados tela_selecionados;
+
     private DAO dao;
 
     @Override
@@ -41,6 +45,9 @@ public class MainActivity extends Activity {
         tela_principal.setTelaConfig(tela_config);
         tela_principal.setTelaCarregando(tela_carregando);
         tela_principal.setSplashScreen(splashScreen);
+        tela_pesquisa = new TelaPesquisa(this,"TelaCalculadora");
+        tela_detalhe = new TelaDetalhe(this,"TelaPesquisa");
+        tela_selecionados = new TelaSelecionados(this,"TelaCalculadora");
 
         dao = new DAO(this);
         //Em caso de erro de tabela criada
