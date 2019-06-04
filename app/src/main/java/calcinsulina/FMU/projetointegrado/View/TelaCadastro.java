@@ -54,7 +54,7 @@ public class TelaCadastro {
         edDataNasc = act.findViewById(R.id.edDataNasc);
         FatorSensibilHint = act.findViewById(R.id.fatorSensibilHint);
         EULAread = act.findViewById(R.id.EULARead);
-        calendar = act.findViewById(R.id.calendarView);
+//        calendar = act.findViewById(R.id.calendarView);
 
         if (telaAnterior.equalsIgnoreCase("TelaConfig")) {
             txtCad.setText("Alterar Cadastro");
@@ -70,17 +70,17 @@ public class TelaCadastro {
             cbEULA.setVisibility(View.GONE);
             EULAread.setVisibility(View.GONE);
         }
-//
-//        SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
-//        MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
-//        edDataNasc.addTextChangedListener(maskDataNasc);
 
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                edDataNasc.setText(dayOfMonth + "/" + (month+1) + "/" + year);
-            }
-        });
+        SimpleMaskFormatter SMDataNasc = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher maskDataNasc = new MaskTextWatcher(edDataNasc, SMDataNasc);
+        edDataNasc.addTextChangedListener(maskDataNasc);
+
+//        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//            @Override
+//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+//                edDataNasc.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+//            }
+//        });
 
 
         FatorSensibilHint.setOnClickListener(new View.OnClickListener() {

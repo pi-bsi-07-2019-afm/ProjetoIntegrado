@@ -14,17 +14,17 @@
         android:background="#FFFFFF"
         android:minHeight="0dp">
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="314dp"
-            android:layout_height="301dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />
+        <!--<CalendarView-->
+            <!--android:id="@+id/calendarView"-->
+            <!--android:layout_width="314dp"-->
+            <!--android:layout_height="301dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />-->
 
         <TextView
             android:id="@+id/txtNome"
@@ -161,6 +161,7 @@
             android:layout_height="44dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:ems="10"
@@ -171,7 +172,7 @@
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fatorSensibilHint"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />
 
         <EditText
             android:id="@+id/edEmail"
@@ -197,11 +198,12 @@
             android:id="@+id/fatorSensibilHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:contentDescription="TODO"
             android:src="@android:drawable/ic_menu_help"
             android:tint="#CB0001"
             app:layout_constraintStart_toEndOf="@+id/txtFSensibil"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            app:layout_constraintTop_toBottomOf="@+id/edDataNasc" />
 
         <ImageView
             android:id="@+id/EULARead"
