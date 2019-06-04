@@ -81,6 +81,7 @@ public class TelaPesquisa {
             @Override
             public void onClick(View v) {
                 act.tela_calculadora.setObjCalculo(objCalculo);
+                act.tela_calculadora.flagInserirDadosNoForm = true;
                 act.tela_calculadora.CarregarTela();
             }
         });

@@ -37,6 +37,7 @@ public class TelaPrincipal {
             public void onClick(View view) {
                 btnCalc.getLayoutParams().width = 200;
                 btnCalc.getLayoutParams().height = 230;
+                act.tela_calculadora.flagInserirDadosNoForm = false;
                 act.tela_calculadora.CarregarTela();
             }
         });

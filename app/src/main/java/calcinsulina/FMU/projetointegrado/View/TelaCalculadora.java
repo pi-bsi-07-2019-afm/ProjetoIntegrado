@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import calcinsulina.FMU.projetointegrado.Model.Alimento;
 import calcinsulina.FMU.projetointegrado.R;
 
 import calcinsulina.FMU.projetointegrado.Model.Calculo;
@@ -18,6 +19,7 @@ public class TelaCalculadora {
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
 
     Calculo objCalculo;
+    public boolean flagInserirDadosNoForm;
 
     //Futuramente este handler será retirado desta activity, ela só está presente para "concept"
     Handler handler = new Handler();
@@ -32,6 +34,45 @@ public class TelaCalculadora {
         this.objCalculo = objCalculo;
     }
 
+    public void saveObjCalculo(){
+        Double GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
+        try {
+            GlicemiaAlvo = Double.parseDouble(edGlicemAlvo.getText().toString());
+        }catch (Exception x){
+            GlicemiaAlvo = 0.0;
+        }
+        try {
+            GlicemiaObtida = Double.parseDouble(edGlicemObt.getText().toString());
+        }catch (Exception x){
+            GlicemiaObtida = 0.0;
+        }
+        try {
+            Carboidrato = Double.parseDouble(edCarboidrato.getText().toString());
+        }catch (Exception x){
+            Carboidrato = 0.0;
+        }
+        try {
+            Bolus = Double.parseDouble(edBolus.getText().toString());
+        }catch (Exception x){
+            Bolus = 0.0;
+        }
+        objCalculo.setGlicemiaAlvo(GlicemiaAlvo);
+        objCalculo.setGlicemiaObtida(GlicemiaObtida);
+        objCalculo.setTotalCarb(Carboidrato);
+        objCalculo.setQuantCarbPorUnidInsulina(Bolus);
+    }
+
+    public void setFormCalculadora(){
+        edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
+        edGlicemObt = act.findViewById(R.id.edGlicObt);
+        edCarboidrato = act.findViewById(R.id.edCarboidrato);
+        edBolus = act.findViewById(R.id.edBolus);
+        edGlicemAlvo.setText(String.valueOf(objCalculo.getGlicemiaAlvo()));
+        edGlicemObt.setText(String.valueOf(objCalculo.getGlicemiaObtida()));
+        edCarboidrato.setText(String.valueOf(objCalculo.getTotalCarb()));
+        edBolus.setText(String.valueOf(objCalculo.getQuantCarbPorUnidInsulina()));
+    }
+
     public void CarregarTela() {
         act.setContentView(R.layout.tela_calculo);
         btnCalcular = act.findViewById(R.id.btnCalcular);
@@ -43,7 +84,7 @@ public class TelaCalculadora {
         btnAdicionar = act.findViewById(R.id.btnAdicionar);
         btnEditar = act.findViewById(R.id.btnEditar);
 
-        if(objCalculo != null){
+        if(flagInserirDadosNoForm){
             setFormCalculadora();
         }
 
@@ -104,7 +145,6 @@ public class TelaCalculadora {
                 act.tela_selecionados.CarregarTela(objCalculo);
             }
         });
-
     }
 
 }
