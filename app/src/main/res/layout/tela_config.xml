@@ -47,20 +47,20 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAbout" />
 
     <Button
         android:id="@+id/btnAbout"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:background="@android:color/darker_gray"
         android:text="Sobre Nós"
         android:textAllCaps="true"
@@ -68,20 +68,21 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/btnEULA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVoltar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEULA" />
 
     <Button
         android:id="@+id/btnEULA"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:background="@android:color/darker_gray"
         android:text="Termos de Uso"
         android:textAllCaps="true"
@@ -90,8 +91,8 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnAbout"
-        app:layout_constraintTop_toBottomOf="@+id/btnVoltar" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAltCalc" />
 
     <Button
         android:id="@+id/btnAltCalc"
@@ -104,7 +105,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@android:color/holo_green_light"
-        android:text="Alterar Cálculo"
+        android:text="Alterar Cálculos"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -114,28 +115,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAltCad" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:background="#FF0000"
-        android:text="Deletar Cálculo"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAltCalc" />
 
     <TextView
         android:id="@+id/txtConfig"

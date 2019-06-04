@@ -53,6 +53,11 @@ public class MainActivity extends Activity {
         aTipoMedida = dao.recuperaTipoMedida();
         aUsuario = dao.recuperaUsuarios();
 
+        //Alimentos inclusos manualmente para fins de teste
+//        Alimento a1 = new Alimento("Arroz",1,"G","100","300","100");
+//        Alimento a2 = new Alimento("Feijão","Colher")
+
+
         splashScreen.CarregarTela();
 
     }
