@@ -6,6 +6,7 @@ import android.widget.TextView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,11 +69,11 @@ public class TelaPesquisa {
                         ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_multiple_choice, listResults);
                         listaPesquisa.setAdapter(arrayAdapter);
                     }else{
-                        //Implementar mensagem "A busca não obteve resultados."
+                        Toast.makeText(act, "A Busca não obteve resultados.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{
-                    //Implementar mensagem "Por favor insira o nome do alimento antes de pesquisar."
+                    Toast.makeText(act, "Por favor insira o nome do alimento antes de pesquisar.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

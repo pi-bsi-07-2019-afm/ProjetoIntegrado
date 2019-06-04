@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaSelecionados {
@@ -13,7 +14,7 @@ public class TelaSelecionados {
     Button btnVoltar, btnRemover;
 
 
-    public void CarregarTela(){
+    public void CarregarTela(Calculo x){
         act.setContentView(R.layout.tela_selecionados);
         listResults = act.findViewById(R.id.listResults);
         btnVoltar = act.findViewById(R.id.btnVoltar);

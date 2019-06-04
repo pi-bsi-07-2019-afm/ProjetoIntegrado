@@ -1,5 +1,6 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,6 +27,25 @@ public class TelaDetalhe {
         edDescDefault = act.findViewById(R.id.edDescDefault);
         edTotalGOuMlDefault = act.findViewById(R.id.edTotalGOuMlDefault);
 
+
+
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nomeAlimento = edNomeAlimento.getText().toString();
+                int tipoMedida = Integer.parseInt(edDescTipoMedida1.getText().toString());
+                double gOuMl = Double.parseDouble(edGOuMl.getText().toString());
+
+                act.getaAlimento().add(new Alimento());
+            }
+        });
+
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                act.tela_calculadora.CarregarTela();
+            }
+        });
     }
 
 }
