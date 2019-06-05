@@ -43,8 +43,17 @@ public class TelaDetalhe {
                     if (multiplicador != 0.0){
                         double carbASomar = objAlimento.getQuantCarb() * multiplicador;
                         int[] conjuntoAlimentos = objCalculo.getConjuntoAlimentos();
-                        int[] newConjuntoAlimentos = new int[]
-                        ;
+                        int[] newConjuntoAlimentos = new int[conjuntoAlimentos.length + 1];
+                        for (int i = 0; i < newConjuntoAlimentos.length; i++){
+                            if(i != newConjuntoAlimentos.length - 1){
+                                newConjuntoAlimentos[i] = conjuntoAlimentos[i];
+                            }else{
+                                newConjuntoAlimentos[i] = objAlimento.getId();
+                            }
+                        }
+                        objCalculo.setConjuntoAlimentos(newConjuntoAlimentos);
+
+
 
                     }else{
                         Toast.makeText(act, "O Multiplicador precisa ser diferente de zero.", Toast.LENGTH_SHORT).show();
