@@ -9,7 +9,6 @@ public class Calculo {
     private double glicemiaObtida;
     private int[] conjuntoAlimentos;
     private double[] conjuntoMultiplicadores;
-
     private double totalCarb;
     private int totalInsulina;
     private String dataRegistro;
@@ -110,6 +109,26 @@ public class Calculo {
             conjuntoAlimentosT[i] = Integer.getInteger(vetor[i]);
         }
         this.conjuntoAlimentos = conjuntoAlimentosT;
+    }
+
+    public String getStringConjuntoMultiplicadores(){
+        String retorno = "";
+        for (int i = 0; i < conjuntoMultiplicadores.length; i ++){
+            if (retorno != ""){
+                retorno += ",";
+            }
+            retorno += String.valueOf(conjuntoMultiplicadores[i]);
+        }
+        return retorno;
+    }
+
+    public void setConjuntoMultiplicadoresFromString(String s){
+        String[] vetor = s.split(",");
+        double[] conjuntoMultiplicadoresT = new double[vetor.length];
+        for (int i = 0; i < vetor.length; i++){
+            conjuntoMultiplicadoresT[i] = Integer.getInteger(vetor[i]);
+        }
+        this.conjuntoMultiplicadores = conjuntoMultiplicadoresT;
     }
 
     public double getGlicemiaObtida() {

@@ -38,8 +38,11 @@ public class DAO extends SQLiteOpenHelper {
     //CALCULO
     private static final String TABELA_CALCULO = "CALCULO";
     private static final String ID_CALC = "ID_CALC";
+    private static final String QUANT_CARB_UNID = "QUANT_CARB_UNID_INSULINA";
     private static final String GLICEMIA_ALVO = "GLIC_ALVO";
+    private static final String GLICEMIA_OBTIDA = "GLIC_OBT";
     private static final String CONJUNTO_ALIMENTOS = "CONJ_ALIMENTO";
+    private static final String CONJUNTO_MULTI = "CONJ_MULTIPLICADORES";
     private static final String TOTAL_CARB = "TOTAL_CARB";
     private static final String TOTAL_INSULINA = "TOTAL_INSULINA";
     private static final String DATA_REGISTRO_C = "DATA_REGISTRO";
@@ -79,8 +82,11 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USER);
         String CREATE_TABLE_CALC = "CREATE TABLE IF NOT EXISTS " + TABELA_CALCULO + " ( "
                 + ID_CALC + " INTEGER, "
+                + QUANT_CARB_UNID + " REAL,"
                 + GLICEMIA_ALVO + " REAL, "
+                + GLICEMIA_OBTIDA + "REAL, "
                 + CONJUNTO_ALIMENTOS + " TEXT, "
+                + CONJUNTO_MULTI + " TEXT, "
                 + TOTAL_CARB + " REAL, "
                 + TOTAL_INSULINA + " REAL, "
                 + DATA_REGISTRO_C + " REAL);";
@@ -167,7 +173,7 @@ public class DAO extends SQLiteOpenHelper {
 
     public List<Calculo> recuperaCalculo() {
         List<Calculo> array_Calc = new ArrayList<Calculo>();
-        String selectQuery = "SELECT " + ID_CALC + " , " + GLICEMIA_ALVO + " , " + CONJUNTO_ALIMENTOS + " , " + TOTAL_CARB + " , " + TOTAL_INSULINA + " , " + DATA_REGISTRO_C
+        String selectQuery = "SELECT " + ID_CALC + " , " + QUANT_CARB_UNID + " , " + GLICEMIA_ALVO + " , " + GLICEMIA_OBTIDA + " , " + CONJUNTO_ALIMENTOS + " , " + CONJUNTO_MULTI + " , " + TOTAL_CARB + " , " + TOTAL_INSULINA + " , " + DATA_REGISTRO_C
                 + " FROM " + TABELA_CALCULO;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -176,8 +182,11 @@ public class DAO extends SQLiteOpenHelper {
             do {
                 Calculo cl = new Calculo();
                 cl.setId(cursor.getInt(cursor.getColumnIndex(ID_CALC)));
+                cl.setQuantCarbPorUnidInsulina(cursor.getDouble(cursor.getColumnIndex(QUANT_CARB_UNID)));
                 cl.setGlicemiaAlvo(cursor.getDouble(cursor.getColumnIndex(GLICEMIA_ALVO)));
+                cl.setGlicemiaObtida(cursor.getDouble(cursor.getColumnIndex(GLICEMIA_OBTIDA)));
                 cl.setConjuntoAlimentosFromString(cursor.getString(cursor.getColumnIndex(CONJUNTO_ALIMENTOS)));
+                cl.setConjuntoMultiplicadoresFromString(cursor.getString(cursor.getColumnIndex(CONJUNTO_MULTI)));
                 cl.setTotalCarb(cursor.getDouble(cursor.getColumnIndex(TOTAL_CARB)));
                 cl.setTotalInsulina(cursor.getInt(cursor.getColumnIndex(TOTAL_INSULINA)));
                 cl.setDataRegistro(cursor.getString(cursor.getColumnIndex(DATA_REGISTRO_C)));
@@ -247,7 +256,9 @@ public class DAO extends SQLiteOpenHelper {
             valores.put(ID_CALC, calculo.get(i).getId());
             valores.put(QNT_CARB_G, calculo.get(i).getQuantCarbPorUnidInsulina());
             valores.put(GLICEMIA_ALVO, calculo.get(i).getGlicemiaAlvo());
+            valores.put(GLICEMIA_OBTIDA, calculo.get(i).getGlicemiaObtida());
             valores.put(CONJUNTO_ALIMENTOS, calculo.get(i).getStringConjuntoAlimentos());
+            valores.put(CONJUNTO_MULTI, calculo.get(i).getStringConjuntoMultiplicadores());
             valores.put(TOTAL_CARB, calculo.get(i).getTotalCarb());
             valores.put(TOTAL_INSULINA, calculo.get(i).getTotalInsulina());
             valores.put(DATA_REGISTRO_C, calculo.get(i).getDataRegistro());
