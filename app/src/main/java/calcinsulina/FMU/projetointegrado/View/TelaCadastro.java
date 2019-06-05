@@ -43,7 +43,8 @@ public class TelaCadastro {
     }
 
     public void CarregarTela() {
-        act.setContentView(R.layout.header_cadastro);
+        //act.setContentView(R.layout.header_cadastro);
+        act.setContentView(R.layout.tela_cadastro);
         txtCad = act.findViewById(R.id.txtCadastro);
         btnCadastrar = act.findViewById(R.id.btnCadastrar);
         edNome = act.findViewById(R.id.edNome);

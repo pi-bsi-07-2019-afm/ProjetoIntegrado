@@ -84,7 +84,7 @@ public class DAO extends SQLiteOpenHelper {
                 + ID_CALC + " INTEGER, "
                 + QUANT_CARB_UNID + " REAL,"
                 + GLICEMIA_ALVO + " REAL, "
-                + GLICEMIA_OBTIDA + "REAL, "
+                + GLICEMIA_OBTIDA + " REAL, "
                 + CONJUNTO_ALIMENTOS + " TEXT, "
                 + CONJUNTO_MULTI + " TEXT, "
                 + TOTAL_CARB + " REAL, "
