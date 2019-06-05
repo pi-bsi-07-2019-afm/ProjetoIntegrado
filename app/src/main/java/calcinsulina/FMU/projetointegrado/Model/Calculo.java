@@ -8,9 +8,19 @@ public class Calculo {
     private double glicemiaAlvo;
     private double glicemiaObtida;
     private int[] conjuntoAlimentos;
+    private double[] conjuntoMultiplicadores;
+
     private double totalCarb;
     private int totalInsulina;
     private String dataRegistro;
+
+    public double[] getConjuntoMultiplicadores() {
+        return conjuntoMultiplicadores;
+    }
+
+    public void setConjuntoMultiplicadores(double[] conjuntoMultiplicadores) {
+        this.conjuntoMultiplicadores = conjuntoMultiplicadores;
+    }
 
     public Calculo() {
 
