@@ -73,6 +73,10 @@ public class TelaCalculadora {
         edBolus.setText(String.valueOf(objCalculo.getQuantCarbPorUnidInsulina()));
     }
 
+    public void incrementaTotalCarboidrato(double carbASomar){
+        objCalculo.setTotalCarb(objCalculo.getTotalCarb() + carbASomar);
+    }
+
     public void CarregarTela() {
         act.setContentView(R.layout.tela_calculo);
         btnCalcular = act.findViewById(R.id.btnCalcular);

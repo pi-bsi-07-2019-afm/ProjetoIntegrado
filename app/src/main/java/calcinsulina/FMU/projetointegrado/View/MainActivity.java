@@ -59,12 +59,6 @@ public class MainActivity extends Activity {
         aCalculo = dao.recuperaCalculo();
         aTipoMedida = dao.recuperaTipoMedida();
         aUsuario = dao.recuperaUsuarios();
-
-        //Alimentos inclusos manualmente para fins de teste
-//        Alimento a1 = new Alimento("Arroz",1,"G","100","300","100");
-//        Alimento a2 = new Alimento("Feijão","Colher")
-
-
         splashScreen.CarregarTela();
 
     }
@@ -135,4 +129,14 @@ public class MainActivity extends Activity {
     public void dropBD() {
         dao.dropTables();
     }
+
+    public List<Alimento> getListaAlimentosByCalculo(Calculo objCalculo){
+        List<Alimento> retorno = new ArrayList<Alimento>();
+        int[] conjuntoIds = objCalculo.getConjuntoAlimentos();
+        for(int i = 0; i < conjuntoIds.length; i++){
+            retorno.add(aAlimento.get(conjuntoIds[i]-1));
+        }
+        return retorno;
+    }
+
 }

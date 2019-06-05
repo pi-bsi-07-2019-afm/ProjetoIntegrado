@@ -21,7 +21,7 @@ public class TelaPesquisa {
     ListView listaPesquisa;
     Button btnPesquisar, btnVoltar;
 
-    Calculo objCalculo;
+    Calculo objCalculo = new Calculo();
 
 
     MainActivity act;

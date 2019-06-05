@@ -22,10 +22,10 @@ public class TelaDetalhe {
             btnAdicionar = act.findViewById(R.id.btnAdicionar);
             btnVoltar = act.findViewById(R.id.btnVoltar);
             edGOuMl = act.findViewById(R.id.edGOuMl);
-            edTotalConsumido = act.findViewById(R.id.edTotalConsumido);
+            edTotalConsumido = act.findViewById(R.id.edMultiplicador);
             edNomeAlimento = act.findViewById(R.id.edNomeAlimento);
             edDescTipoMedida1 = act.findViewById(R.id.edDescTipoMedida1);
-            edDescTipoMedida2 = act.findViewById(R.id.edDescTipoMedida2);
+            edDescTipoMedida2 = act.findViewById(R.id.edDescTipoMedida);
             edDescDefault = act.findViewById(R.id.edDescDefault);
             edTotalGOuMlDefault = act.findViewById(R.id.edTotalGOuMlDefault);
 

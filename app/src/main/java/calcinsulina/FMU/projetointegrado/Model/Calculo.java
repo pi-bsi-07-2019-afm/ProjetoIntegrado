@@ -7,7 +7,7 @@ public class Calculo {
     private double quantCarbPorUnidInsulina;
     private double glicemiaAlvo;
     private double glicemiaObtida;
-    private Alimento[] conjuntoAlimentos;
+    private int[] conjuntoAlimentos;
     private double totalCarb;
     private int totalInsulina;
     private String dataRegistro;
@@ -50,11 +50,11 @@ public class Calculo {
         this.glicemiaAlvo = glicemiaAlvo;
     }
 
-    public Alimento[] getConjuntoAlimentos() {
+    public int[] getConjuntoAlimentos() {
         return conjuntoAlimentos;
     }
 
-    public void setConjuntoAlimentos(Alimento[] conjuntoAlimentos) {
+    public void setConjuntoAlimentos(int[] conjuntoAlimentos) {
         this.conjuntoAlimentos = conjuntoAlimentos;
     }
 
