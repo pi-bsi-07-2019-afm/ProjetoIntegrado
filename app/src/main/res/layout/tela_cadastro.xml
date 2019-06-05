@@ -8,7 +8,7 @@
     tools:context=".View.TelaCadastro">
 
     <TextView
-        android:id="@+id/txtCalculo2"
+        android:id="@+id/txtCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -215,7 +215,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtNome"
-        app:layout_constraintTop_toBottomOf="@+id/txtCalculo2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCadastro" />
 
     <EditText
         android:id="@+id/edDataNasc"
@@ -229,9 +229,9 @@
         android:ems="10"
         android:gravity="center"
         android:importantForAutofill="no"
-        android:inputType="date"
+        android:inputType="date|number"
         android:maxLength="10"
-        android:singleLine="true"
+        android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtDtNasc"
         app:layout_constraintTop_toBottomOf="@+id/edEmail" />

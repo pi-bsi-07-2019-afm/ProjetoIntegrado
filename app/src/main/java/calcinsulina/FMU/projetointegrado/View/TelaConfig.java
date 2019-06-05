@@ -43,7 +43,7 @@ public class TelaConfig {
             }
         });
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
+/*        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //act.dropBD();
@@ -51,7 +51,7 @@ public class TelaConfig {
                 Toast toast = Toast.makeText(act.getApplicationContext(), "Banco excluído. Feche o aplicativo.", Toast.LENGTH_LONG);
                 toast.show();
             }
-        });
+        });*/
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
