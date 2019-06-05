@@ -6,10 +6,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
-import calcinsulina.FMU.projetointegrado.R;
-
-import calcinsulina.FMU.projetointegrado.Model.Alimento;
 import calcinsulina.FMU.projetointegrado.Model.Calculo;
+import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaDetalhe {
 
@@ -40,25 +38,37 @@ public class TelaDetalhe {
             public void onClick(View v) {
                 try {
                     double multiplicador = Double.valueOf(edMultiplicador.getText().toString());
-                    if (multiplicador != 0.0){
+                    if (multiplicador != 0.0) {
                         double carbASomar = objAlimento.getQuantCarb() * multiplicador;
                         int[] conjuntoAlimentos = objCalculo.getConjuntoAlimentos();
+                        double[] conjuntoMultiplicadores = objCalculo.getConjuntoMultiplicadores();
                         int[] newConjuntoAlimentos = new int[conjuntoAlimentos.length + 1];
-                        for (int i = 0; i < newConjuntoAlimentos.length; i++){
-                            if(i != newConjuntoAlimentos.length - 1){
+                        double[] newConjuntoMultiplicadores = new double[conjuntoMultiplicadores.length + 1];
+                        for (int i = 0; i < newConjuntoAlimentos.length; i++) {
+                            if (i != newConjuntoAlimentos.length - 1) {
                                 newConjuntoAlimentos[i] = conjuntoAlimentos[i];
-                            }else{
+                            } else {
                                 newConjuntoAlimentos[i] = objAlimento.getId();
                             }
                         }
                         objCalculo.setConjuntoAlimentos(newConjuntoAlimentos);
+                        for (int i = 0; i < newConjuntoMultiplicadores.length; i++) {
+                            if (i != newConjuntoMultiplicadores.length - 1) {
+                                newConjuntoMultiplicadores[i] = conjuntoAlimentos[i];
+                            } else {
+                                newConjuntoMultiplicadores[i] = multiplicador;
+                            }
+                        }
+                        objCalculo.setConjuntoMultiplicadores(newConjuntoMultiplicadores);
+                        objCalculo.setTotalCarb(objCalculo.getTotalCarb() + carbASomar);
+                        act.tela_calculadora.setObjCalculo(objCalculo);
+                        act.tela_calculadora.flagInserirDadosNoForm = true;
+                        act.tela_calculadora.CarregarTela();
 
-
-
-                    }else{
+                    } else {
                         Toast.makeText(act, "O Multiplicador precisa ser diferente de zero.", Toast.LENGTH_SHORT).show();
                     }
-                }catch (RuntimeException e){
+                } catch (RuntimeException e) {
                     Toast.makeText(act, "OPS! Algo deu errado. Por favor reinicie o App", Toast.LENGTH_SHORT).show();
                 }
             }
