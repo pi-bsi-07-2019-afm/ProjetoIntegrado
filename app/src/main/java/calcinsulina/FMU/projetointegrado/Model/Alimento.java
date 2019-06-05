@@ -4,7 +4,7 @@ public class Alimento {
 
     private int id;
     private String nome;
-    private int tipoMedida;
+    private String tipoMedida;
     private double gOuMl;
     private double quantCarb;
     private double calorias;
@@ -13,7 +13,8 @@ public class Alimento {
     public Alimento(){
     }
 
-    public Alimento(String nome, int tipoMedida, double gOuMl, double quantCarb, double calorias, double quantCarbPorG) {
+    public Alimento(int id, String nome, String tipoMedida, double gOuMl, double quantCarb, double calorias, double quantCarbPorG) {
+        this.id = id;
         this.nome = nome;
         this.tipoMedida = tipoMedida;
         this.gOuMl = gOuMl;
@@ -38,11 +39,11 @@ public class Alimento {
         this.nome = nome;
     }
 
-    public int getTipoMedida() {
+    public String getTipoMedida() {
         return tipoMedida;
     }
 
-    public void setTipoMedida(int tipoMedida) {
+    public void setTipoMedida(String tipoMedida) {
         this.tipoMedida = tipoMedida;
     }
 
