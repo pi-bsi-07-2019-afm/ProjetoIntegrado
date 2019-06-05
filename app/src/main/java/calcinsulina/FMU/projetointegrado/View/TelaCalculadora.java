@@ -34,31 +34,19 @@ public class TelaCalculadora {
     }
 
     public void saveObjCalculo(){
-        Double GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
+        double GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
         try {
-            GlicemiaAlvo = Double.parseDouble(edGlicemAlvo.getText().toString());
+            GlicemiaAlvo = act.getDoubleFromEd(edGlicemAlvo.getText().toString());
+            GlicemiaObtida = act.getDoubleFromEd(edGlicemObt.getText().toString());
+            Carboidrato = act.getDoubleFromEd(edCarboidrato.getText().toString());
+            Bolus = act.getDoubleFromEd(edBolus.getText().toString());
+            objCalculo.setGlicemiaAlvo(GlicemiaAlvo);
+            objCalculo.setGlicemiaObtida(GlicemiaObtida);
+            objCalculo.setTotalCarb(Carboidrato);
+            objCalculo.setQuantCarbPorUnidInsulina(Bolus);
         }catch (Exception x){
-            GlicemiaAlvo = 0.0;
+            //dummy;
         }
-        try {
-            GlicemiaObtida = Double.parseDouble(edGlicemObt.getText().toString());
-        }catch (Exception x){
-            GlicemiaObtida = 0.0;
-        }
-        try {
-            Carboidrato = Double.parseDouble(edCarboidrato.getText().toString());
-        }catch (Exception x){
-            Carboidrato = 0.0;
-        }
-        try {
-            Bolus = Double.parseDouble(edBolus.getText().toString());
-        }catch (Exception x){
-            Bolus = 0.0;
-        }
-        objCalculo.setGlicemiaAlvo(GlicemiaAlvo);
-        objCalculo.setGlicemiaObtida(GlicemiaObtida);
-        objCalculo.setTotalCarb(Carboidrato);
-        objCalculo.setQuantCarbPorUnidInsulina(Bolus);
     }
 
     public void setFormCalculadora(){
@@ -66,10 +54,15 @@ public class TelaCalculadora {
         edGlicemObt = act.findViewById(R.id.edGlicObt);
         edCarboidrato = act.findViewById(R.id.edCarboidratos);
         edBolus = act.findViewById(R.id.edBolus);
-        edGlicemAlvo.setText(String.valueOf(objCalculo.getGlicemiaAlvo()));
-        edGlicemObt.setText(String.valueOf(objCalculo.getGlicemiaObtida()));
-        edCarboidrato.setText(String.valueOf(objCalculo.getTotalCarb()));
-        edBolus.setText(String.valueOf(objCalculo.getQuantCarbPorUnidInsulina()));
+        try {
+            edGlicemAlvo.setText(act.getStringFromObjPropDouble(objCalculo.getGlicemiaAlvo()));
+            edGlicemObt.setText(act.getStringFromObjPropDouble(objCalculo.getGlicemiaObtida()));
+            edCarboidrato.setText(String.valueOf(objCalculo.getTotalCarb()));
+            edBolus.setText(act.getStringFromObjPropDouble(objCalculo.getQuantCarbPorUnidInsulina()));
+        }catch (Exception e){
+            //dummy;
+        }
+
     }
 
     public void incrementaTotalCarboidrato(double carbASomar){
@@ -89,6 +82,10 @@ public class TelaCalculadora {
 
         if(flagInserirDadosNoForm){
             setFormCalculadora();
+        }else{
+            int novoId = act.getaCalculo().size()+1;
+            objCalculo = new Calculo(novoId,0.0,0.0,0.0,new int[0],new double[0],0.0,0);
+            this.edCarboidrato.setText(String.valueOf(objCalculo.getTotalCarb()));
         }
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {

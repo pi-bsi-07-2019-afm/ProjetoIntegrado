@@ -25,10 +25,13 @@ public class Calculo {
 
     }
 
-    public Calculo(double quantCarbPorUnidInsulina, double glicemiaAlvo, int[] conjuntoAlimentos, double totalCarb, int totalInsulina) {
+    public Calculo(int id, double quantCarbPorUnidInsulina, double glicemiaAlvo, double glicemiaObtida, int[] conjuntoAlimentos, double[] conjuntoMultiplicadores, double totalCarb, int totalInsulina) {
+        this.id = id;
+        this.glicemiaObtida = glicemiaObtida;
         this.quantCarbPorUnidInsulina = quantCarbPorUnidInsulina;
         this.glicemiaAlvo = glicemiaAlvo;
         this.conjuntoAlimentos = conjuntoAlimentos;
+        this.conjuntoMultiplicadores = conjuntoMultiplicadores;
         this.totalCarb = totalCarb;
         this.totalInsulina = totalInsulina;
         Date obj = new Date();

@@ -142,6 +142,7 @@ public class MainActivity extends Activity {
         }
         return retorno;
     }
+
     private void populaAlimento(){
         Alimento a1 = new Alimento(1,"Abacate (picado)","colher de sopa cheia",45,3,79,0.07); aAlimento.add(a1);
         Alimento a2 = new Alimento(2,"Abacaxi","fatia média",75,10,44,0.13); aAlimento.add(a2);
@@ -1477,5 +1478,21 @@ public class MainActivity extends Activity {
         Alimento a1332 = new Alimento(1332,"Whopper® duplo com queijo (Burguer King®)","unidade",0,52,978,0); aAlimento.add(a1332);
         Alimento a1333 = new Alimento(1333,"Xinxim de galinha","porção",150,1,358,0.01); aAlimento.add(a1333);
         Alimento a1334 = new Alimento(1334,"Yakult®","unidade",80,11,50,0.14); aAlimento.add(a1334);
+    }
+
+    public double getDoubleFromEd(String str){
+        double retorno = 0.0;
+        if (str.length() != 0){
+            retorno = Double.parseDouble(str);
+        }
+        return retorno;
+    }
+
+    public String getStringFromObjPropDouble(double dbl){
+        String retorno = "";
+        if (dbl != 0.0){
+            retorno = String.valueOf(dbl);
+        }
+        return retorno;
     }
 }

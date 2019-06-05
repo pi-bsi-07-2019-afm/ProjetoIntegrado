@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +21,13 @@ public class TelaPesquisa {
     TextView txtPesquisa;
     ListView listaPesquisa;
     Button btnPesquisar, btnVoltar;
+    EditText edPesquisa;
 
     Calculo objCalculo = new Calculo();
 
     MainActivity act;
     String telaAnterior = "TelaCalculadora";
+    List<Alimento> listResultsSet;
 
     public TelaPesquisa(MainActivity act, String telaAnterior) {
         this.act = act;
@@ -38,6 +41,10 @@ public class TelaPesquisa {
         listaPesquisa = act.findViewById(R.id.listResults);
         btnPesquisar = act.findViewById(R.id.btnPesquisar);
         btnVoltar = act.findViewById(R.id.btnVoltar);
+        edPesquisa = act.findViewById(R.id.edPesquisa);
+        final List<String> listaListView = new ArrayList<String>();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, listaListView);
+        listaPesquisa.setAdapter(arrayAdapter);
         listaPesquisa.clearAnimation();
 
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
@@ -45,18 +52,22 @@ public class TelaPesquisa {
             public void onClick(View v) {
                 List<Alimento> listSearch = act.getaAlimento();
                 List<Alimento> listResults = new ArrayList<Alimento>();
-                String[] listArgs = txtPesquisa.getText().toString().split(" ");
+                String conteudoBuscar = edPesquisa.getText().toString();
+                String[] listArgs = new String[0];
+                if (conteudoBuscar.length() != 0){
+                    listArgs = conteudoBuscar.split(" ");
+                }
                 if (listArgs.length > 0) {
                     for (int i = 0; i < listSearch.size(); i++) {
                         for (int j = 0; j < listArgs.length; j++) {
                             if (listSearch.get(i).getNome().indexOf(listArgs[j]) != -1) {
                                 boolean flagIsRepeated = false;
-                                for (int k = 0; k < listSearch.size(); k++) {
-                                    if (listSearch.get(i).equals(listResults.get(k))) {
-                                        flagIsRepeated = true;
-                                        break;
-                                    }
-                                }
+//                                for (int k = 0; k < listSearch.size(); k++) {
+//                                    if (listSearch.get(k).equals(listResults.get(k))) {
+//                                        flagIsRepeated = true;
+//                                        break;
+//                                    }
+//                                }
                                 if (!flagIsRepeated) {
                                     listResults.add(listSearch.get(i));
                                 }
@@ -66,8 +77,11 @@ public class TelaPesquisa {
                     ;
 
                     if (listResults.size() > 0) {
-                        ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_multiple_choice, listResults);
-                        listaPesquisa.setAdapter(arrayAdapter);
+                        for (int i = 0; i < listResults.size(); i++){
+                            listaListView.clear();
+                            listaListView.add(listResults.get(i).getNome());
+                        }
+                        listResultsSet = listResults;
                     } else {
                         Toast.makeText(act, "A Busca não obteve resultados.", Toast.LENGTH_SHORT).show();
                     }
