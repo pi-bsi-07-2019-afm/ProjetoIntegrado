@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import calcinsulina.FMU.projetointegrado.Model.Alimento;
 import calcinsulina.FMU.projetointegrado.R;
 
 import calcinsulina.FMU.projetointegrado.Model.Calculo;
@@ -65,7 +64,7 @@ public class TelaCalculadora {
     public void setFormCalculadora(){
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
-        edCarboidrato = act.findViewById(R.id.edCarboidrato);
+        edCarboidrato = act.findViewById(R.id.edCarboidratos);
         edBolus = act.findViewById(R.id.edBolus);
         edGlicemAlvo.setText(String.valueOf(objCalculo.getGlicemiaAlvo()));
         edGlicemObt.setText(String.valueOf(objCalculo.getGlicemiaObtida()));
@@ -82,7 +81,7 @@ public class TelaCalculadora {
         btnCalcular = act.findViewById(R.id.btnCalcular);
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
-        edCarboidrato = act.findViewById(R.id.edCarboidrato);
+        edCarboidrato = act.findViewById(R.id.edCarboidratos);
         edBolus = act.findViewById(R.id.edBolus);
         btnVoltarCalc = act.findViewById(R.id.btnVoltarCalc);
         btnAdicionar = act.findViewById(R.id.btnAdicionar);

@@ -93,7 +93,7 @@ public class TelaPesquisa {
                 //Object clickItemObj = adapterView.getAdapter().getItem(index);
                 Object clickItemObj = adapterView.getAdapter().getItem(index);
                 if(clickItemObj != null) {
-                    act.tela_detalhe.CarregarTela(clickItemObj);
+                    act.tela_detalhe.CarregarTela(clickItemObj,objCalculo);
                 }
             }
         });

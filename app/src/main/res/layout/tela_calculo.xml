@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/edCarboidrato"
+        android:id="@+id/edCarboidratos"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -219,8 +219,8 @@
         android:text="Total Carboidratos:"
         android:textSize="18dp"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintEnd_toStartOf="@+id/edCarboidrato"
-        app:layout_constraintTop_toTopOf="@+id/edCarboidrato" />
+        app:layout_constraintEnd_toStartOf="@+id/edCarboidratos"
+        app:layout_constraintTop_toTopOf="@+id/edCarboidratos" />
 
     <TextView
         android:id="@+id/txtBolus"

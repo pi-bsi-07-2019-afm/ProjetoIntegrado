@@ -62,7 +62,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa6" />
+        app:layout_constraintTop_toBottomOf="@+id/edLblMultiplicador" />
 
     <EditText
         android:id="@+id/edNomeAlimento"
@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa3" />
+        app:layout_constraintTop_toBottomOf="@+id/edLblAlimento" />
 
     <EditText
         android:id="@+id/edDescTipoMedida"
@@ -102,10 +102,10 @@
         android:text="placeholder"
         android:textColor="#111010"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa6" />
+        app:layout_constraintTop_toBottomOf="@+id/edLblMultiplicador" />
 
     <TextView
-        android:id="@+id/edPesquisa2"
+        android:id="@+id/edTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.037" />
 
     <TextView
-        android:id="@+id/edPesquisa3"
+        android:id="@+id/edLblAlimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -145,11 +145,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="@+id/edNomeAlimento"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa2"
+        app:layout_constraintTop_toBottomOf="@+id/edTitulo"
         app:layout_constraintVertical_bias="0.053" />
 
     <TextView
-        android:id="@+id/edPesquisa4"
+        android:id="@+id/edLblCarboidrato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -162,16 +162,16 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edPesquisa9"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa10" />
+        app:layout_constraintStart_toEndOf="@+id/edCarboidratos"
+        app:layout_constraintTop_toBottomOf="@+id/edLblGouMl" />
 
     <TextView
-        android:id="@+id/edPesquisa10"
+        android:id="@+id/edLblGouMl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:gravity="center|center_horizontal"
         android:text="Total em (g) ou (ml)"
@@ -179,56 +179,73 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edPesquisa5"
+        app:layout_constraintStart_toEndOf="@+id/edGouMl"
         app:layout_constraintTop_toBottomOf="@+id/edNomeAlimento" />
 
     <TextView
-        android:id="@+id/edPesquisa8"
+        android:id="@+id/edCalorias"
         android:layout_width="52dp"
         android:layout_height="33dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="center|center_horizontal"
         android:text="Y"
         android:textColor="#3C3A3A"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa9"
-        tools:layout_editor_absoluteX="98dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edCarboidratos" />
 
     <TextView
-        android:id="@+id/edPesquisa9"
+        android:id="@+id/edCarboidratos"
         android:layout_width="52dp"
         android:layout_height="34dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="center|center_horizontal"
         android:text="X"
         android:textColor="#3C3A3A"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa5"
-        tools:layout_editor_absoluteX="98dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edGouMl" />
 
     <TextView
-        android:id="@+id/edPesquisa5"
+        android:id="@+id/edGouMl"
         android:layout_width="52dp"
         android:layout_height="34dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="center|center_horizontal"
         android:text="Z"
         android:textColor="#3C3A3A"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintTop_toBottomOf="@+id/edNomeAlimento"
-        tools:layout_editor_absoluteX="98dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edNomeAlimento" />
 
     <TextView
-        android:id="@+id/edPesquisa7"
+        android:id="@+id/edLblGCaloria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -241,11 +258,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edPesquisa8"
-        app:layout_constraintTop_toBottomOf="@+id/edPesquisa4" />
+        app:layout_constraintStart_toEndOf="@+id/edCalorias"
+        app:layout_constraintTop_toBottomOf="@+id/edLblCarboidrato" />
 
     <TextView
-        android:id="@+id/edPesquisa6"
+        android:id="@+id/edLblMultiplicador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
