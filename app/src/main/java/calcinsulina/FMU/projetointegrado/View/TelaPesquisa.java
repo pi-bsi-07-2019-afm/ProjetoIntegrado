@@ -23,7 +23,6 @@ public class TelaPesquisa {
 
     Calculo objCalculo = new Calculo();
 
-
     MainActivity act;
     String telaAnterior = "TelaCalculadora";
 
@@ -91,9 +90,10 @@ public class TelaPesquisa {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
                 //Object clickItemObj = adapterView.getAdapter().getItem(index);
-                Object clickItemObj = adapterView.getAdapter().getItem(index);
-                if(clickItemObj != null) {
-                    act.tela_detalhe.CarregarTela(clickItemObj,objCalculo);
+                Alimento alimento = (Alimento) adapterView.getAdapter().getItem(index);
+                if(alimento != null) {
+                    //transformar o clickItemObj em Alimento
+                    act.tela_detalhe.CarregarTela(alimento);
                 }
             }
         });
