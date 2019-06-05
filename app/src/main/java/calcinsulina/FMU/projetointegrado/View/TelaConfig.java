@@ -24,7 +24,6 @@ public class TelaConfig {
 
         btnAltCad = act.findViewById(R.id.btnAltCad);
         btnAltCalc = act.findViewById(R.id.btnAltCalc);
-        btnDelete = act.findViewById(R.id.btnDelete);
         btnVoltar = act.findViewById(R.id.btnVoltar);
         btnAbout = act.findViewById(R.id.btnAbout);
         btnEULA = act.findViewById(R.id.btnEULA);

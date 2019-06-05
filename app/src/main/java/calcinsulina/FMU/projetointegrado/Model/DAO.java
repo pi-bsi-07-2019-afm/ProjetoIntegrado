@@ -129,7 +129,7 @@ public class DAO extends SQLiteOpenHelper {
                 Alimento al = new Alimento();
                 al.setId(cursor.getInt(cursor.getColumnIndex(ID_ALIMENTO)));
                 al.setNome(cursor.getString(cursor.getColumnIndex(NOME_ALIMENTO)));
-                al.setTipoMedida(cursor.getInt(cursor.getColumnIndex(TIPO_MEDIDA)));
+                al.setTipoMedida(cursor.getString(cursor.getColumnIndex(TIPO_MEDIDA)));
                 al.setgOuMl(cursor.getDouble(cursor.getColumnIndex(GOUML)));
                 al.setQuantCarb(cursor.getDouble(cursor.getColumnIndex(QNT_CARBOIDRATO)));
                 al.setCalorias(cursor.getDouble(cursor.getColumnIndex(CALORIAS)));

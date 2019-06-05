@@ -12,11 +12,16 @@ import calcinsulina.FMU.projetointegrado.R;
 public class TelaDetalhe {
 
     MainActivity act;
+    String telaAnterior = "TelaPesquisa";
     Button btnAdicionar, btnVoltar;
     EditText edNomeAlimento, edCarboidratos, edCalorias, edGOuMl, edMultiplicador, edDescTipoMedida;
-
     Calculo objCalculo = new Calculo();
     Alimento objAlimento = new Alimento();
+
+    public TelaDetalhe(MainActivity act, String telaAnterior) {
+        this.act = act;
+        this.telaAnterior = telaAnterior;
+    }
 
     public void CarregarTela(final Alimento objAlimento, final Calculo objCalculo) {
         this.objAlimento = objAlimento;

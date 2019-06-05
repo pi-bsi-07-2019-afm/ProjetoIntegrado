@@ -26,12 +26,12 @@ public class TelaSelecionados {
     MainActivity act;
     String telaAnterior = "TelaCalculadora";
 
-    public TelaSelecionados(MainActivity act, String telaAnterior){
+    public TelaSelecionados(MainActivity act, String telaAnterior) {
         this.act = act;
         this.telaAnterior = telaAnterior;
     }
 
-    public void CarregarTela(final Calculo objCalculo){
+    public void CarregarTela(final Calculo objCalculo) {
         this.objCalculo = objCalculo;
         act.setContentView(R.layout.tela_selecionados);
 
