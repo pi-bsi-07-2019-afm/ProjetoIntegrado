@@ -1,13 +1,13 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import calcinsulina.FMU.projetointegrado.R;
 
-public class TelaEULA extends AppCompatActivity {
+public class TelaEULA extends Activity {
 
     Button btnVoltar;
 
