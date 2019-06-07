@@ -76,9 +76,10 @@ public class TelaPesquisa {
                     }
                     ;
 
+                    listResults = listSearch;
                     if (listResults.size() > 0) {
                         for (int i = 0; i < listResults.size(); i++){
-                            listaListView.clear();
+//                            listaListView.clear();
                             listaListView.add(listResults.get(i).getNome());
                         }
                         listResultsSet = listResults;

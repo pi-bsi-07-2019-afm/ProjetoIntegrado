@@ -114,22 +114,23 @@
 
     <ListView
         android:id="@+id/listResults"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar"
+        app:layout_constraintVertical_bias="0.29000002" />
 
 </android.support.constraint.ConstraintLayout>
