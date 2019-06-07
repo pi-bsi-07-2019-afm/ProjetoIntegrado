@@ -52,7 +52,7 @@ public class TelaCalculadora {
     public void setFormCalculadora(){
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
-        edCarboidrato = act.findViewById(R.id.edCarboidratos);
+        edCarboidrato = act.findViewById(R.id.txtCarboidratos);
         edBolus = act.findViewById(R.id.edBolus);
         try {
             edGlicemAlvo.setText(act.getStringFromObjPropDouble(objCalculo.getGlicemiaAlvo()));
@@ -74,7 +74,7 @@ public class TelaCalculadora {
         btnCalcular = act.findViewById(R.id.btnCalcular);
         edGlicemAlvo = act.findViewById(R.id.edGlicAlvo);
         edGlicemObt = act.findViewById(R.id.edGlicObt);
-        edCarboidrato = act.findViewById(R.id.edCarboidratos);
+        edCarboidrato = act.findViewById(R.id.txtCarboidratos);
         edBolus = act.findViewById(R.id.edBolus);
         btnVoltarCalc = act.findViewById(R.id.btnVoltarCalc);
         btnAdicionar = act.findViewById(R.id.btnAdicionar);

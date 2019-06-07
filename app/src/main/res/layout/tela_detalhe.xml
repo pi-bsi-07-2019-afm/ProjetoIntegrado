@@ -14,6 +14,7 @@
         android:layout_margin="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="144dp"
         android:layout_marginRight="144dp"
         android:layout_marginBottom="8dp"
@@ -21,9 +22,11 @@
         android:text="Adicionar"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
 
     <Button
         android:id="@+id/btnVoltar"
@@ -33,6 +36,7 @@
         android:layout_margin="50dp"
         android:layout_marginStart="132dp"
         android:layout_marginLeft="132dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -42,7 +46,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdicionar" />
 
     <EditText
         android:id="@+id/edMultiplicador"
@@ -55,14 +60,14 @@
         android:layout_marginRight="250dp"
         android:autofillHints=""
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center|center_horizontal|center_vertical"
         android:hint="Ex.: 3"
         android:inputType="numberDecimal"
         android:maxLength="40"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLblMultiplicador" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLblMultiplicador" />
 
     <EditText
         android:id="@+id/edNomeAlimento"
@@ -72,18 +77,23 @@
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
         android:enabled="false"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
         android:maxLength="40"
         android:singleLine="true"
+        android:textColor="#000000"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLblAlimento" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLblAlimento"
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <EditText
         android:id="@+id/edDescTipoMedida"
@@ -95,17 +105,17 @@
         android:autofillHints=""
         android:ems="10"
         android:enabled="false"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
         android:maxLength="40"
         android:singleLine="true"
         android:text="placeholder"
         android:textColor="#111010"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLblMultiplicador" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLblMultiplicador" />
 
     <TextView
-        android:id="@+id/edTitulo"
+        android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -126,7 +136,7 @@
         app:layout_constraintVertical_bias="0.037" />
 
     <TextView
-        android:id="@+id/edLblAlimento"
+        android:id="@+id/txtLblAlimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -145,11 +155,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="@+id/edNomeAlimento"
-        app:layout_constraintTop_toBottomOf="@+id/edTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo"
         app:layout_constraintVertical_bias="0.053" />
 
     <TextView
-        android:id="@+id/edLblCarboidrato"
+        android:id="@+id/txtLblCarboidrato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -162,11 +172,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edCarboidratos"
-        app:layout_constraintTop_toBottomOf="@+id/edLblGouMl" />
+        app:layout_constraintStart_toEndOf="@+id/txtCarboidratos"
+        app:layout_constraintTop_toBottomOf="@+id/txtLblGouMl" />
 
     <TextView
-        android:id="@+id/edLblGouMl"
+        android:id="@+id/txtLblGouMl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -179,11 +189,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edGouMl"
+        app:layout_constraintStart_toEndOf="@+id/txtGouMl"
         app:layout_constraintTop_toBottomOf="@+id/edNomeAlimento" />
 
     <TextView
-        android:id="@+id/edCalorias"
+        android:id="@+id/txtCalorias"
         android:layout_width="52dp"
         android:layout_height="33dp"
         android:layout_margin="10dp"
@@ -191,19 +201,21 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center|center_horizontal"
         android:text="Y"
-        android:textColor="#3C3A3A"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toBottomOf="@+id/txtLblGCaloria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edCarboidratos" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarboidratos" />
 
     <TextView
-        android:id="@+id/edCarboidratos"
+        android:id="@+id/txtCarboidratos"
         android:layout_width="52dp"
         android:layout_height="34dp"
         android:layout_margin="10dp"
@@ -214,17 +226,18 @@
         android:layout_marginRight="8dp"
         android:gravity="center|center_horizontal"
         android:text="X"
-        android:textColor="#3C3A3A"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toBottomOf="@+id/txtLblCarboidrato"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edGouMl" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGouMl" />
 
     <TextView
-        android:id="@+id/edGouMl"
+        android:id="@+id/txtGouMl"
         android:layout_width="52dp"
         android:layout_height="34dp"
         android:layout_margin="10dp"
@@ -233,19 +246,21 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center|center_horizontal"
         android:text="Z"
-        android:textColor="#3C3A3A"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toTopOf="@+id/txtLblCarboidrato"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edNomeAlimento" />
 
     <TextView
-        android:id="@+id/edLblGCaloria"
+        android:id="@+id/txtLblGCaloria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -258,11 +273,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toEndOf="@+id/edCalorias"
-        app:layout_constraintTop_toBottomOf="@+id/edLblCarboidrato" />
+        app:layout_constraintStart_toEndOf="@+id/txtCalorias"
+        app:layout_constraintTop_toBottomOf="@+id/txtLblCarboidrato" />
 
     <TextView
-        android:id="@+id/edLblMultiplicador"
+        android:id="@+id/txtLblMultiplicador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

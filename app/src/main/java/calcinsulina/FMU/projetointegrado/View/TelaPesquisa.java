@@ -35,7 +35,6 @@ public class TelaPesquisa {
         this.objCalculo = objCalculo;
         act.setContentView(R.layout.tela_pesquisa);
         List<String> listaListView = new ArrayList<String>();
-        listaListView.add("teste");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, listaListView);
         listaPesquisa = (ListView) act.findViewById(R.id.listResults);
         listaPesquisa.setAdapter(arrayAdapter);
@@ -94,12 +93,8 @@ public class TelaPesquisa {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
                 //Object clickItemObj = adapterView.getAdapter().getItem(index);
-                String str = (String) adapterView.getAdapter().getItem(index);
-                if (str.length() != 0) {
-                    //transformar o clickItemObj em Alimento
-                    //act.tela_detalhe.CarregarTela(alimento, objCalculo);
-                    Toast.makeText(act,str, Toast.LENGTH_LONG).show();
-                }
+                Alimento objAlimento = listResultsSet.get(index);
+                act.tela_detalhe.CarregarTela(objAlimento, objCalculo);
             }
         });
 

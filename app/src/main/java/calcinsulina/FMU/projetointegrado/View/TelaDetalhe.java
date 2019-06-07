@@ -3,6 +3,7 @@ package calcinsulina.FMU.projetointegrado.View;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
@@ -14,7 +15,8 @@ public class TelaDetalhe {
     MainActivity act;
     String telaAnterior = "TelaPesquisa";
     Button btnAdicionar, btnVoltar;
-    EditText edNomeAlimento, edCarboidratos, edCalorias, edGOuMl, edMultiplicador, edDescTipoMedida;
+    EditText edNomeAlimento, edMultiplicador, edDescTipoMedida;
+    TextView txtCarboidratos, txtCalorias, txtGOuMl;
     Calculo objCalculo = new Calculo();
     Alimento objAlimento = new Alimento();
 
@@ -32,17 +34,25 @@ public class TelaDetalhe {
         btnAdicionar = act.findViewById(R.id.btnAdicionar);
         btnVoltar = act.findViewById(R.id.btnVoltar);
         edNomeAlimento = act.findViewById(R.id.edNomeAlimento);
-        edCarboidratos = act.findViewById(R.id.edCarboidratos);
-        edCalorias = act.findViewById(R.id.edCalorias);
-        edGOuMl = act.findViewById(R.id.edGouMl);
+        txtCarboidratos = act.findViewById(R.id.txtCarboidratos);
+        txtCalorias = act.findViewById(R.id.txtCalorias);
+        txtGOuMl = act.findViewById(R.id.txtGouMl);
         edMultiplicador = act.findViewById(R.id.edMultiplicador);
         edDescTipoMedida = act.findViewById(R.id.edDescTipoMedida);
+
+        edNomeAlimento.setText(this.objAlimento.getNome());
+        txtGOuMl.setText(act.getStringFromObjPropDouble(this.objAlimento.getgOuMl()));
+        txtCarboidratos.setText(act.getStringFromObjPropDouble(this.objAlimento.getQuantCarb()));
+        txtCalorias.setText(act.getStringFromObjPropDouble(this.objAlimento.getCalorias()));
+        edDescTipoMedida.setText(this.objAlimento.getTipoMedida());
+
+        edMultiplicador.requestFocus();
 
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    double multiplicador = Double.valueOf(edMultiplicador.getText().toString());
+                    double multiplicador = act.getDoubleFromEd(edMultiplicador.getText().toString());
                     if (multiplicador != 0.0) {
                         double carbASomar = objAlimento.getQuantCarb() * multiplicador;
                         int[] conjuntoAlimentos = objCalculo.getConjuntoAlimentos();
