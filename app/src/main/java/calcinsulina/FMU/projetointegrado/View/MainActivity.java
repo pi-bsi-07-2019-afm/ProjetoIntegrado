@@ -60,11 +60,6 @@ public class MainActivity extends Activity {
         aTipoMedida = dao.recuperaTipoMedida();
         aUsuario = dao.recuperaUsuarios();
         splashScreen.CarregarTela();
-
-        // Popula a lista de Alimentos
-        if (aAlimento.size() == 0){
-            populaAlimento();
-        }
     }
 
     @Override
@@ -143,7 +138,7 @@ public class MainActivity extends Activity {
         return retorno;
     }
 
-    private void populaAlimento(){
+    public void populaAlimento(){
         Alimento a1 = new Alimento(1,"Abacate (picado)","colher de sopa cheia",45,3,79,0.07); aAlimento.add(a1);
         Alimento a2 = new Alimento(2,"Abacaxi","fatia média",75,10,44,0.13); aAlimento.add(a2);
         Alimento a3 = new Alimento(3,"Abacaxi em calda","fatia média",64,19,78,0.3); aAlimento.add(a3);

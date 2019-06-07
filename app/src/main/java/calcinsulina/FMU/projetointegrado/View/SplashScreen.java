@@ -23,7 +23,12 @@ public class SplashScreen {
 
             @Override
             public void run() {
+                    act.populaAlimento();
                 if (act.getaUsuario().isEmpty()) {
+                    // Popula a lista de Alimentos
+//                    if (act.aAlimento.size() == 0){
+//                        act.populaAlimento();
+//                    }
                     act.tela_cadastro.CarregarTela();
                 } else {
                     act.tela_principal.CarregarTela();

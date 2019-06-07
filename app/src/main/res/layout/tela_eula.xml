@@ -49,6 +49,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@android:color/holo_green_light"
+                android:clickable="true"
                 android:text="Voltar"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
