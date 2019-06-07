@@ -13,6 +13,7 @@
         <activity
             android:name=".View.TelaEULA"
             android:label="@string/title_activity_eula"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.TelaCalculadora" />
         <activity android:name=".View.TelaPrincipal" />
