@@ -125,9 +125,10 @@
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:footerDividersEnabled="true"
+        android:foregroundGravity="center_horizontal"
         android:headerDividersEnabled="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
