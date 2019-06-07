@@ -18,13 +18,12 @@ import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaSelecionados {
 
-    ListView listaResults;
+    ListView listResults;
     Button btnVoltar;
-
-    Calculo objCalculo;
-
+    Calculo objCalculo = new Calculo();
     MainActivity act;
     String telaAnterior = "TelaCalculadora";
+    List<Alimento> listResultsSet;
 
     public TelaSelecionados(MainActivity act, String telaAnterior) {
         this.act = act;
@@ -33,25 +32,37 @@ public class TelaSelecionados {
 
     public void CarregarTela(final Calculo objCalculo) {
         this.objCalculo = objCalculo;
+        int conjuntoAlimentosId[] = objCalculo.getConjuntoAlimentos();
         act.setContentView(R.layout.tela_selecionados);
 
-        listaResults = act.findViewById(R.id.listResults);
+        listResults = act.findViewById(R.id.listResults);
         btnVoltar = act.findViewById(R.id.btnVoltar);
 
-        final List<Alimento> list = new ArrayList<Alimento>();
-        ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_multiple_choice, list);
+        // Falta implementar esta parte - Allan
+        final List<Alimento> listaListView = new ArrayList<Alimento>();
+        for (int i = 0; i < conjuntoAlimentosId.length; i++){
+            if(conjuntoAlimentosId[i] == act.getaAlimento().get(i).getId()){
+                listaListView.add(act.getaAlimento().get(i));
+            }
+        }
+
+        ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_1, listaListView);
+        listResults.setAdapter(arrayAdapter);
+        listResults.clearAnimation();
+
         final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
 
-        listaResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int index, final long l) {
+                String Alimento = (listResults.getItemAtPosition(index)).toString();
                 dialogo.setTitle("Atenção");
-                dialogo.setMessage("Tem certeza em remover este alimento?");
+                dialogo.setMessage("Tem certeza em remover o Aliemnto: " + Alimento + " ?");
                 dialogo.setNegativeButton("Não", null);
                 dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        list.remove(index);
+                        listaListView.remove(index);
                         Toast.makeText(act, "Alimento removido da seleção.", Toast.LENGTH_SHORT).show();
                     }
                 });

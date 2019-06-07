@@ -141,8 +141,12 @@ public class TelaCalculadora {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveObjCalculo();
-                act.tela_selecionados.CarregarTela(objCalculo);
+                if(objCalculo.getConjuntoAlimentos().length == 0){
+                    Toast.makeText(act, "Não há alimentos selecionados.", Toast.LENGTH_SHORT).show();
+                }else{
+                    saveObjCalculo();
+                    act.tela_selecionados.CarregarTela(objCalculo);
+                }
             }
         });
     }
