@@ -1,6 +1,8 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -144,6 +146,7 @@ public class TelaCalculadora {
         });
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 if(objCalculo.getConjuntoAlimentos().length == 0){

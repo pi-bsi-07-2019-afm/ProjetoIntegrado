@@ -1,6 +1,7 @@
 package calcinsulina.FMU.projetointegrado.View;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -33,7 +34,6 @@ public class TelaSelecionados {
         this.telaAnterior = telaAnterior;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void CarregarTela(final Calculo objCalculo) {
         this.objCalculo = objCalculo;
         int conjuntoAlimentosId[] = objCalculo.getConjuntoAlimentos();
@@ -42,32 +42,23 @@ public class TelaSelecionados {
         listResults = act.findViewById(R.id.listResults);
         btnVoltar = act.findViewById(R.id.btnVoltar);
 
-        // Falta implementar esta parte - Allan
-        final List<Alimento> listaListView = new ArrayList<Alimento>();
+        final List<String> listaListView = new ArrayList<String>();
+        listResultsSet = new ArrayList<Alimento>();
+        List<Alimento> aAlimentos = act.getaAlimento();
         for (int i = 0; i < conjuntoAlimentosId.length; i++){
-            listaListView.add(act.getaAlimento().get(conjuntoAlimentosId[i-0]));
+            listaListView.add(aAlimentos.get(conjuntoAlimentosId[i]-1).getNome());
+            listResultsSet.add(aAlimentos.get(conjuntoAlimentosId[i]-1));
         }
-
-        ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_1, listaListView);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, listaListView);
         listResults.setAdapter(arrayAdapter);
         listResults.clearAnimation();
 
-        final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
 
         listResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int index, final long l) {
-                String Alimento = (listResults.getItemAtPosition(index)).toString();
-                dialogo.setTitle("Atenção");
-                dialogo.setMessage("Tem certeza em remover o Aliemnto: " + Alimento + " ?");
-                dialogo.setNegativeButton("Não", null);
-                dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        listaListView.remove(index);
-                        Toast.makeText(act, "Alimento removido da seleção.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                //String Alimento = (listResults.getItemAtPosition(index)).toString();
+                startRotinaRemocao(index);
             }
         });
 
@@ -80,4 +71,43 @@ public class TelaSelecionados {
             }
         });
     }
+
+    public void removerAlimentoDoCalculo(Calculo objCalculo, int idAlimentoARemover){
+        List<Integer> conjuntoAlimentos = new ArrayList<Integer>();
+        List<Double> conjuntoMultiplicadores = new ArrayList<Double>();
+        for (int i = 0; i < objCalculo.getConjuntoAlimentos().length; i++){
+            if(objCalculo.getConjuntoAlimentos()[i] != idAlimentoARemover){
+                conjuntoAlimentos.add(objCalculo.getConjuntoAlimentos()[i]);
+                conjuntoMultiplicadores.add(objCalculo.getConjuntoMultiplicadores()[i]);
+            }
+        }
+        int[] novoConjuntoAlimentos = new int[conjuntoAlimentos.size()];
+        double[] novoConjuntoMultiplicadores = new double[conjuntoMultiplicadores.size()];
+        if (novoConjuntoAlimentos.length == novoConjuntoMultiplicadores.length){
+            for(int i = 0; i < novoConjuntoAlimentos.length; i++){
+                novoConjuntoAlimentos[i] = conjuntoAlimentos.get(i).intValue();
+                novoConjuntoMultiplicadores[i] = conjuntoMultiplicadores.get(i).doubleValue();
+            }
+            objCalculo.setConjuntoAlimentos(novoConjuntoAlimentos);
+            objCalculo.setConjuntoMultiplicadores(novoConjuntoMultiplicadores);
+            act.tela_selecionados.CarregarTela(objCalculo);
+        }else{
+            throw new RuntimeException("Erro na carga de cálculo. Feche o app e tente novamente.");
+        }
+    }
+
+    public void startRotinaRemocao(final int index){
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+        dialogo.setTitle("Confirmação: ");
+        dialogo.setMessage("Você deseja remover o alimento \"" + listResultsSet.get(index).getNome() + "\" deste cálculo?");
+        dialogo.setNegativeButton("Não", null);
+        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                removerAlimentoDoCalculo(objCalculo,listResultsSet.get(index).getId());
+                Toast.makeText(act, "Alimento removido da seleção.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }
