@@ -2,6 +2,8 @@ package calcinsulina.FMU.projetointegrado.View;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import calcinsulina.FMU.projetointegrado.Model.Alimento;
@@ -30,6 +33,7 @@ public class TelaSelecionados {
         this.telaAnterior = telaAnterior;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void CarregarTela(final Calculo objCalculo) {
         this.objCalculo = objCalculo;
         int conjuntoAlimentosId[] = objCalculo.getConjuntoAlimentos();
@@ -41,9 +45,7 @@ public class TelaSelecionados {
         // Falta implementar esta parte - Allan
         final List<Alimento> listaListView = new ArrayList<Alimento>();
         for (int i = 0; i < conjuntoAlimentosId.length; i++){
-            if(conjuntoAlimentosId[i] == act.getaAlimento().get(i).getId()){
-                listaListView.add(act.getaAlimento().get(i));
-            }
+            listaListView.add(act.getaAlimento().get(conjuntoAlimentosId[i-0]));
         }
 
         ArrayAdapter<Alimento> arrayAdapter = new ArrayAdapter<Alimento>(act, android.R.layout.simple_list_item_1, listaListView);
