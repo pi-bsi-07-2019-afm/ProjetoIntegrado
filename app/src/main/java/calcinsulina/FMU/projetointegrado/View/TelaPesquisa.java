@@ -59,14 +59,17 @@ public class TelaPesquisa {
                 if (listArgs.length > 0) {
                     for (int i = 0; i < alimentosEmSessao.size(); i++) {
                         for (int j = 0; j < listArgs.length; j++) {
-                            if (alimentosEmSessao.get(i).getNome().indexOf(listArgs[j]) != -1) {
+                            if (act.getLowercaseSimpleString(alimentosEmSessao.get(i).getNome()).indexOf(act.getLowercaseSimpleString(listArgs[j])) != -1) {
                                 boolean flagIsRepeated = false;
+
+                                //corrigir
 //                                for (int k = 0; k < alimentosEmSessao.size(); k++) {
 //                                    if (alimentosEmSessao.get(k).equals(listResults.get(k))) {
 //                                        flagIsRepeated = true;
 //                                        break;
 //                                    }
 //                                }
+
                                 if (!flagIsRepeated) {
                                     listResults.add(alimentosEmSessao.get(i));
                                 }

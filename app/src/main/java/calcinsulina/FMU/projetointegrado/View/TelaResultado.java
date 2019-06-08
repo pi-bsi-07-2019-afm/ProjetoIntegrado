@@ -1,9 +1,12 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
 
+import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaResultado {
@@ -19,7 +22,7 @@ public class TelaResultado {
         this.telaAnterior = telaAnterior;
     }
 
-    public void CarregarTela(final int unidadesResultado){
+    public void CarregarTela(final Calculo objCalculo){
 
         act.setContentView(R.layout.tela_resultado);
 
@@ -27,18 +30,54 @@ public class TelaResultado {
         txtDescResultado2 = act.findViewById(R.id.txtDescResultado2);
         btnConfirmar = act.findViewById(R.id.btnConfirmar);
 
-        if (unidadesResultado == 1){
+        if (objCalculo.getTotalInsulina() == 1){
             txtDescResultado2.setText("Unidade");
         }
-        txtUnidResultado.setText(String.valueOf(unidadesResultado));
+        txtUnidResultado.setText(String.valueOf(objCalculo.getTotalInsulina()));
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                act.tela_principal.CarregarTela();
+                AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+                Dialogo.setTitle("Confirmação: ");
+                Dialogo.setMessage("• Deseja salvar este cálculo em seu histórico?" );
+                Dialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ConfirmaRecalculo();
+                    }
+                });
+                Dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        act.aCalculo.add(objCalculo);
+                        act.tela_principal.CarregarTela();
+                    }
+                });
+                Dialogo.show();
             }
         });
 
+    }
+
+    public void ConfirmaRecalculo(){
+        AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+        Dialogo.setTitle("Confirmação: ");
+        Dialogo.setMessage("• Deseja calcular novamente?" );
+        Dialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                act.tela_principal.CarregarTela();
+            }
+        });
+        Dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                act.tela_calculadora.flagInserirDadosNoForm = false;
+                act.tela_calculadora.CarregarTela();
+            }
+        });
+        Dialogo.show();
     }
 
 }

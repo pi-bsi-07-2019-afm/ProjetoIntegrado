@@ -93,22 +93,25 @@ public class TelaCalculadora {
             public void onClick(View v) {
                 Double FatorSensibilidade, GlicemiaAlvo, GlicemiaObtida, Carboidrato, Bolus;
 
-                FatorSensibilidade = act.getaUsuario().get(0).getFatorSensibilidade();
-                GlicemiaAlvo = Double.parseDouble(edGlicemAlvo.getText().toString());
-                GlicemiaObtida = Double.parseDouble(edGlicemObt.getText().toString());
-                Carboidrato = Double.parseDouble(edCarboidrato.getText().toString());
-                Bolus = Double.parseDouble(edBolus.getText().toString());
+                try {
+                    FatorSensibilidade = act.getaUsuario().get(0).getFatorSensibilidade();
+                    GlicemiaAlvo = act.getDoubleFromEd(edGlicemAlvo.getText().toString());
+                    GlicemiaObtida = act.getDoubleFromEd(edGlicemObt.getText().toString());
+                    Carboidrato = act.getDoubleFromEd(edCarboidrato.getText().toString());
+                    Bolus = act.getDoubleFromEd(edBolus.getText().toString());
 
-                if ((FatorSensibilidade.toString().length()) == 0 || (GlicemiaAlvo.toString().length()) == 0 || (GlicemiaObtida.toString().length()) == 0 || (Carboidrato.toString().length()) == 0 || (Bolus.toString().length()) == 0 || FatorSensibilidade <= 0 || FatorSensibilidade > 300 || GlicemiaAlvo <= 0 || GlicemiaAlvo >= 300 || GlicemiaObtida <= 0 || GlicemiaObtida >= 300 || Carboidrato <= 0 || Bolus <= 0) {
-                    Toast toast = Toast.makeText(act.getApplicationContext(), "Por favor, Insira todas as informações corretamente.", Toast.LENGTH_LONG);
-                    toast.show();
-                } else {
-                    // Parte do cálculo
-                    double Glicemia = GlicemiaObtida - GlicemiaAlvo;
-                    double CorrecaoInsul = Glicemia / FatorSensibilidade;
-                    double InsulinaAComer =  Carboidrato / Bolus;
-                    final int NumeroDeDoses =  (int) (CorrecaoInsul + InsulinaAComer);
-                    act.tela_carregando.CarregarTela(NumeroDeDoses);
+                    //Validação de dados do cálculo. Limite de 300 para testes, necessário checar com médico qual seria o valor máximo possível para um humano, e atualizar.
+                    if (FatorSensibilidade <= 0 || FatorSensibilidade > 300 || GlicemiaAlvo <= 0 || GlicemiaAlvo >= 300 || GlicemiaObtida <= 0 || GlicemiaObtida >= 300 || Carboidrato <= 0 || Bolus <= 0) {
+                        Toast toast = Toast.makeText(act.getApplicationContext(), "Por favor, Insira todas as informações corretamente.", Toast.LENGTH_LONG);
+                        toast.show();
+                    } else {
+                        // Parte do cálculo
+                        double Glicemia = GlicemiaObtida - GlicemiaAlvo;
+                        double CorrecaoInsul = Glicemia / FatorSensibilidade;
+                        double InsulinaAComer =  Carboidrato / Bolus;
+                        final int NumeroDeDoses =  (int) (CorrecaoInsul + InsulinaAComer);
+                        objCalculo.setTotalInsulina(NumeroDeDoses);
+                        act.tela_carregando.CarregarTela(objCalculo);
 
 //                    handler.postDelayed(new Runnable() {
 //                        @Override
@@ -118,8 +121,10 @@ public class TelaCalculadora {
 //                        }
 //                    }, 3000);
 
+                    }
+                }catch(Exception ex){
+                    Toast.makeText(act.getApplicationContext(),"Ops, algo deu errado. Reinicie o app e tente novamente.",Toast.LENGTH_LONG);
                 }
-
             }
         });
 
