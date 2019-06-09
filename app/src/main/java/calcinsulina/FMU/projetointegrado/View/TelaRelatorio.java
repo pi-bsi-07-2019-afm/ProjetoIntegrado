@@ -23,7 +23,6 @@ public class TelaRelatorio{
     TelaRelatorio tela_relatorio;
     Button btnVoltarRel;
     MainActivity act;
-    Calculo objCalculo = new Calculo();
 
     public TelaRelatorio(MainActivity act, TelaPrincipal tela_principal) {
         this.act = act;
@@ -65,28 +64,6 @@ public class TelaRelatorio{
         });
     }
 
-    public void removerCalculoDoRegistro(Calculo objCalculo, int idCalculoARemover) {
-        List<Integer> conjuntoCalculo = new ArrayList<Integer>();
-        List<Double> conjuntoMultiplicadores = new ArrayList<Double>();
-        for (int i = 0; i < objCalculo.getConjuntoAlimentos().length; i++) {
-            if (objCalculo.getConjuntoAlimentos()[i] != idCalculoARemover) {
-                conjuntoMultiplicadores.add(objCalculo.getConjuntoMultiplicadores()[i]);
-            }
-            int[] novoConjuntoAlimentos = new int[conjuntoCalculo.size()];
-            double[] novoConjuntoMultiplicadores = new double[conjuntoMultiplicadores.size()];
-            if (novoConjuntoAlimentos.length == novoConjuntoMultiplicadores.length) {
-                for (int i = 0; i < novoConjuntoAlimentos.length; i++) {
-                    novoConjuntoAlimentos[i] = conjuntoCalculo.get(i).intValue();
-                    novoConjuntoMultiplicadores[i] = conjuntoMultiplicadores.get(i).doubleValue();
-                }
-                objCalculo.setConjuntoAlimentos(novoConjuntoAlimentos);
-                objCalculo.setConjuntoMultiplicadores(novoConjuntoMultiplicadores);
-                act.tela_selecionados.CarregarTela(objCalculo);
-            } else {
-                throw new RuntimeException("Erro na carga de cálculo. Feche o app e tente novamente.");
-            }
-        }
-    }
     public void startRotinaRemocao(final int index){
         final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
         dialogo.setIcon(android.R.drawable.ic_dialog_alert);
@@ -96,7 +73,7 @@ public class TelaRelatorio{
         dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                removerCalculoDoRegistro();
+//                removerCalculoDoRegistro();
                 Toast.makeText(act, "Calculo removido dos registros.", Toast.LENGTH_SHORT).show();
             }
         });
