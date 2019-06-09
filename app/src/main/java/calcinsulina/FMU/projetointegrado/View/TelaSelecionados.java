@@ -57,7 +57,6 @@ public class TelaSelecionados {
         listResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int index, final long l) {
-                //String Alimento = (listResults.getItemAtPosition(index)).toString();
                 startRotinaRemocao(index);
             }
         });
@@ -97,7 +96,8 @@ public class TelaSelecionados {
     }
 
     public void startRotinaRemocao(final int index){
-        AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+        final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+        dialogo.setIcon(android.R.drawable.ic_dialog_alert);
         dialogo.setTitle("Confirmação: ");
         dialogo.setMessage("Você deseja remover o alimento \"" + listResultsSet.get(index).getNome() + "\" deste cálculo?");
         dialogo.setNegativeButton("Não", null);
@@ -108,6 +108,7 @@ public class TelaSelecionados {
                 Toast.makeText(act, "Alimento removido da seleção.", Toast.LENGTH_SHORT).show();
             }
         });
+        dialogo.show();
     }
 
 }
