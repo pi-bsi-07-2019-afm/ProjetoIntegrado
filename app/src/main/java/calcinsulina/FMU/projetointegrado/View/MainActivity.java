@@ -88,8 +88,6 @@ public class MainActivity extends Activity {
 
     protected void onRestart() {
         super.onRestart();
-
-
     }
 
     protected void onDestroy() {
@@ -142,9 +140,6 @@ public class MainActivity extends Activity {
     }
 
     public void populaAlimento(){
-        //Alimento a0 é para teste!
-        //Alimento a0 = new Alimento(0,"Abacate (pi)","colher de sopa cheia",45,3,79,0.07); aAlimento.add(a0);
-
         Alimento a1 = new Alimento(1,"Abacate (picado)","colher de sopa cheia",45,3,79,0.07); aAlimento.add(a1);
         Alimento a2 = new Alimento(2,"Abacaxi","fatia média",75,10,44,0.13); aAlimento.add(a2);
         Alimento a3 = new Alimento(3,"Abacaxi em calda","fatia média",64,19,78,0.3); aAlimento.add(a3);

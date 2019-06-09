@@ -51,7 +51,7 @@ public class TelaResultado {
                 Dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        act.aCalculo.add(objCalculo);
+                        act.getaCalculo().add(objCalculo);
                         act.tela_principal.CarregarTela();
                     }
                 });

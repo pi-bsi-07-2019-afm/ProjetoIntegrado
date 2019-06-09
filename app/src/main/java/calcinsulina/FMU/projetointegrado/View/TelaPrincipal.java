@@ -55,7 +55,7 @@ public class TelaPrincipal {
             public void onClick(View view) {
                 btnReport.getLayoutParams().width = 120;
                 btnReport.getLayoutParams().height = 130;
-                if(act.getaCalculo().size() <= 0) {
+                if(act.getaCalculo().size() == 0) {
                     Toast.makeText(act, "Não há calculos registrados para relatório", Toast.LENGTH_SHORT).show();
                 }else{
                     act.tela_relatorio.CarregarTela(act.aCalculo);
