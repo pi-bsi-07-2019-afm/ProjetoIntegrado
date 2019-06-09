@@ -17,7 +17,6 @@ import calcinsulina.FMU.projetointegrado.Model.Calculo;
 import calcinsulina.FMU.projetointegrado.R;
 
 public class TelaPesquisa {
-    TextView txtPesquisa;
     ListView listaPesquisa;
     Button btnPesquisar, btnVoltar;
     EditText edPesquisa;

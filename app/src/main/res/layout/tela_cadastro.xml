@@ -98,7 +98,7 @@
         android:gravity="center"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:maxLength="3"
+        android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fatorSensibilHint"

@@ -45,14 +45,19 @@ public class TelaRelatorio{
         txtTotalCalcInt.setText(String.valueOf(totalCalculo));
         txtTotalInsulInt.setText(String.valueOf(totalInsulina));
 
-        ArrayAdapter<Calculo> arrayAdapter = new ArrayAdapter<Calculo>(act, android.R.layout.simple_list_item_1, act.getaCalculo());
+        List<String> listStrCalculos = new ArrayList<String>();
+        for (int i = 0; i < act.getaCalculo().size(); i++){
+            String str = "Cálculo: " + act.getaCalculo().get(i).getId() + "\nGlicemia Obtida: " + act.getaCalculo().get(i).getGlicemiaObtida() +
+                    "\nGlicemia Alvo: " + act.getaCalculo().get(i).getGlicemiaAlvo() + "\nData/Hora " + act.getaCalculo().get(i).getDataRegistro();
+            listStrCalculos.add(str);
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, listStrCalculos);
         Registros.setAdapter(arrayAdapter);
         Registros.clearAnimation();
 
         Registros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int index, final long l) {
-//                startRotinaRemocao(index);
             }
         });
 
@@ -64,19 +69,4 @@ public class TelaRelatorio{
         });
     }
 
-//    public void startRotinaRemocao(final int index){
-//        final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
-//        dialogo.setIcon(android.R.drawable.ic_dialog_alert);
-//        dialogo.setTitle("Confirmação: ");
-//        dialogo.setMessage("Você deseja remover este Calculo dos Registros?");
-//        dialogo.setNegativeButton("Não", null);
-//        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                removerCalculoDoRegistro();
-//                Toast.makeText(act, "Calculo removido dos registros.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        dialogo.show();
-//    }
 }
