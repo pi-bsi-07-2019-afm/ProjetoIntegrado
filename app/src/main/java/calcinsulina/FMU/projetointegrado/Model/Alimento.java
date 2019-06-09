@@ -23,10 +23,6 @@ public class Alimento {
         this.quantCarbPorG = quantCarbPorG;
     }
 
-//    public String toString(){
-//        return this.nome;
-//    }
-
     public int getId() {
         return id;
     }

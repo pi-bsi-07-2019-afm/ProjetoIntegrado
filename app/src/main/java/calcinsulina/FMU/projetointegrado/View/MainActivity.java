@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     TelaPrincipal tela_principal;
     TelaCalculadora tela_calculadora;
     TelaConfig tela_config;
+    TelaRelatorio tela_relatorio;
     TelaCadastro tela_cadastro;
     TelaCarregando tela_carregando;
     TelaResultado tela_resultado;
@@ -37,6 +38,7 @@ public class MainActivity extends Activity {
         tela_cadastro = new TelaCadastro(this, "MainActicity");
         tela_calculadora = new TelaCalculadora(this, tela_principal);
         tela_config = new TelaConfig(this, tela_principal);
+        tela_relatorio = new TelaRelatorio(this, tela_principal);
         tela_carregando = new TelaCarregando(this, tela_principal);
         splashScreen = new SplashScreen(this, tela_principal);
         tela_resultado = new TelaResultado(this, "TelaCalculadora");
@@ -44,6 +46,7 @@ public class MainActivity extends Activity {
         tela_principal.setTelaCalculadora(tela_calculadora);
         tela_principal.setTelaConfig(tela_config);
         tela_principal.setTelaCarregando(tela_carregando);
+        tela_principal.setTelaRelatorio(tela_relatorio);
         tela_principal.setSplashScreen(splashScreen);
         tela_pesquisa = new TelaPesquisa(this,"TelaCalculadora");
         tela_detalhe = new TelaDetalhe(this,"TelaPesquisa");

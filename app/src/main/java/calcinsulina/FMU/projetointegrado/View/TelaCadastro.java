@@ -126,6 +126,7 @@ public class TelaCadastro {
                     if (msgErro.length() > 0) {
                         ExibeMensagem(msgErro);
                     } else {
+                        dialogo.setIcon(android.R.drawable.ic_dialog_alert);
                         dialogo.setTitle("Atenção");
                         dialogo.setMessage("As informações foram preenchidas corretamente?");
                         dialogo.setNegativeButton("Não", null);

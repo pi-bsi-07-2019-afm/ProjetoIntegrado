@@ -39,8 +39,9 @@ public class TelaResultado {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+                Dialogo.setIcon(android.R.drawable.ic_dialog_alert);
                 Dialogo.setTitle("Confirmação: ");
-                Dialogo.setMessage("• Deseja salvar este cálculo em seu histórico?" );
+                Dialogo.setMessage("Deseja salvar este cálculo em seu histórico?" );
                 Dialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -62,8 +63,9 @@ public class TelaResultado {
 
     public void ConfirmaRecalculo(){
         AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+        Dialogo.setIcon(android.R.drawable.ic_dialog_alert);
         Dialogo.setTitle("Confirmação: ");
-        Dialogo.setMessage("• Deseja calcular novamente?" );
+        Dialogo.setMessage("Deseja calcular novamente?" );
         Dialogo.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

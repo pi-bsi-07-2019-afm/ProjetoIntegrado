@@ -17,6 +17,7 @@ public class TelaPrincipal {
     TelaCadastro tela_cadastro;
     TelaCalculadora tela_calculadora;
     TelaConfig tela_config;
+    TelaRelatorio tela_relatorio;
     TelaCarregando tela_carregando;
     SplashScreen splashScreen;
     String telaAnterior;
@@ -54,7 +55,11 @@ public class TelaPrincipal {
             public void onClick(View view) {
                 btnReport.getLayoutParams().width = 120;
                 btnReport.getLayoutParams().height = 130;
-                Toast.makeText(act, "Em desenvolvimento.", Toast.LENGTH_SHORT).show();
+                if(act.getaCalculo().size() <= 0) {
+                    Toast.makeText(act, "Não há calculos registrados para relatório", Toast.LENGTH_SHORT).show();
+                }else{
+                    act.tela_relatorio.CarregarTela(act.aCalculo);
+                }
             }
         });
 
@@ -71,8 +76,11 @@ public class TelaPrincipal {
     }
 
     public void setTelaConfig(TelaConfig tela_config) {
-
         this.tela_config = tela_config;
+    }
+
+    public void setTelaRelatorio(TelaRelatorio tela_relatorio){
+        this.tela_relatorio = tela_relatorio;
     }
 
     public void setTelaCadastro(TelaCadastro tela_cadastro) {

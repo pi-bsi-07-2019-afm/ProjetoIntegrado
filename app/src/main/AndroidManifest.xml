@@ -10,6 +10,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.TelaRelatorio"></activity>
         <activity
             android:name=".View.TelaEULA"
             android:label="@string/title_activity_eula"
