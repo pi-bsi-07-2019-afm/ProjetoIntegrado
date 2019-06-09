@@ -97,7 +97,7 @@ public class TelaCalculadora {
         BolusHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExibeMensagem("Quantidade de Carboidratos que 1 unidade de insulina cobre. (De acordo com o Fabricante da medicação)");
+                ExibeMensagem("Quantidade de Carboidratos que 1 unidade de insulina cobre.\n(De acordo com o Fabricante da medicação)");
             }
         });
 
@@ -126,15 +126,6 @@ public class TelaCalculadora {
                         saveObjCalculo();
                         objCalculo.setTotalInsulina(NumeroDeDoses);
                         act.tela_carregando.CarregarTela(objCalculo);
-
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Toast toast = Toast.makeText(act.getApplicationContext(), "Número de Doses: " + NumeroDeDoses, Toast.LENGTH_LONG);
-//                            toast.show();
-//                        }
-//                    }, 3000);
-
                     }
                 }catch(Exception ex){
                     Toast.makeText(act.getApplicationContext(),"Ops, algo deu errado. Reinicie o app e tente novamente.",Toast.LENGTH_LONG);

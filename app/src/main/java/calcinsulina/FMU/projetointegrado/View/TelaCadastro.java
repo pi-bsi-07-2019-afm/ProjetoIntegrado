@@ -114,8 +114,8 @@ public class TelaCadastro {
                     if (edDataNasc.getText().length() == 0) {
                         msgErro = msgErro.concat("\n• Informar a data de nascimento.");
                     }
-                    if (edSensibFator.getText().length() == 0) {
-                        msgErro = msgErro.concat("\n• Informar o fator de sensibilidade.");
+                    if (edSensibFator.getText().length() == 0 || Double.parseDouble(edSensibFator.getText().toString()) <= 0 || Double.parseDouble(edSensibFator.getText().toString()) > 300) {
+                        msgErro = msgErro.concat("\n• Informar o fator de sensibilidade corretamente.");
                     }
                     if (edEmail.getText().length() == 0 || edEmail.getText().toString().indexOf("@") < 0) {
                         msgErro = msgErro.concat("\n• Informar o E-Mail corretamente.");
