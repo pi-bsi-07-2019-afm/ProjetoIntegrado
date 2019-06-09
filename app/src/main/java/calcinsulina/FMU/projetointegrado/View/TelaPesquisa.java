@@ -57,22 +57,31 @@ public class TelaPesquisa {
 
                 if (listArgs.length > 0) {
                     for (int i = 0; i < alimentosEmSessao.size(); i++) {
+                        boolean flagAdicionar = false;
                         for (int j = 0; j < listArgs.length; j++) {
                             if (act.getLowercaseSimpleString(alimentosEmSessao.get(i).getNome()).indexOf(act.getLowercaseSimpleString(listArgs[j])) != -1) {
                                 boolean flagIsRepeated = false;
 
-                                //corrigir
-//                                for (int k = 0; k < alimentosEmSessao.size(); k++) {
-//                                    if (alimentosEmSessao.get(k).equals(listResults.get(k))) {
-//                                        flagIsRepeated = true;
-//                                        break;
-//                                    }
-//                                }
+                                for (int k = 0; k < listResults.size(); k++){
+                                    if (alimentosEmSessao.get(i).getId() == listResults.get(k).getId()){
+                                        flagAdicionar = false;
+                                        break;
+                                    }
+                                }
 
                                 if (!flagIsRepeated) {
-                                    listResults.add(alimentosEmSessao.get(i));
+                                    flagAdicionar = true;
+                                }else{
+                                    flagAdicionar = false;
+                                    break;
                                 }
+                            }else{
+                                flagAdicionar = false;
+                                break;
                             }
+                        }
+                        if(flagAdicionar){
+                            listResults.add(alimentosEmSessao.get(i));
                         }
                     }
                     ;
@@ -81,6 +90,7 @@ public class TelaPesquisa {
                             arrayAdapter.add(listResults.get(i).getNome());
                         }
                         listResultsSet = listResults;
+                        edPesquisa.clearFocus();
                     } else {
                         Toast.makeText(act, "A Busca não obteve resultados.", Toast.LENGTH_SHORT).show();
                     }
