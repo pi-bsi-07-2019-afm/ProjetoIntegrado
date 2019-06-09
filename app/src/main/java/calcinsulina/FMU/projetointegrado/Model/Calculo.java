@@ -109,7 +109,7 @@ public class Calculo {
         String[] vetor = s.split(",");
         int[] conjuntoAlimentosT = new int[vetor.length];
         for (int i = 0; i < vetor.length; i++){
-            conjuntoAlimentosT[i] = Integer.getInteger(vetor[i]);
+            conjuntoAlimentosT[i] = Integer.parseInt(vetor[i]);
         }
         this.conjuntoAlimentos = conjuntoAlimentosT;
     }
@@ -129,7 +129,7 @@ public class Calculo {
         String[] vetor = s.split(",");
         double[] conjuntoMultiplicadoresT = new double[vetor.length];
         for (int i = 0; i < vetor.length; i++){
-            conjuntoMultiplicadoresT[i] = Integer.getInteger(vetor[i]);
+            conjuntoMultiplicadoresT[i] = Double.parseDouble(vetor[i]);
         }
         this.conjuntoMultiplicadores = conjuntoMultiplicadoresT;
     }

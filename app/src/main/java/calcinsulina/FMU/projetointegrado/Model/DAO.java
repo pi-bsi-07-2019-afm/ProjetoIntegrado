@@ -88,8 +88,8 @@ public class DAO extends SQLiteOpenHelper {
                 + CONJUNTO_ALIMENTOS + " TEXT, "
                 + CONJUNTO_MULTI + " TEXT, "
                 + TOTAL_CARB + " REAL, "
-                + TOTAL_INSULINA + " REAL, "
-                + DATA_REGISTRO_C + " REAL);";
+                + TOTAL_INSULINA + " INTEGER, "
+                + DATA_REGISTRO_C + " TEXT);";
         System.out.println(CREATE_TABLE_CALC);
         db.execSQL(CREATE_TABLE_CALC);
         String CREATE_TABLE_TM = "CREATE TABLE IF NOT EXISTS " + TABELA_TM + " ( "
@@ -254,7 +254,7 @@ public class DAO extends SQLiteOpenHelper {
         ContentValues valores = new ContentValues();
         for (int i = 0; i < calculo.size(); i++) {
             valores.put(ID_CALC, calculo.get(i).getId());
-            valores.put(QNT_CARB_G, calculo.get(i).getQuantCarbPorUnidInsulina());
+            valores.put(QUANT_CARB_UNID, calculo.get(i).getQuantCarbPorUnidInsulina());
             valores.put(GLICEMIA_ALVO, calculo.get(i).getGlicemiaAlvo());
             valores.put(GLICEMIA_OBTIDA, calculo.get(i).getGlicemiaObtida());
             valores.put(CONJUNTO_ALIMENTOS, calculo.get(i).getStringConjuntoAlimentos());
