@@ -100,7 +100,7 @@
         android:layout_marginRight="16dp"
         android:gravity="center_horizontal|center_vertical"
         android:inputType="number"
-        android:maxLength="3"
+        android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.763"

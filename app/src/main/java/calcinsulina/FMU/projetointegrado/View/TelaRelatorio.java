@@ -29,7 +29,7 @@ public class TelaRelatorio{
         this.tela_relatorio = tela_relatorio;
     }
 
-    public void CarregarTela(List<Calculo> listCalculos){
+    public void CarregarTela(){
         act.setContentView(R.layout.tela_relatorio);
         btnVoltarRel = act.findViewById(R.id.btnVoltarRel);
         Registros = act.findViewById(R.id.listRegistros);
@@ -42,17 +42,17 @@ public class TelaRelatorio{
             totalInsulina += act.getaCalculo().get(i).getTotalInsulina();
         }
 
-        txtTotalCalcInt.setText(totalCalculo);
-        txtTotalInsulInt.setText(totalInsulina);
+        txtTotalCalcInt.setText(String.valueOf(totalCalculo));
+        txtTotalInsulInt.setText(String.valueOf(totalInsulina));
 
-        ArrayAdapter<Calculo> arrayAdapter = new ArrayAdapter<Calculo>(act, android.R.layout.simple_list_item_1, listCalculos);
+        ArrayAdapter<Calculo> arrayAdapter = new ArrayAdapter<Calculo>(act, android.R.layout.simple_list_item_1, act.getaCalculo());
         Registros.setAdapter(arrayAdapter);
         Registros.clearAnimation();
 
         Registros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int index, final long l) {
-                startRotinaRemocao(index);
+//                startRotinaRemocao(index);
             }
         });
 
@@ -64,19 +64,19 @@ public class TelaRelatorio{
         });
     }
 
-    public void startRotinaRemocao(final int index){
-        final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
-        dialogo.setIcon(android.R.drawable.ic_dialog_alert);
-        dialogo.setTitle("Confirmação: ");
-        dialogo.setMessage("Você deseja remover este Calculo dos Registros?");
-        dialogo.setNegativeButton("Não", null);
-        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+//    public void startRotinaRemocao(final int index){
+//        final AlertDialog.Builder dialogo = new AlertDialog.Builder(act);
+//        dialogo.setIcon(android.R.drawable.ic_dialog_alert);
+//        dialogo.setTitle("Confirmação: ");
+//        dialogo.setMessage("Você deseja remover este Calculo dos Registros?");
+//        dialogo.setNegativeButton("Não", null);
+//        dialogo.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
 //                removerCalculoDoRegistro();
-                Toast.makeText(act, "Calculo removido dos registros.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        dialogo.show();
-    }
+//                Toast.makeText(act, "Calculo removido dos registros.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        dialogo.show();
+//    }
 }

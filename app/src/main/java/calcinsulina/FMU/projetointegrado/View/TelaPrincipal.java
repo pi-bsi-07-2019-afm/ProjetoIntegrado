@@ -58,7 +58,7 @@ public class TelaPrincipal {
                 if(act.getaCalculo().size() == 0) {
                     Toast.makeText(act, "Não há calculos registrados para relatório", Toast.LENGTH_SHORT).show();
                 }else{
-                    act.tela_relatorio.CarregarTela(act.aCalculo);
+                    act.tela_relatorio.CarregarTela();
                 }
             }
         });
