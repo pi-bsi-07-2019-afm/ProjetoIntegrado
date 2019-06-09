@@ -48,7 +48,7 @@ public class TelaRelatorio{
         List<String> listStrCalculos = new ArrayList<String>();
         for (int i = 0; i < act.getaCalculo().size(); i++){
             String str = "Cálculo: " + act.getaCalculo().get(i).getId() + "\nGlicemia Obtida: " + act.getaCalculo().get(i).getGlicemiaObtida() +
-                    "\nGlicemia Alvo: " + act.getaCalculo().get(i).getGlicemiaAlvo() + "\nData/Hora " + act.getaCalculo().get(i).getDataRegistro();
+                    "\nGlicemia Alvo: " + act.getaCalculo().get(i).getGlicemiaAlvo() + "\nData/Hora: " + act.getaCalculo().get(i).getDataRegistro();
             listStrCalculos.add(str);
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, listStrCalculos);

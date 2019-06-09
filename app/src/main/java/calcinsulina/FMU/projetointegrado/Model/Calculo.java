@@ -1,5 +1,7 @@
 package calcinsulina.FMU.projetointegrado.Model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Calculo {
@@ -34,8 +36,9 @@ public class Calculo {
         this.conjuntoMultiplicadores = conjuntoMultiplicadores;
         this.totalCarb = totalCarb;
         this.totalInsulina = totalInsulina;
-        Date obj = new Date();
-        this.dataRegistro = obj.toString();
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+        String dateCalc = sdf.format(new Date()).toString();
+        this.dataRegistro = dateCalc;
     }
 
     public int getId() {

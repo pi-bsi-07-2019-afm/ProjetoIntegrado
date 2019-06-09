@@ -160,6 +160,7 @@ public class TelaCadastro {
 
     public void ExibeMensagem(String mensagem) {
         AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+        Dialogo.setIcon(android.R.drawable.ic_dialog_alert);
         Dialogo.setTitle("Atenção");
         Dialogo.setMessage(mensagem);
         Dialogo.setNeutralButton("OK", null);

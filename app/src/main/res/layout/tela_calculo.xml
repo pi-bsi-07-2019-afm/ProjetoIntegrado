@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".View.TelaCalculadora">
 
+    <ImageView
+        android:id="@+id/BolusHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="TODO"
+        android:src="@android:drawable/ic_menu_help"
+        android:tint="#CB0001"
+        app:layout_constraintEnd_toStartOf="@+id/edBolus"
+        app:layout_constraintStart_toEndOf="@+id/txtBolus"
+        app:layout_constraintTop_toTopOf="@+id/edBolus" />
+
     <TextView
         android:id="@+id/txtCalculo"
         android:layout_width="196dp"
@@ -42,7 +56,7 @@
         android:layout_marginRight="16dp"
         android:gravity="center_horizontal|center_vertical"
         android:inputType="number"
-        android:maxLength="3"
+        android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
@@ -61,7 +75,7 @@
         android:layout_marginRight="16dp"
         android:gravity="center_horizontal|center_vertical"
         android:inputType="number"
-        android:maxLength="3"
+        android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
@@ -81,7 +95,7 @@
         android:enabled="false"
         android:gravity="center_horizontal|center_vertical"
         android:inputType="number"
-        android:maxLength="3"
+        android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
@@ -103,7 +117,7 @@
         android:maxLength="5"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edGlicObt" />
 
@@ -236,14 +250,11 @@
     <TextView
         android:id="@+id/txtBolus"
         android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Bolus da Alimentação:"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Bolus de Alimentação:"
         android:textSize="18dp"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintEnd_toStartOf="@+id/edBolus"
         app:layout_constraintTop_toTopOf="@+id/edBolus" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,11 +1,13 @@
 package calcinsulina.FMU.projetointegrado.View;
 
+import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import calcinsulina.FMU.projetointegrado.R;
@@ -18,6 +20,7 @@ public class TelaCalculadora {
     TelaPrincipal tela_principal;
     Button btnCalcular,btnVoltarCalc,btnAdicionar,btnEditar;
     EditText edFSensibil, edGlicemAlvo, edGlicemObt, edCarboidrato, edBolus;
+    ImageView BolusHint;
 
     Calculo objCalculo;
     public boolean flagInserirDadosNoForm;
@@ -81,6 +84,7 @@ public class TelaCalculadora {
         btnVoltarCalc = act.findViewById(R.id.btnVoltarCalc);
         btnAdicionar = act.findViewById(R.id.btnAdicionar);
         btnEditar = act.findViewById(R.id.btnEditar);
+        BolusHint = act.findViewById(R.id.BolusHint);
 
         if(flagInserirDadosNoForm){
             setFormCalculadora();
@@ -89,6 +93,13 @@ public class TelaCalculadora {
             objCalculo = new Calculo(novoId,0.0,0.0,0.0,new int[0],new double[0],0.0,0);
             this.edCarboidrato.setText(String.valueOf(objCalculo.getTotalCarb()));
         }
+
+        BolusHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExibeMensagem("Quantidade de Carboidratos que 1 unidade de insulina cobre. (De acordo com o Fabricante da medicação)");
+            }
+        });
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +123,7 @@ public class TelaCalculadora {
                         double CorrecaoInsul = Glicemia / FatorSensibilidade;
                         double InsulinaAComer =  Carboidrato / Bolus;
                         final int NumeroDeDoses =  (int) (CorrecaoInsul + InsulinaAComer);
+                        saveObjCalculo();
                         objCalculo.setTotalInsulina(NumeroDeDoses);
                         act.tela_carregando.CarregarTela(objCalculo);
 
@@ -157,6 +169,15 @@ public class TelaCalculadora {
                 }
             }
         });
+    }
+
+    public void ExibeMensagem(String mensagem) {
+        AlertDialog.Builder Dialogo = new AlertDialog.Builder(act);
+        Dialogo.setIcon(android.R.drawable.ic_dialog_alert);
+        Dialogo.setTitle("Atenção");
+        Dialogo.setMessage(mensagem);
+        Dialogo.setNeutralButton("OK", null);
+        Dialogo.show();
     }
 
 }
