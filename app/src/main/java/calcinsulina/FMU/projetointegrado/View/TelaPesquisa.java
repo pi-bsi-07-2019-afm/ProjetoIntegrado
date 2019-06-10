@@ -1,6 +1,7 @@
 package calcinsulina.FMU.projetointegrado.View;
 
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,6 +46,7 @@ public class TelaPesquisa {
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                edPesquisa.onEditorAction(EditorInfo.IME_ACTION_DONE);
                 List<Alimento> alimentosEmSessao = act.getaAlimento();
                 List<Alimento> listResults = new ArrayList<Alimento>();
                 String conteudoBuscar = edPesquisa.getText().toString();
