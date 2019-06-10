@@ -74,10 +74,16 @@ public class TelaSelecionados {
     public void removerAlimentoDoCalculo(Calculo objCalculo, int idAlimentoARemover){
         List<Integer> conjuntoAlimentos = new ArrayList<Integer>();
         List<Double> conjuntoMultiplicadores = new ArrayList<Double>();
+        double totalCarbARemover = 0.0;
         for (int i = 0; i < objCalculo.getConjuntoAlimentos().length; i++){
             if(objCalculo.getConjuntoAlimentos()[i] != idAlimentoARemover){
                 conjuntoAlimentos.add(objCalculo.getConjuntoAlimentos()[i]);
                 conjuntoMultiplicadores.add(objCalculo.getConjuntoMultiplicadores()[i]);
+            }else{
+                int index = objCalculo.getConjuntoAlimentos()[i];
+                double valorCarbAlimento = act.getaAlimento().get(index - 1).getQuantCarb();
+                double multiplicador = objCalculo.getConjuntoMultiplicadores()[i];
+                totalCarbARemover = valorCarbAlimento * multiplicador;
             }
         }
         int[] novoConjuntoAlimentos = new int[conjuntoAlimentos.size()];
@@ -89,6 +95,7 @@ public class TelaSelecionados {
             }
             objCalculo.setConjuntoAlimentos(novoConjuntoAlimentos);
             objCalculo.setConjuntoMultiplicadores(novoConjuntoMultiplicadores);
+            objCalculo.setTotalCarb(objCalculo.getTotalCarb() - totalCarbARemover);
             act.tela_selecionados.CarregarTela(objCalculo);
         }else{
             throw new RuntimeException("Erro na carga de cálculo. Feche o app e tente novamente.");
